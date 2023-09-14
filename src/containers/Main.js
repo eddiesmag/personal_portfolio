@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { splashScreen } from '../portfolio';
 import SplashScreen from './splash-screen/splashScreen';
-
+import Header from '../components/header/Header';
 import './Main.scss';
 
 const Main = () => {
@@ -25,6 +25,7 @@ const Main = () => {
         <>
           {
             // add components here
+            <Header />
           }
         </>
       )}

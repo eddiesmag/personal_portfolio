@@ -1,0 +1,70 @@
+/*React-headroom*/
+.headroom-wrapper {
+    max-height: 100px;
+  }
+
+  /*header*/
+  .dark-menu {
+    background-color: black;
+    color:#fff;
+  }
+
+  .dark-menu li a {
+    color: #fff;
+    // remove & include styles in .header ul
+    display: block;
+    padding: 15px 20px;
+    // color: $textColor;
+    text-decoration: none;
+  }
+
+  .dark-menu li a:hover{
+    background-color: aquamarine;
+  }
+
+  .header {
+    // background-color: $lightBackground1;
+    max-width: 100%;
+    padding: 15px 20px;
+    margin: 0px auto;
+  }
+
+  .header ul {
+    margin: 0;
+    padding:0;
+    list-style: none;
+    overflow: hidden;
+  }
+
+  .dark-menu ul {
+    margin: 0;
+    padding:0;
+    list-style: none;
+    overflow: hidden;
+  }
+
+  .grey-color{
+    color: rgb(109, 105, 105);
+  }
+
+  .header li a {
+    display: block;
+    padding: 15px 20px;
+    // color: $textColor;
+    text-decoration: none;
+  }
+
+  header li{
+display: inline-block;
+  }
+
+  /* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}

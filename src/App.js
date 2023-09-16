@@ -1,11 +1,10 @@
 import './App.css';
+import Main from './containers/Main';
 
 function App() {
   return (
-    <div className="App">
-      <div className="container">
-        <h1>Personal Portfolio</h1>
-      </div>
+    <div>
+      <Main />
     </div>
   );
 }

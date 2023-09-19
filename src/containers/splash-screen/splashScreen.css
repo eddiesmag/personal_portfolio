@@ -3,11 +3,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .splash-animation-container {
-  height: 50vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .splash-title-container {
@@ -25,4 +35,11 @@
 
 .grey-color {
   color: #868e96;
+}
+@media (max-width: 767.98px) {
+  .splash-title-container {
+    margin: 1rem 0;
+    font-size: 1rem;
+    text-decoration: none;
+  }
 }

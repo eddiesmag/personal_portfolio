@@ -1,51 +1,44 @@
-import React from 'react';
+import { Tab, Tabs } from '@mui/material';
+import React, { useState } from 'react';
 import Headroom from 'react-headroom';
+import { LightMode, DarkMode } from '@mui/icons-material';
 
 import './styles/Header.scss';
+import { introduction } from '../../portfolio';
 const Header = () => {
+  const [value, setValue] = useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   return (
     <Headroom>
-      <header className="dark-menu">
-        <a href="/" className="">
-          <span className="grey-color">&lt;</span>
-          <span>Smag Eddie</span>
-          <span className="grey-color">&gt;</span>
-        </a>
-        <input type="checkbox" className="menu-btn" id="menu-btn" />
-        <label
-          htmlFor="menu-btn"
-          className="menu-icon"
-          style={{ color: 'white' }}
-        >
-          <span
-            className={'isDark' ? 'navicon navicon-dark' : 'navicon'}
-          ></span>
-        </label>
-        <ul>
-          <li>
-            <a href="#skills">Skills</a>
-          </li>
-          <li>
-            <a href="#experience">Work Experimces</a>
-          </li>
-          <li>
-            <a href="#openSource">Open Source</a>
-          </li>
-          <li>
-            <a href="#achievements">Achievements</a>
-          </li>
-          <li>
-            <a href="#blogs">Blogs</a>
-          </li>
-          <li>
-            <a href="#talks">Talks</a>
-          </li>
-          <li>
-            <a href="#contact">Contact Me</a>
-          </li>
-          {/* add Toggle switch */}
-        </ul>
-      </header>
+      <Tabs value={value} onChange={handleChange} centered variant="fullWidth">
+        <Tab
+          href="/"
+          label={
+            <span href="/" className="title">
+              <span className="grey-color">&lt;</span>
+              <span>{introduction.username}</span>
+              <span className="grey-color">{' /'}</span>
+              <span className="grey-color">&gt;</span>
+            </span>
+          }
+        />
+        <Tab label="Skills" href="#skills" />
+        <Tab label="Work Experiemces" href="#experience" />
+        <Tab label="Open Source" href="#openSource" />
+        <Tab label="Achievements" href="#achievements" />
+        <Tab label="Blogs" href="#blogs" />
+        <Tab label="Talks" href="#talks" />
+        <Tab label="Contact Me" href="#contact" />
+        <Tab
+          icon={<LightMode />}
+          aria-label=""
+          disableRipple={true}
+          focusRipple={false}
+        />
+        <Tab icon={<DarkMode />} aria-label="" />
+      </Tabs>
     </Headroom>
   );
 };

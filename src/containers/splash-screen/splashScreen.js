@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import DisplayLottie from '../../components/display-lottie/displayLottie';
 import { splashScreen, introduction } from '../../portfolio';
 import './splashScreen.css';
+import StyleContext from '../../contexts/StyleContext';
 const SplashScreen = () => {
+  const { isDark } = useContext(StyleContext);
   return (
-    <div className="splash-container">
+    <div
+      className={isDark ? 'dark splash-container' : 'light splash-container'}
+    >
       <div className="splash-animation-container">
         <DisplayLottie animationData={splashScreen.animation} />
       </div>

@@ -1,3 +1,14 @@
+.menu {
+  background-color:#FFFFFF;
+  color: rgb(218, 112, 112) !important;
+}
+.dark-menu {
+  background-color: #23272F;
+  // color: #F6F7F9 !important;
+}
+.dark-menu .MuiTab-label{
+color: "red";
+}
 /*React-headroom*/
 .headroom-wrapper {
     max-height: 100px;

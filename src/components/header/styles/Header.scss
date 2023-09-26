@@ -1,14 +1,14 @@
+@import "../../../globalColor";
 .menu {
-  background-color:#FFFFFF;
-  color: rgb(218, 112, 112) !important;
+  background-color: $lightBackground !important;
+  color: $textColor !important;
 }
+
 .dark-menu {
-  background-color: #23272F;
-  // color: #F6F7F9 !important;
+  background-color: $darkBackground !important;
+  color: $textColorDark !important;
 }
-.dark-menu .MuiTab-label{
-color: "red";
-}
+
 /*React-headroom*/
 .headroom-wrapper {
     max-height: 100px;
@@ -23,7 +23,10 @@ color: "red";
     font-weight: bold;
     font-variant-ligatures: no-common-ligatures;
     -webkit-font-variant-ligatures: no-common-ligatures;
-    padding: 0px 20px;
+    padding: auto;
+    display: flex;
+    text-align: center;
+    align-items: center;
   }
 
   .MuiTab-icon {

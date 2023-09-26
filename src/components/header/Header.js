@@ -1,12 +1,9 @@
 import { Tab, Tabs } from '@mui/material';
 import React, { useState, useContext } from 'react';
-import Headroom from 'react-headroom';
 import { introduction } from '../../portfolio';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import StyleContext from '../../contexts/StyleContext';
-
 import './styles/Header.scss';
-
 const Header = () => {
   const { isDark } = useContext(StyleContext);
   const [value, setValue] = useState(0);
@@ -19,6 +16,9 @@ const Header = () => {
       value={value}
       onChange={handleChange}
       centered
+      textColor="inherit"
+      indicatorColor={isDark ? null : 'primary'}
+      ind
       variant="fullWidth"
     >
       <Tab
@@ -26,6 +26,7 @@ const Header = () => {
         label={
           <span href="/" className="title">
             <span className="grey-color">&lt;</span>
+            <span> </span>
             <span>{introduction.username}</span>
             <span className="grey-color">{' /'}</span>
             <span className="grey-color">&gt;</span>

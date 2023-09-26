@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { splashScreen } from '../portfolio';
 import SplashScreen from './splash-screen/splashScreen';
 import Header from '../components/header/Header';
-import './Main.scss';
 import { StyleProvider } from '../contexts/StyleContext';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import './Main.scss';
 
 const Main = () => {
   /**
-   * check user's mode preference
+   * check user's them mode preference
    * useMediaQuery('(prefers-color-scheme: dark)')
    */
   const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
@@ -34,7 +34,7 @@ const Main = () => {
     setIsDark(!isDark);
   };
   return (
-    <div className={isDark ? 'dark-menu' : 'mode'}>
+    <div className={isDark ? 'dark-mode' : null}>
       <StyleProvider value={{ isDark: isDark, changeTheme: changeTheme }}>
         {isShowingSplashAnimation && splashScreen.anabled ? (
           <SplashScreen />

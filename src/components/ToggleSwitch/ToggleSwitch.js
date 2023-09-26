@@ -10,7 +10,7 @@ const ToggleSwitch = () => {
   const [themeMode, setThemeMode] = useState(isDark);
   return (
     <Tab
-      icon={themeMode ? <DarkMode /> : <LightMode />}
+      icon={themeMode ? <LightMode /> : <DarkMode />}
       aria-label="icon"
       disableRipple={true}
       focusRipple={false}

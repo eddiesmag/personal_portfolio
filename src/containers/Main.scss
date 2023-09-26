@@ -1,9 +1,7 @@
-// .dark-mode{
-//     background-color: rgb(16, 30, 25);
-//     color: #fff;
-// }
+@import "../globalColor";
 
-// .menu{ 
-//     background-color: rgb(245, 245, 239);
-//     color: #000;
-// }
+.dark-mode{
+    background-color: $darkBackground;
+    color: #fff;
+    transition: '0.1s';
+}

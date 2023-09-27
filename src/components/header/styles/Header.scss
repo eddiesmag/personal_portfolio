@@ -1,3 +1,14 @@
+@import "../../../globalColor";
+.menu {
+  background-color: $lightBackground !important;
+  color: $textColor !important;
+}
+
+.dark-menu {
+  background-color: $darkBackground !important;
+  color: $textColorDark !important;
+}
+
 /*React-headroom*/
 .headroom-wrapper {
     max-height: 100px;
@@ -7,12 +18,24 @@
     color:#868e96;
   }
 
+  // margin
+  .mx{
+    margin: 0 0.5rem
+  }
+
+  .ls-none{
+    list-style: none;
+  }
+
   .title {
     font-family: 'Agustina Regular', cursive;
     font-weight: bold;
     font-variant-ligatures: no-common-ligatures;
     -webkit-font-variant-ligatures: no-common-ligatures;
-    padding: 0px 20px;
+    padding: auto;
+    display: flex;
+    text-align: center;
+    align-items: center;
   }
 
   .MuiTab-icon {

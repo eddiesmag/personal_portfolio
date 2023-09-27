@@ -1,3 +1,5 @@
+@import "../../globalColor";
+
 .splash-container {
   display: flex;
   flex-direction: column;
@@ -28,18 +30,8 @@
 .splash-title {
   font-family: 'Agustina Regular', cursive;
   font-weight: bold;
+  font-size: 1.5rem;
   font-variant-ligatures: no-common-ligatures;
   -webkit-font-variant-ligatures: no-common-ligatures;
-  padding: 20px 20px;
-}
-
-.grey-color {
-  color: #868e96;
-}
-@media (max-width: 767.98px) {
-  .splash-title-container {
-    margin: 1rem 0;
-    font-size: 1rem;
-    text-decoration: none;
-  }
+  padding: 2rem 2rem;
 }

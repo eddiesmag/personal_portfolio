@@ -1,53 +1,106 @@
-import { Fade } from '@mui/material';
-import React from 'react';
-import { useState } from 'react';
-import { useSpring, animated } from 'react-spring';
+import React, { useContext } from 'react';
+import { Fade, Grid, Typography } from '@mui/material';
+import StyleContext from '../../contexts/StyleContext';
+import { introduction } from '../../portfolio';
+import emoji from 'react-easy-emoji';
+import SocialMedia from '../../components/socialMedia/socialMedia';
+import ButtonComp from '../../components/button/Button';
+import DisplayLottie from '../../components/display-lottie/displayLottie';
+import { fadeInLeft, fadeInRight } from './styles/aninations';
 import './styles/greeting.scss';
+
 const Greeting = () => {
-  const [show, setShow] = useState(true);
-  const props = useSpring({
-    opacity: show ? 1 : 0,
-    config: {
-      duration: 200,
-    },
-  });
+  const { isDark } = useContext(StyleContext);
+
+  if (!introduction.displayIntroduction) {
+    return null;
+  }
   return (
     <Fade in={true} timeout={1000}>
-      <div className="g-container">
-        <div>
-          <h4>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-            aut atque pariatur exercitationem provident dolore ab, commodi
-            adipisci praesentium harum nemo deserunt quam incidunt nostrum
-            aliquam vero eligendi consequuntur neque! Iusto molestiae adipisci
-            accusamus dolorum ratione tenetur tempore ut corrupti, nam maxime
-            minus culpa deleniti totam neque distinctio optio veniam libero
-            esse, sunt rerum dolore voluptates excepturi? Ea, tempore impedit?
-            Suscipit sequi labore, iure deserunt quo officia quasi, eum,
-            consequatur et sunt accusantium error aperiam qui itaque corrupti
-            cum deleniti facere libero nostrum! Adipisci dicta rerum nobis vitae
-            ex at!
-          </h4>
-        </div>
-        <animated.div style={props}>
-          <h6>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, odit
-            quas. Temporibus, ullam odio sit sed qui doloribus. Id maxime aut
-            magni? Dolor magni qui nihil dolore illum aut! Quaerat. Adipisci
-            mollitia dolor optio, quasi, amet quas totam nesciunt voluptatum
-            repudiandae quaerat expedita deserunt repellat natus ullam aperiam,
-            at velit tempore! Quam explicabo sint tempora magni, aperiam
-            accusamus quod pariatur? Modi saepe consectetur impedit quae soluta
-            incidunt ex aperiam ipsa similique? Harum explicabo qui veritatis
-            labore numquam, unde ea dolores assumenda? Molestias officia
-            consectetur nobis! Laudantium iste eum harum voluptas? Nulla
-            pariatur dolore unde perferendis! Illum consequuntur optio, dicta
-            accusamus excepturi cupiditate, illo perferendis at, libero dolorem
-            nihil. Facere tenetur non quia animi earum voluptates quisquam
-            aperiam nulla cupiditate fugit.
-          </h6>
-        </animated.div>
-      </div>
+      <Grid
+        container
+        direction="row"
+        spacing={0}
+        className="main"
+        m="0px auto"
+        mt="4rem"
+        p={2}
+        sx={{ justifyContent: 'center', alignItems: 'flex-start' }}
+      >
+        <Grid item xs={6}>
+          <div id="introduction">
+            <Typography
+              variant="h3"
+              gutterBottom
+              sx={{
+                fontSize: '3rem',
+                lineHeight: 1.1,
+                animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
+              }}
+              ml={5}
+              pt={3}
+            >
+              {introduction.title}{' '}
+              <span className="wave-emoji">{emoji('👋')}</span>
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              gutterBottom
+              sx={{
+                lineHeight: 2,
+                fontSize: '1.3rem',
+                color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+                animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
+              }}
+              ml={5}
+              mt={5}
+              mb={5} /** this changes after adding social meduim buttons* */
+            >
+              {introduction.subTitle}
+            </Typography>
+
+            <SocialMedia />
+
+            <Grid
+              container
+              direction="row"
+              spacing={0}
+              className="button-introduction"
+              ml={5}
+              sx={{
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+                animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
+              }}
+            >
+              <Grid item xs={4}>
+                <ButtonComp text="Contact Me" href="#contact" btnSize="large" />
+              </Grid>
+              <Grid item xs={4}>
+                {introduction.resumeLink && (
+                  <ButtonComp
+                    text="See my resume"
+                    newTab={true}
+                    href="#"
+                    btnSize="large"
+                  />
+                )}
+              </Grid>
+            </Grid>
+          </div>
+        </Grid>
+        <Grid
+          item
+          xs={6}
+          sx={{
+            animation: `${fadeInRight} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
+          }}
+        >
+          <div className="introduction-image">
+            <DisplayLottie animationData={introduction.animation} />
+          </div>
+        </Grid>
+      </Grid>
     </Fade>
   );
 };

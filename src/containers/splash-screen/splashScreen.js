@@ -15,7 +15,7 @@ const SplashScreen = () => {
         <Grid item xs>
           {variants.map((variant) => (
             <Typography component="div" key={variant} variant={variant}>
-              <Skeleton sx={{ bgcolor: 'grey.600' }} />
+              <Skeleton sx={{ bgcolor: isDark ? 'grey.600' : 'grey.100' }} />
             </Typography>
           ))}
           <Typography

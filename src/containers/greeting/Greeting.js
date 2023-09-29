@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Fade, Grid, Typography } from '@mui/material';
+import { Fade, Grid, Typography, useMediaQuery } from '@mui/material';
 import StyleContext from '../../contexts/StyleContext';
 import { introduction } from '../../portfolio';
 import emoji from 'react-easy-emoji';
@@ -12,32 +12,93 @@ import './styles/greeting.scss';
 const Greeting = () => {
   const { isDark } = useContext(StyleContext);
 
+  const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
+  const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
+
+  const getTitleStyles = () => {
+    if (isSmallScreen) {
+      return {
+        fontSize: '1.7rem',
+        lineHeight: 1,
+      };
+    } else if (isMediumScreen) {
+      return {
+        fontSize: '2rem',
+        lineHeight: 1,
+      };
+    } else {
+      return {
+        fontSize: '3rem',
+        lineHeight: 1.1,
+      };
+    }
+  };
+
+  const getSubTitleStyles = () => {
+    if (isSmallScreen) {
+      return {
+        lineHeight: 1.7,
+        fontSize: '1rem',
+      };
+    } else if (isMediumScreen) {
+      return {
+        lineHeight: 1.7,
+        fontSize: '1.1rem',
+      };
+    } else {
+      return {
+        lineHeight: 2,
+        fontSize: '1.3rem',
+      };
+    }
+  };
+
+  const getButtonStyles = () => {
+    if (isSmallScreen || isMediumScreen) {
+      return {
+        justifyContent: 'center',
+        alignItems: 'center',
+      };
+    }
+    return {
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+    };
+  };
+
   if (!introduction.displayIntroduction) {
     return null;
   }
   return (
     <Fade in={true} timeout={1000}>
       <Grid
-        container
-        direction="row"
-        spacing={0}
         className="main"
-        m="0px auto"
+        container
+        direction={{ sx: 'column', sm: 'row', md: 'row' }}
+        spacing={0}
+        m="0px"
         mt="4rem"
         p={2}
         sx={{ justifyContent: 'center', alignItems: 'flex-start' }}
       >
-        <Grid item xs={6}>
+        <Grid
+          item
+          lg={6}
+          md={6}
+          xs={12}
+          sx={{
+            textAlign: isSmallScreen || isMediumScreen ? 'center' : 'justify',
+          }}
+        >
           <div id="introduction">
             <Typography
               variant="h3"
               gutterBottom
               sx={{
-                fontSize: '3rem',
-                lineHeight: 1.1,
+                ...getTitleStyles(),
                 animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
               }}
-              ml={5}
+              ml={isSmallScreen || isMediumScreen ? 'auto' : 5}
               pt={3}
             >
               {introduction.title}{' '}
@@ -47,12 +108,11 @@ const Greeting = () => {
               variant="subtitle1"
               gutterBottom
               sx={{
-                lineHeight: 2,
-                fontSize: '1.3rem',
+                ...getSubTitleStyles(),
                 color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
                 animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
               }}
-              ml={5}
+              ml={isSmallScreen || isMediumScreen ? 'auto' : 5}
               mt={5}
               mb={5} /** this changes after adding social meduim buttons* */
             >
@@ -63,20 +123,21 @@ const Greeting = () => {
 
             <Grid
               container
-              direction="row"
+              direction={isSmallScreen || isMediumScreen ? 'column' : 'row'}
               spacing={0}
               className="button-introduction"
-              ml={5}
+              pl={isSmallScreen || isMediumScreen ? 0 : 5}
+              lg={12}
+              item
               sx={{
-                justifyContent: 'flex-start',
-                alignItems: 'center',
+                ...getButtonStyles(),
                 animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
               }}
             >
-              <Grid item xs={4}>
+              <Grid item lg={6} md={6} xs={6} mt={2}>
                 <ButtonComp text="Contact Me" href="#contact" btnSize="large" />
               </Grid>
-              <Grid item xs={4}>
+              <Grid item lg={6} md={6} xs={6} mt={2}>
                 {introduction.resumeLink && (
                   <ButtonComp
                     text="See my resume"
@@ -91,7 +152,9 @@ const Greeting = () => {
         </Grid>
         <Grid
           item
-          xs={6}
+          lg={6}
+          md={6}
+          xs={12}
           sx={{
             animation: `${fadeInRight} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
           }}

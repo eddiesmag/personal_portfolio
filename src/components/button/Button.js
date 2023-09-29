@@ -1,5 +1,8 @@
-import { Button } from '@mui/material';
 import React from 'react';
+import { Button } from '@mui/material';
+
+import './button.scss';
+
 const ButtonComp = ({ text, href, newTab, btnSize }) => {
   return (
     <Button

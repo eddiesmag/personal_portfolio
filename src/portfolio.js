@@ -1,6 +1,7 @@
 import emoji from 'react-easy-emoji';
 import splashAnimation from './assets/lottie/splashAnimation.json';
 import manWaving from './assets/lottie/manWaving.json';
+import manWorking from './assets/lottie/manWorking.json';
 // splash screen
 const splashScreen = {
   anabled: true,
@@ -32,4 +33,16 @@ const socialMediaLinks = {
   display: true, // change to true to disaplay social links
 };
 
-export { splashScreen, introduction, socialMediaLinks };
+// skills section
+const skillsSection = {
+  title: 'What I do',
+  subTitle: 'subtitle',
+  skills: [
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas placeat eaque ipsam omnis, deleniti perferendis, labore, itaque quo delectus voluptas beatae aliquam consectetur sed neque dolores nam doloribus distinctio veritatis.',
+    ' Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam saepe ea facilis. Tempora sint velit et veritatis tenetur quibusdam quae magni ipsa consectetur itaque qui ad sed autem, provident necessitatibus?',
+    'skill 3',
+  ],
+  animation: manWorking,
+};
+
+export { splashScreen, introduction, socialMediaLinks, skillsSection };

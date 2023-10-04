@@ -76,10 +76,13 @@ const Greeting = () => {
         container
         direction={{ sx: 'column', sm: 'row', md: 'row' }}
         spacing={0}
-        m="0px"
+        m={0}
         mt="4rem"
         p={2}
-        sx={{ justifyContent: 'center', alignItems: 'flex-start' }}
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'flex-start',
+        }}
       >
         <Grid
           item

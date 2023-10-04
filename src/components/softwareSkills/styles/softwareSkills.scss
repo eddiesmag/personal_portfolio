@@ -1,0 +1,13 @@
+@import '../../../globalColor';
+
+.skill-icon {
+    color: $subTitle;
+}
+
+.skill-caption {
+    color: $subTitle;
+}
+
+.skill-icon:hover {
+    color: $skillIcon;
+}

@@ -113,4 +113,30 @@ const skillsSection = {
   display: true,
 };
 
-export { splashScreen, introduction, socialMediaLinks, skillsSection };
+// stack progress
+
+const techStack = {
+  viewSkillsBar: true,
+  experience: [
+    {
+      stack: 'Server-side (Backend)',
+      progressPercentage: 90,
+    },
+    {
+      stack: 'Database',
+      progressPercentage: 80,
+    },
+    {
+      stack: 'Client-side (Frontend/Design)',
+      progressPercentage: 70,
+    },
+  ],
+};
+
+export {
+  splashScreen,
+  introduction,
+  socialMediaLinks,
+  skillsSection,
+  techStack,
+};

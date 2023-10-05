@@ -1,15 +1,26 @@
 import { keyframes } from '@mui/material';
 
-const slideInBottom = keyframes`0% {
-    -webkit-transform: translateY(1000px);
-            transform: translateY(1000px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    opacity: 1;
-  }
-  `;
+const fadeInBck = keyframes`0% {
+        -webkit-transform: translateZ(80px);
+                transform: translateZ(80px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+        opacity: 1;
+      }
+    }
+    @keyframes fade-in-bck {
+      0% {
+        -webkit-transform: translateZ(80px);
+                transform: translateZ(80px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+        opacity: 1;
+      }`;
 
-export { slideInBottom };
+export { fadeInBck };

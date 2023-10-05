@@ -1,9 +1,23 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, useMediaQuery } from '@mui/material';
 import { skillsSection } from '../../portfolio';
 import './styles/softwareSkills.scss';
+
 const SoftwareSkills = () => {
+  const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
+  const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
+
+  const getIconStyles = () => {
+    if (isSmallScreen) {
+      return '1x';
+    }
+    if (isMediumScreen) {
+      return '2x';
+    }
+
+    return '3x';
+  };
   return (
     <Grid
       container
@@ -22,7 +36,7 @@ const SoftwareSkills = () => {
         >
           <FontAwesomeIcon
             icon={skill.fontAwesomeClassName}
-            size="3x"
+            size={getIconStyles()}
             className="skill-icon"
           />
           <Typography

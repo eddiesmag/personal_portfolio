@@ -133,10 +133,47 @@ const techStack = {
   ],
 };
 
+// Professional Experience
+
+const workExperience = {
+  displayExperiences: true,
+  experience: [
+    {
+      role: 'Job Title',
+      company: 'Company',
+      date: 'May 2004 - present',
+      roleDesc:
+        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!',
+    },
+    {
+      role: 'Job Title',
+      company: 'Company',
+      date: 'May 2004 - present',
+      roleDesc:
+        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!',
+    },
+    {
+      role: 'Job Title',
+      company: 'Company',
+      date: 'May 2004 - present',
+      roleDesc:
+        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!',
+    },
+    {
+      role: 'Job Title',
+      company: 'Company',
+      date: 'May 2004 - present',
+      roleDesc:
+        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!',
+    },
+  ],
+};
+
 export {
   splashScreen,
   introduction,
   socialMediaLinks,
   skillsSection,
   techStack,
+  workExperience,
 };

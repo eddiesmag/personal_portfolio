@@ -7,6 +7,7 @@ import Header from '../components/header/Header';
 import Greeting from './greeting/Greeting';
 import Skills from './skills/skills';
 import StackProgress from './skillsProgress/skillsProgress';
+import WorkExperience from './workExperiences/workExperiences';
 import './Main.scss';
 
 const Main = () => {
@@ -47,6 +48,7 @@ const Main = () => {
             <Greeting />
             <Skills />
             <StackProgress />
+            <WorkExperience />
           </>
         )}
       </StyleProvider>

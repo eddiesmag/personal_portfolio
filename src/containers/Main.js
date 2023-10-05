@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { StyleProvider } from '../contexts/StyleContext';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 import { splashScreen } from '../portfolio';
 import SplashScreen from './splash-screen/splashScreen';
 import Header from '../components/header/Header';
-import { StyleProvider } from '../contexts/StyleContext';
-import { useLocalStorage } from '../hooks/useLocalStorage';
 import Greeting from './greeting/Greeting';
 import Skills from './skills/skills';
+import StackProgress from './skillsProgress/skillsProgress';
 import './Main.scss';
 
 const Main = () => {
@@ -45,6 +46,7 @@ const Main = () => {
             <Header />
             <Greeting />
             <Skills />
+            <StackProgress />
           </>
         )}
       </StyleProvider>

@@ -23,7 +23,7 @@ const SocialMedia = () => {
     }
     if (isMediumScreen) {
       return {
-        fontSize: '25fpx',
+        fontSize: '25px',
       };
     }
 

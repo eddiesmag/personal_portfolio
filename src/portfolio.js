@@ -1,6 +1,19 @@
 import emoji from 'react-easy-emoji';
 import splashAnimation from './assets/lottie/splashAnimation.json';
 import manWaving from './assets/lottie/manWaving.json';
+import manWorking from './assets/lottie/manWorking.json';
+import {
+  faJs,
+  faReact,
+  faHtml5,
+  faNode,
+  faDocker,
+  faAws,
+  faCss3,
+  faSass,
+} from '@fortawesome/free-brands-svg-icons';
+import { faDatabase } from '@fortawesome/free-solid-svg-icons';
+
 // splash screen
 const splashScreen = {
   anabled: true,
@@ -32,4 +45,72 @@ const socialMediaLinks = {
   display: true, // change to true to disaplay social links
 };
 
-export { splashScreen, introduction, socialMediaLinks };
+// skills section
+const skillsSection = {
+  title: 'What I do',
+  subTitle:
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas placeat eaque ipsam omnis, deleniti perferendis, labore, itaque quo delectus voluptas beatae aliquam consectetur sed neque dolores nam doloribus distinctio veritatis.',
+  animation: manWorking,
+  skills: [
+    emoji(
+      '⚡️ Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas placeat eaque ipsam omnis, deleniti perferendis, labore, itaque quo delectus voluptas beatae aliquam consectetur sed neque dolores nam doloribus distinctio veritatis.'
+    ),
+    emoji(
+      '⚡️ Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam saepe ea facilis. Tempora sint velit et veritatis tenetur quibusdam quae magni ipsa consectetur itaque qui ad sed autem, provident necessitatibus?'
+    ),
+    emoji('⚡️ skill 3'),
+  ],
+  skillSet: [
+    {
+      skillsName: 'html-5',
+      fontAwesomeClassName: faHtml5,
+    },
+    {
+      skillsName: 'sass',
+      fontAwesomeClassName: faSass,
+    },
+    {
+      skillsName: 'css3',
+      fontAwesomeClassName: faCss3,
+    },
+    {
+      skillsName: 'Javascript',
+      fontAwesomeClassName: faJs,
+    },
+    {
+      skillsName: 'Reactjs',
+      fontAwesomeClassName: faReact,
+    },
+    {
+      skillsName: 'Nodejs',
+      fontAwesomeClassName: faNode,
+    },
+    {
+      skillsName: 'React Native',
+      fontAwesomeClassName: faReact,
+    },
+    {
+      skillsName: 'aws',
+      fontAwesomeClassName: faAws,
+    },
+    {
+      skillsName: 'PostgreSQL',
+      fontAwesomeClassName: faDatabase,
+    },
+    {
+      skillsName: 'MongoDB',
+      fontAwesomeClassName: faDatabase,
+    },
+    {
+      skillsName: 'Prisma',
+      fontAwesomeClassName: faDatabase,
+    },
+    {
+      skillsName: 'docker',
+      fontAwesomeClassName: faDocker,
+    },
+  ],
+  display: true,
+};
+
+export { splashScreen, introduction, socialMediaLinks, skillsSection };

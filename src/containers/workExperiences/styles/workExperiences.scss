@@ -1,1 +1,9 @@
 @import '../../../globalColor';
+
+.timeline {
+    background-color: $timelineIcon !important;
+}
+
+.calendar-icon{
+    color: $timelineIcon;
+}

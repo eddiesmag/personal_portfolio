@@ -74,7 +74,7 @@ const Greeting = () => {
       <Grid
         className="main"
         container
-        direction={{ sx: 'column', sm: 'row', md: 'row' }}
+        direction={{ xs: 'column', sm: 'row', md: 'row' }}
         spacing={0}
         m={0}
         mt="4rem"

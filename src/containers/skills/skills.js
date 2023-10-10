@@ -39,12 +39,21 @@ const Skills = () => {
 
   const getSubTitleStyles = () => {
     if (isSmallScreen) {
-      return { lineHeight: 1.7, fontSize: '1rem' };
+      return {
+        lineHeight: 1.2,
+        fontSize: '0.8rem',
+      };
+    } else if (isMediumScreen) {
+      return {
+        lineHeight: 1.5,
+        fontSize: '1rem',
+      };
+    } else {
+      return {
+        lineHeight: 1.6,
+        fontSize: '1.1rem',
+      };
     }
-    if (isMediumScreen) {
-      return { lineHeight: 1.7, fontSize: '1.1rem' };
-    }
-    return { lineHeight: 2, fontSize: '1.3rem' };
   };
 
   const animation = `${fadeInBck} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`;

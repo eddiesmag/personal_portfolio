@@ -81,18 +81,18 @@ const WorkExperience = () => {
   const getSubTitleStyles = () => {
     if (isSmallScreen) {
       return {
-        lineHeight: 1.7,
-        fontSize: '1rem',
+        lineHeight: 1.2,
+        fontSize: '0.8rem',
       };
     } else if (isMediumScreen) {
       return {
-        lineHeight: 1.7,
-        fontSize: '1.1rem',
+        lineHeight: 1.5,
+        fontSize: '1rem',
       };
     } else {
       return {
-        lineHeight: 2,
-        fontSize: '1.3rem',
+        lineHeight: 1.6,
+        fontSize: '1.1rem',
       };
     }
   };
@@ -100,18 +100,18 @@ const WorkExperience = () => {
   const getBodyStyles = () => {
     if (isSmallScreen) {
       return {
-        lineHeight: 1.5,
-        fontSize: '0.8rem',
+        lineHeight: 1.1,
+        fontSize: '0.7rem',
       };
     } else if (isMediumScreen) {
       return {
-        lineHeight: 1.5,
-        fontSize: '0.9rem',
+        lineHeight: 1.2,
+        fontSize: '0.8rem',
       };
     } else {
       return {
-        lineHeight: 1.8,
-        fontSize: '1.1rem',
+        lineHeight: 1.5,
+        fontSize: '1rem',
       };
     }
   };
@@ -175,7 +175,8 @@ const WorkExperience = () => {
                         {exp.duration}
                       </Typography>
                       <Typography
-                        variant="h6"
+                        variant="subtitle2"
+                        gutterBottom
                         sx={{
                           color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
                           ...getSubTitleStyles(),
@@ -185,6 +186,7 @@ const WorkExperience = () => {
                       </Typography>{' '}
                       <Typography
                         variant="subtitle1"
+                        gutterBottom
                         sx={{
                           color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
                           ...getSubTitleStyles(),
@@ -194,6 +196,7 @@ const WorkExperience = () => {
                       </Typography>
                       <Typography
                         variant="body2"
+                        gutterBottom
                         sx={{
                           color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
                           textAlign: 'justify',
@@ -258,7 +261,8 @@ const WorkExperience = () => {
                         {info.duration}
                       </Typography>
                       <Typography
-                        variant="h6"
+                        variant="subtitle2"
+                        gutterBottom
                         sx={{
                           ...getSubTitleStyles(),
                           color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
@@ -268,6 +272,7 @@ const WorkExperience = () => {
                       </Typography>{' '}
                       <Typography
                         variant="subtitle1"
+                        gutterBottom
                         sx={{
                           ...getSubTitleStyles(),
                           textAlign: 'justify',

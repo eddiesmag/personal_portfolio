@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { faCalendarDays } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -10,16 +10,28 @@ import {
   timelineItemClasses,
   TimelineSeparator,
 } from '@mui/lab';
-import { Box, Card, CardContent, Grid, Grow, Typography } from '@mui/material';
+import { Grid, Grow, Typography, useMediaQuery } from '@mui/material';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { workExperience } from '../../portfolio';
+import { educationInfo, workExperience } from '../../portfolio';
+import StyleContext from '../../contexts/StyleContext';
 
 import './styles/workExperiences.scss';
 
 const WorkExperience = () => {
+  const { isDark } = useContext(StyleContext);
   const [isInView, setIsInView] = useState(false);
+
+  const [displayExperience, setDisplayExperience] = useState(
+    workExperience.displayExperiences
+  );
+  const [displayEducation, setDisplayEducation] = useState(
+    educationInfo.displaySchools
+  );
+
+  const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
+  const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
 
   const [ref, inView] = useInView({
     threshold: 0,
@@ -33,16 +45,96 @@ const WorkExperience = () => {
     }
   }, [inView]);
 
-  if (workExperience.displayExperiences) {
-    return (
-      <div ref={ref}>
-        <Grid
-          container
-          direction={{ xs: 'column', sm: 'row', md: 'row', lg: 'row' }}
-          pt={5}
-          sx={{ justifyContent: 'center', alignItems: 'flex-start' }}
-        >
-          <Grid item lg={6} md={6} xs={12}>
+  useEffect(() => {
+    const getExperience = () => {
+      if (displayEducation) {
+        setDisplayEducation(displayEducation);
+      }
+
+      if (displayExperience) {
+        setDisplayExperience(displayExperience);
+      }
+    };
+
+    getExperience();
+  }, [displayEducation, displayExperience]);
+
+  const getTitleStyles = () => {
+    if (isSmallScreen) {
+      return {
+        fontSize: '1.7rem',
+        lineHeight: 1,
+      };
+    } else if (isMediumScreen) {
+      return {
+        fontSize: '2rem',
+        lineHeight: 1,
+      };
+    } else {
+      return {
+        fontSize: '3rem',
+        lineHeight: 1.1,
+      };
+    }
+  };
+
+  const getSubTitleStyles = () => {
+    if (isSmallScreen) {
+      return {
+        lineHeight: 1.7,
+        fontSize: '1rem',
+      };
+    } else if (isMediumScreen) {
+      return {
+        lineHeight: 1.7,
+        fontSize: '1.1rem',
+      };
+    } else {
+      return {
+        lineHeight: 2,
+        fontSize: '1.3rem',
+      };
+    }
+  };
+
+  const getBodyStyles = () => {
+    if (isSmallScreen) {
+      return {
+        lineHeight: 1.5,
+        fontSize: '0.8rem',
+      };
+    } else if (isMediumScreen) {
+      return {
+        lineHeight: 1.5,
+        fontSize: '0.9rem',
+      };
+    } else {
+      return {
+        lineHeight: 1.8,
+        fontSize: '1.1rem',
+      };
+    }
+  };
+
+  return (
+    <div ref={ref}>
+      <Grid
+        container
+        direction={{ xs: 'column', sm: 'row', md: 'row', lg: 'row' }}
+        pt={5}
+        sx={{
+          justifyContent:
+            !displayEducation || !displayExperience ? 'flex-start' : 'center',
+          alignItems: 'flex-start',
+        }}
+      >
+        {displayExperience && (
+          <Grid
+            item
+            lg={!displayEducation ? 12 : 6}
+            md={!displayEducation ? 12 : 6}
+            xs={12}
+          >
             <Grow in={isInView}>
               <Timeline
                 position="right"
@@ -53,7 +145,12 @@ const WorkExperience = () => {
                   },
                 }}
               >
-                <Typography variant="h3" gutterBottom pl={3}>
+                <Typography
+                  variant="h3"
+                  gutterBottom
+                  pl={3}
+                  sx={{ ...getTitleStyles() }}
+                >
                   Experiences
                 </Typography>
 
@@ -70,28 +167,62 @@ const WorkExperience = () => {
                         className="calendar-icon"
                       />
                       <Typography
+                        className="timeline-duration"
                         variant="caption"
                         ml={2}
                         sx={{ display: 'inline-block' }}
                       >
-                        {exp.date}
+                        {exp.duration}
                       </Typography>
-                      <Typography variant="h6">{exp.company}</Typography>{' '}
-                      <Typography variant="subtitle1">{exp.role}</Typography>
-                      <Typography variant="body2">{exp.roleDesc}</Typography>
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+                          ...getSubTitleStyles(),
+                        }}
+                      >
+                        {exp.company}
+                      </Typography>{' '}
+                      <Typography
+                        variant="subtitle1"
+                        sx={{
+                          color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+                          ...getSubTitleStyles(),
+                        }}
+                      >
+                        {exp.role}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+                          textAlign: 'justify',
+                          ...getBodyStyles(),
+                        }}
+                      >
+                        {exp.roleDesc}
+                      </Typography>
                     </TimelineContent>
                   </TimelineItem>
                 ))}
               </Timeline>
             </Grow>
           </Grid>
-          <Grid item lg={6} md={6} xs={12}>
+        )}
+        {displayEducation && (
+          <Grid
+            item
+            lg={!displayExperience ? 12 : 6}
+            md={!displayExperience ? 12 : 6}
+            xs={12}
+          >
             <Grow
               in={isInView}
               style={{ transformOrigin: '0 0 0' }}
               {...(isInView ? { timeout: 1000 } : {})}
             >
               <Timeline
+                position="right"
                 sx={{
                   [`& .${timelineItemClasses.root}:before`]: {
                     flex: 0,
@@ -99,54 +230,62 @@ const WorkExperience = () => {
                   },
                 }}
               >
-                <Typography variant="h3" gutterBottom pl={3}>
+                <Typography
+                  variant="h3"
+                  gutterBottom
+                  pl={3}
+                  sx={{ ...getTitleStyles() }}
+                >
                   Education
                 </Typography>
-                <TimelineItem>
-                  <TimelineSeparator>
-                    <TimelineDot />
-                    <TimelineConnector />
-                  </TimelineSeparator>
-                  <TimelineContent>
-                    Eat
-                    <Typography variant="body2">
-                      More Content Goes Here
-                    </Typography>
-                    <Box
-                      sx={{ width: 100, height: 100, backgroundColor: 'red' }}
-                    >
-                      <Typography variant="body1">Box content</Typography>
-                    </Box>
-                  </TimelineContent>
-                </TimelineItem>
-                <TimelineItem>
-                  <TimelineSeparator>
-                    <TimelineDot />
-                    <TimelineConnector />
-                  </TimelineSeparator>
-                  <TimelineContent>Eat</TimelineContent>
-                </TimelineItem>
-                <TimelineItem>
-                  <TimelineSeparator>
-                    <TimelineDot />
-                    <TimelineConnector />
-                  </TimelineSeparator>
-                  <TimelineContent>Eat</TimelineContent>
-                </TimelineItem>
-                <TimelineItem>
-                  <TimelineSeparator>
-                    <TimelineDot />
-                  </TimelineSeparator>
-                  <TimelineContent>Code</TimelineContent>
-                </TimelineItem>
+                {educationInfo.schools.map((info, i) => (
+                  <TimelineItem key={i}>
+                    <TimelineSeparator>
+                      <TimelineDot variant="filled" className="timeline" />
+                      <TimelineConnector className="timeline" />
+                    </TimelineSeparator>
+                    <TimelineContent>
+                      <FontAwesomeIcon
+                        icon={faCalendarDays}
+                        className="calendar-icon"
+                      />
+                      <Typography
+                        className="timeline-duration"
+                        variant="caption"
+                        ml={2}
+                        sx={{ display: 'inline-block' }}
+                      >
+                        {info.duration}
+                      </Typography>
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          ...getSubTitleStyles(),
+                          color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+                        }}
+                      >
+                        {info.schoolName}
+                      </Typography>{' '}
+                      <Typography
+                        variant="subtitle1"
+                        sx={{
+                          ...getSubTitleStyles(),
+                          textAlign: 'justify',
+                          color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+                        }}
+                      >
+                        {info.achievement}
+                      </Typography>
+                    </TimelineContent>
+                  </TimelineItem>
+                ))}
               </Timeline>
             </Grow>
           </Grid>
-        </Grid>
-      </div>
-    );
-  }
-  return null;
+        )}
+      </Grid>
+    </div>
+  );
 };
 
 export default WorkExperience;

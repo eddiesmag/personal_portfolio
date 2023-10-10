@@ -141,30 +141,47 @@ const workExperience = {
     {
       role: 'Job Title',
       company: 'Company',
-      date: 'May 2004 - present',
+      duration: 'May 2004 - present',
       roleDesc:
         ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!',
     },
     {
       role: 'Job Title',
       company: 'Company',
-      date: 'May 2004 - present',
+      duration: 'May 2004 - present',
       roleDesc:
         ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!',
     },
     {
       role: 'Job Title',
       company: 'Company',
-      date: 'May 2004 - present',
+      duration: 'May 2004 - present',
       roleDesc:
         ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!',
     },
     {
       role: 'Job Title',
       company: 'Company',
-      date: 'May 2004 - present',
+      duration: 'May 2004 - present',
       roleDesc:
         ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!',
+    },
+  ],
+};
+
+const educationInfo = {
+  displaySchools: true, // change to false to hide academic background section
+  schools: [
+    {
+      schoolName: 'Makerere University',
+      duration: '2014 - 2019',
+      achievement: 'Bachelor of Science in Software Engineering',
+    },
+    {
+      schoolName: 'Seeta High School',
+      duration: '2012 - 2013',
+      achievement:
+        'Uganda Advanced Certificate of Education. Physics, Mathematics, Economics',
     },
   ],
 };
@@ -176,4 +193,5 @@ export {
   skillsSection,
   techStack,
   workExperience,
+  educationInfo,
 };

@@ -37,20 +37,20 @@ const Greeting = () => {
   const getSubTitleStyles = () => {
     if (isSmallScreen) {
       return {
-        lineHeight: 1.7,
-        fontSize: '1rem',
-      };
-    } else if (isMediumScreen) {
-      return {
-        lineHeight: 1.7,
-        fontSize: '1.1rem',
-      };
-    } else {
-      return {
-        lineHeight: 2,
-        fontSize: '1.3rem',
+        lineHeight: 1.2,
+        fontSize: '0.8rem',
       };
     }
+    if (isMediumScreen) {
+      return {
+        lineHeight: 1.5,
+        fontSize: '1rem',
+      };
+    }
+    return {
+      lineHeight: 1.6,
+      fontSize: '1.1rem',
+    };
   };
 
   const getButtonStyles = () => {
@@ -74,7 +74,7 @@ const Greeting = () => {
       <Grid
         className="main"
         container
-        direction={{ sx: 'column', sm: 'row', md: 'row' }}
+        direction={{ xs: 'column', sm: 'row', md: 'row' }}
         spacing={0}
         m={0}
         mt="4rem"

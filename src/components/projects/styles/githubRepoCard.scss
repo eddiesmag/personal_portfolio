@@ -1,1 +1,45 @@
 @import '../../../globalColor';
+
+.repo-avatar{
+    background-color: $repoIconBgColor !important;
+}
+
+.repo-stats {
+    display: flex;
+    flex-wrap:wrap-reverse;
+    -webkit-box-pack:justify;
+    justify-content: space-between;
+    padding: 1rem 1.2rem !important;
+    color: $githubRepoCardRepoCardStatsColor;
+}
+
+.repo-left-stat{
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    display: flex;
+}
+
+.language-color {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    margin-right: 0.25rem;
+    background-color: $githubRepoCardLanguageColorBG;
+}
+
+
+.repo-left-stat span {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-right: 0.75rem;
+}
+
+.repo-stat-svg {
+    margin-right: 0.3rem;
+  }
+
+  .dark-card-mode {
+    background-color: $darkBackground;
+    color: $textColorDark;
+  } 

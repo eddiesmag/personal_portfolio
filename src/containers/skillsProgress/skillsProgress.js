@@ -50,7 +50,7 @@ const StackProgress = () => {
           style={{ transformOrigin: '0 0 0' }}
           {...(isVisible ? { timeout: 1000 } : {})}
         >
-          <Grid container direction="column">
+          <Grid container direction="column" pt={5}>
             <Typography variant="h3" gutterBottom pl={5} sx={getTitleStyles()}>
               Proficiency
             </Typography>

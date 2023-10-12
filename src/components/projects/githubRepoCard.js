@@ -7,22 +7,66 @@ import {
   CardActions,
   CardContent,
   CardHeader,
+  Divider,
   SvgIcon,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
-import './styles/githubRepoCard.scss';
 import { useContext } from 'react';
 import StyleContext from '../../contexts/StyleContext';
+import './styles/githubRepoCard.scss';
 
 const GithubRepoCard = () => {
   const { isDark } = useContext(StyleContext);
+
+  const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
+  const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
+
+  const getBodyStyles = () => {
+    if (isSmallScreen) {
+      return {
+        lineHeight: 1.2,
+        fontSize: '0.8rem',
+      };
+    } else if (isMediumScreen) {
+      return {
+        lineHeight: 1.2,
+        fontSize: '0.8rem',
+      };
+    } else {
+      return {
+        lineHeight: 1.5,
+        fontSize: '1rem',
+      };
+    }
+  };
+
+  const getSubTitleStyles = () => {
+    if (isSmallScreen) {
+      return {
+        lineHeight: 1.2,
+        fontSize: '0.8rem',
+      };
+    } else if (isMediumScreen) {
+      return {
+        lineHeight: 1.5,
+        fontSize: '1rem',
+      };
+    } else {
+      return {
+        lineHeight: 1.6,
+        fontSize: '1.1rem',
+      };
+    }
+  };
+
   return (
     <div>
       <Card
         sx={{
           maxWidh: 345,
           backgroundColor: 'inherit',
-          color: 'inherit',
+          color: isDark ? '#FFF' : 'inherit',
         }}
         variant="elevation"
       >
@@ -47,11 +91,26 @@ const GithubRepoCard = () => {
                 </SvgIcon>
               </Avatar>
             }
-            title="Github repo title"
+            title={
+              <Typography variant="subtitle1">Github Repo Title</Typography>
+            }
+            sx={{
+              ...getSubTitleStyles(),
+              fontWeight: 'bold',
+              color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+            }}
           />
 
+          <Divider />
+
           <CardContent>
-            <Typography variant="body2">
+            <Typography
+              variant="body2"
+              sx={{
+                ...getBodyStyles(),
+                color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+              }}
+            >
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
             </Typography>
           </CardContent>
@@ -59,7 +118,12 @@ const GithubRepoCard = () => {
             <Box className="repo-left-stat">
               <Box component="span">
                 <Box className="language-color" />
-                <Typography variant="caption">Javascritp</Typography>
+                <Typography
+                  variant="caption"
+                  sx={{ color: isDark ? 'inherit' : 'rgb(120, 131, 155)' }}
+                >
+                  Javascritp
+                </Typography>
               </Box>
 
               <Box component="span">
@@ -77,7 +141,12 @@ const GithubRepoCard = () => {
                     d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"
                   ></path>
                 </svg>
-                <Typography variant="caption">123</Typography>
+                <Typography
+                  variant="caption"
+                  sx={{ color: isDark ? 'inherit' : 'rgb(120, 131, 155)' }}
+                >
+                  123
+                </Typography>
               </Box>
 
               <Box component="span">
@@ -95,11 +164,21 @@ const GithubRepoCard = () => {
                     d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"
                   ></path>
                 </svg>
-                <Typography variant="caption">56</Typography>
+                <Typography
+                  variant="caption"
+                  sx={{ color: isDark ? 'inherit' : 'rgb(120, 131, 155)' }}
+                >
+                  56
+                </Typography>
               </Box>
             </Box>
             <Box className="repo-right-stat">
-              <Typography variant="caption">3MBs</Typography>
+              <Typography
+                variant="caption"
+                sx={{ color: isDark ? 'inherit' : 'rgb(120, 131, 155)' }}
+              >
+                3MBs
+              </Typography>
             </Box>
           </CardActions>
         </CardActionArea>

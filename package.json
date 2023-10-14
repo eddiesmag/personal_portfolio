@@ -40,7 +40,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.22.15"
+    "@babel/preset-react": "^7.22.15",
+    "dotenv-cli": "^7.3.0"
   },
   "eslintConfig": {
     "extends": [

@@ -13,6 +13,14 @@ import { Masonry } from '@mui/lab';
 import StyleContext from '../../contexts/StyleContext';
 import Loading from '../../components/loading/loading';
 import './styles/projects.scss';
+import getGithubPinnedRepos from './core/githubAPI.JS';
+import axios from 'axios';
+
+const {
+  REACT_APP_GITHUB_API_BASE_URL,
+  REACT_APP_GITHUB_USERNAME,
+  REACT_APP_GITHUB_TOKEN,
+} = process.env;
 
 const GithubRepoCard = lazy(() =>
   import('../../components/projects/githubRepoCard')
@@ -44,21 +52,44 @@ const StyledChip = styled(Chip)(({ theme }) => ({
 
 const Projects = () => {
   const { isDark, theme } = useContext(StyleContext);
-  const [isInView, setIsInView] = useState(false);
-  const [chipSelected, setChipSelected] = useState(null);
 
+  const [gitHubProjects, setGitHubProjects] = useState(heights);
+
+  const [isInView, setIsInView] = useState(false);
+
+  const [chipSelected, setChipSelected] = useState(null);
   const chipLabels = ['all', 'fullstack', 'backend', 'frontend'];
 
   const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
   const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
-
-  const [gitProjects, setGitProjects] = useState(heights);
 
   const [ref, inView] = useInView({
     threshold: 0,
     delay: 1000,
     triggerOnce: true,
   });
+
+  useEffect(() => {
+    const fetchGithubPinnedRepos = async () => {
+      try {
+        const reponse = await axios.get(
+          `${REACT_APP_GITHUB_API_BASE_URL}/users/${REACT_APP_GITHUB_USERNAME}/repos`,
+          {
+            headers: {
+              Authorization: `token ${REACT_APP_GITHUB_TOKEN}`,
+            },
+          }
+        );
+        const data = reponse.data;
+        // const pinned = data('.pinned-item-list-item.public');
+        console.log(data);
+      } catch (error) {
+        console.log(`Error Fetching Data: ${error}`);
+      }
+    };
+
+    fetchGithubPinnedRepos();
+  }, []);
 
   useEffect(() => {
     const setInView = () => {
@@ -87,17 +118,17 @@ const Projects = () => {
     setChipSelected(index);
 
     if (index === 0) {
-      setGitProjects(heights);
+      setGitHubProjects(heights);
     }
     if (index === 1) {
-      setGitProjects(heights.filter((val) => val % 2 === 0));
+      setGitHubProjects(heights.filter((val) => val % 2 === 0));
     }
 
     if (index === 2) {
-      setGitProjects(getPrimeNumbers(heights));
+      setGitHubProjects(getPrimeNumbers(heights));
     }
     if (index === 3) {
-      setGitProjects(heights.filter((val) => val % 2 !== 0));
+      setGitHubProjects(heights.filter((val) => val % 2 !== 0));
     }
   };
 
@@ -167,7 +198,7 @@ const Projects = () => {
             columns={{ xs: 1, sm: 2, md: 3 }}
             spacing={{ xs: 1, sm: 2, md: 3 }}
           >
-            {gitProjects.map((height, i) => (
+            {gitHubProjects.map((height, i) => (
               <Item key={i}>
                 {height}
                 <GithubRepoCard />

@@ -13,20 +13,10 @@ import { Masonry } from '@mui/lab';
 import StyleContext from '../../contexts/StyleContext';
 import Loading from '../../components/loading/loading';
 import './styles/projects.scss';
-import getGithubPinnedRepos from './core/githubAPI.JS';
-import axios from 'axios';
-
-const {
-  REACT_APP_GITHUB_API_BASE_URL,
-  REACT_APP_GITHUB_USERNAME,
-  REACT_APP_GITHUB_TOKEN,
-} = process.env;
 
 const GithubRepoCard = lazy(() =>
   import('../../components/projects/githubRepoCard')
 );
-
-const heights = [1, 12, 76, 79, 20, 6, 64, 67, 23, 45, 97, 54];
 
 const Item = styled(Paper)(() => ({
   color: 'inherit',
@@ -53,7 +43,7 @@ const StyledChip = styled(Chip)(({ theme }) => ({
 const Projects = () => {
   const { isDark, theme } = useContext(StyleContext);
 
-  const [gitHubProjects, setGitHubProjects] = useState(heights);
+  const [gitHubProjects, setGitHubProjects] = useState([]);
 
   const [isInView, setIsInView] = useState(false);
 
@@ -70,26 +60,30 @@ const Projects = () => {
   });
 
   useEffect(() => {
-    const fetchGithubPinnedRepos = async () => {
-      try {
-        const reponse = await axios.get(
-          `${REACT_APP_GITHUB_API_BASE_URL}/users/${REACT_APP_GITHUB_USERNAME}/repos`,
-          {
-            headers: {
-              Authorization: `token ${REACT_APP_GITHUB_TOKEN}`,
-            },
+    const fetchGithubPinnedRepos = () => {
+      fetch('/githubProfile.json')
+        .then((result) => {
+          if (result.ok) {
+            return result.json();
           }
-        );
-        const data = reponse.data;
-        // const pinned = data('.pinned-item-list-item.public');
-        console.log(data);
-      } catch (error) {
-        console.log(`Error Fetching Data: ${error}`);
-      }
+          return result;
+        })
+        .then((response) => {
+          console.log(response.data.user);
+          setRepoData(response.data.user.pinnedItems.edges);
+        })
+        .catch((error) => {
+          console.error({ error });
+          setRepoData([]);
+        });
     };
 
     fetchGithubPinnedRepos();
   }, []);
+
+  const setRepoData = (array) => {
+    setGitHubProjects(array);
+  };
 
   useEffect(() => {
     const setInView = () => {
@@ -100,36 +94,8 @@ const Projects = () => {
     setInView();
   }, [inView]);
 
-  const getPrimeNumbers = (numbers) => {
-    const isPrime = (num) => {
-      if (num <= 1) return false;
-      if (num <= 3) return true;
-      if (num % 2 === 0 || num % 3 === 0) return false;
-      for (let i = 5; i * i <= num; i += 6) {
-        if (num % i === 0 || num % (i + 2) === 0) return false;
-      }
-      return true;
-    };
-
-    return numbers.filter((val) => isPrime(val));
-  };
-
   const handleOnClick = (index) => {
     setChipSelected(index);
-
-    if (index === 0) {
-      setGitHubProjects(heights);
-    }
-    if (index === 1) {
-      setGitHubProjects(heights.filter((val) => val % 2 === 0));
-    }
-
-    if (index === 2) {
-      setGitHubProjects(getPrimeNumbers(heights));
-    }
-    if (index === 3) {
-      setGitHubProjects(heights.filter((val) => val % 2 !== 0));
-    }
   };
 
   const getTitleStyles = () => {
@@ -198,12 +164,18 @@ const Projects = () => {
             columns={{ xs: 1, sm: 2, md: 3 }}
             spacing={{ xs: 1, sm: 2, md: 3 }}
           >
-            {gitHubProjects.map((height, i) => (
-              <Item key={i}>
-                {height}
-                <GithubRepoCard />
-              </Item>
-            ))}
+            {gitHubProjects.map((repository, i) => {
+              if (!repository) {
+                console.error(
+                  `Github object for repository number: ${i} is undefined`
+                );
+              }
+              return (
+                <Item key={repository.node.id}>
+                  <GithubRepoCard repository={repository} />
+                </Item>
+              );
+            })}
           </StyledMasonry>
         </Fade>
       </div>

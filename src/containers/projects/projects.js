@@ -44,6 +44,7 @@ const Projects = () => {
   const { isDark, theme } = useContext(StyleContext);
 
   const [gitHubProjects, setGitHubProjects] = useState([]);
+  const [oldGitHubProjects, setOldGitHubProjects] = useState([]);
 
   const [isInView, setIsInView] = useState(false);
 
@@ -58,7 +59,6 @@ const Projects = () => {
     delay: 1000,
     triggerOnce: true,
   });
-
   useEffect(() => {
     const fetchGithubPinnedRepos = () => {
       fetch('/githubProfile.json')
@@ -69,8 +69,26 @@ const Projects = () => {
           return result;
         })
         .then((response) => {
-          console.log(response.data.user);
-          setRepoData(response.data.user.pinnedItems.edges);
+          const items = response.data.user.pinnedItems.edges;
+
+          const data = items.map((item) => {
+            let stack;
+            if (item.node.name === 'webpack-starter') {
+              stack = 'backend';
+            } else if (item.node.name === 'musuem_of_candy') {
+              stack = 'frontend';
+            } else if (item.node.name === 'pricing_panel') {
+              stack = 'full stack';
+            } else if (item.node.name === 'simple_photo_blog') {
+              stack = 'backend';
+            } else {
+              stack = 'frontend';
+            }
+
+            return { ...item, stack };
+          });
+          setRepoData(data);
+          setOldGitHubProjects(data);
         })
         .catch((error) => {
           console.error({ error });
@@ -96,6 +114,22 @@ const Projects = () => {
 
   const handleOnClick = (index) => {
     setChipSelected(index);
+    if (index === 0) {
+      setRepoData(oldGitHubProjects);
+    }
+    if (index === 1) {
+      setRepoData(
+        oldGitHubProjects.filter((repo) => repo.stack === 'full stack')
+      );
+    }
+    if (index === 2) {
+      setRepoData(oldGitHubProjects.filter((repo) => repo.stack === 'backend'));
+    }
+    if (index === 3) {
+      setRepoData(
+        oldGitHubProjects.filter((repo) => repo.stack === 'frontend')
+      );
+    }
   };
 
   const getTitleStyles = () => {

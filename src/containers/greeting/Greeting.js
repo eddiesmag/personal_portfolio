@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Fade, Grid, Typography, useMediaQuery } from '@mui/material';
+import { Box, Fade, Grid, Typography, useMediaQuery } from '@mui/material';
 import StyleContext from '../../contexts/StyleContext';
 import { introduction } from '../../portfolio';
 import emoji from 'react-easy-emoji';
@@ -162,9 +162,9 @@ const Greeting = () => {
             animation: `${fadeInRight} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
           }}
         >
-          <div className="introduction-image">
+          <Box component="div" className="introduction-image">
             <DisplayLottie animationData={introduction.animation} />
-          </div>
+          </Box>
         </Grid>
       </Grid>
     </Fade>

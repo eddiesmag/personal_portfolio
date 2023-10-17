@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Avatar,
   Box,
@@ -14,8 +14,9 @@ import {
 } from '@mui/material';
 import { useContext } from 'react';
 import StyleContext from '../../contexts/StyleContext';
-import './styles/githubRepoCard.scss';
 import formatFileSizeDisplay from '../../utils/utils';
+import GithubRepoModal from './githubRepoModal';
+import './styles/githubRepoCard.scss';
 
 const GithubRepoCard = ({ repository }) => {
   const { isDark } = useContext(StyleContext);
@@ -81,6 +82,9 @@ const GithubRepoCard = ({ repository }) => {
     const tab = window.open(url, '_blank');
     tab.focus();
   };
+  const [modalOpen, setModalOpen] = useState(false);
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
 
   return (
     <Card
@@ -91,7 +95,7 @@ const GithubRepoCard = ({ repository }) => {
       }}
       variant="elevation"
     >
-      <CardActionArea id={id} onClick={() => openRepoInNewTab(url, name)}>
+      <CardActionArea id={id} onClick={() => openModal()}>
         <CardHeader
           avatar={
             <Avatar className="repo-avatar">
@@ -206,6 +210,12 @@ const GithubRepoCard = ({ repository }) => {
           </Box>
         </CardActions>
       </CardActionArea>
+      <GithubRepoModal
+        repository={repository.node}
+        open={modalOpen}
+        close={closeModal}
+        openProject={() => openRepoInNewTab(url, name)}
+      />
     </Card>
   );
 };

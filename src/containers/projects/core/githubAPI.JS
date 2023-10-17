@@ -19,7 +19,6 @@ async function getGithubPinnedRepos() {
 
     return reponse.data;
   } catch (error) {
-    console.log('opps');
     throw error;
   }
 }

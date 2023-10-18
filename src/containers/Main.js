@@ -9,6 +9,7 @@ import Skills from './skills/skills';
 import StackProgress from './skillsProgress/skillsProgress';
 import WorkExperience from './workExperiences/workExperiences';
 import Projects from './projects/projects';
+import Profile from './profile/profile';
 import './Main.scss';
 
 const Main = () => {
@@ -51,6 +52,7 @@ const Main = () => {
             <StackProgress />
             <WorkExperience />
             <Projects />
+            <Profile />
           </>
         )}
       </StyleProvider>

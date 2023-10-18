@@ -13,6 +13,7 @@ import { Masonry } from '@mui/lab';
 import StyleContext from '../../contexts/StyleContext';
 import Loading from '../../components/loading/loading';
 import './styles/projects.scss';
+import { gitHubData } from '../../portfolio';
 
 const GithubRepoCard = lazy(() =>
   import('../../components/projects/githubRepoCard')
@@ -39,6 +40,9 @@ const StyledChip = styled(Chip)(({ theme }) => ({
     borderColor: 'rgb(64, 123, 254)',
   },
 }));
+
+const FailedLoading = () => null;
+const renderLoading = () => <Loading />;
 
 const Projects = () => {
   const { isDark, theme } = useContext(StyleContext);
@@ -151,70 +155,79 @@ const Projects = () => {
     }
   };
 
-  return (
-    <Suspense fallback={<Loading />}>
-      <div ref={ref} style={{ display: 'flex', flexDirection: 'column' }}>
-        <Typography
-          variant="h3"
-          sx={{
-            ...getTitleStyles(),
-          }}
-          pl={5}
-          pt={5}
-        >
-          Open Source Projects
-        </Typography>
-        <Stack
-          direction={isSmallScreen ? 'column' : 'row'}
-          spacing={{ xs: 1, sm: 2, md: 4 }}
-          justifyContent="center"
-          alignItems="center"
-          pb={5}
-          pt={5}
-        >
-          {chipLabels.map((label, i) => (
-            <StyledChip
-              key={label}
-              size={isSmallScreen ? 'small' : 'medium'}
-              label={
-                <Typography
-                  variant="subtitle2"
-                  sx={{
-                    color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
-                  }}
-                >
-                  {label}
-                </Typography>
-              }
-              onClick={() => handleOnClick(i)}
-              variant={chipSelected === i ? 'outlined' : 'filled'}
-              theme={theme}
-            />
-          ))}
-        </Stack>
-
-        <Fade in={isInView} timeout={1000}>
-          <StyledMasonry
-            columns={{ xs: 1, sm: 2, md: 3 }}
-            spacing={{ xs: 1, sm: 2, md: 3 }}
+  if (
+    !(
+      typeof gitHubProjects === 'string' &&
+      gitHubProjects instanceof String &&
+      gitHubData.displayProjects
+    )
+  ) {
+    return (
+      <Suspense fallback={renderLoading()}>
+        <div ref={ref} style={{ display: 'flex', flexDirection: 'column' }}>
+          <Typography
+            variant="h3"
+            sx={{
+              ...getTitleStyles(),
+            }}
+            pl={5}
+            pt={5}
           >
-            {gitHubProjects.map((repository, i) => {
-              if (!repository) {
-                console.error(
-                  `Github object for repository number: ${i} is undefined`
+            Open Source Projects
+          </Typography>
+          <Stack
+            direction={isSmallScreen ? 'column' : 'row'}
+            spacing={{ xs: 1, sm: 2, md: 4 }}
+            justifyContent="center"
+            alignItems="center"
+            pb={5}
+            pt={5}
+          >
+            {chipLabels.map((label, i) => (
+              <StyledChip
+                key={label}
+                size={isSmallScreen ? 'small' : 'medium'}
+                label={
+                  <Typography
+                    variant="subtitle2"
+                    sx={{
+                      color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
+                    }}
+                  >
+                    {label}
+                  </Typography>
+                }
+                onClick={() => handleOnClick(i)}
+                variant={chipSelected === i ? 'outlined' : 'filled'}
+                theme={theme}
+              />
+            ))}
+          </Stack>
+
+          <Fade in={isInView} timeout={1000}>
+            <StyledMasonry
+              columns={{ xs: 1, sm: 2, md: 3 }}
+              spacing={{ xs: 1, sm: 2, md: 3 }}
+            >
+              {gitHubProjects.map((repository, i) => {
+                if (!repository) {
+                  console.error(
+                    `Github object for repository number: ${i} is undefined`
+                  );
+                }
+                return (
+                  <Item key={repository.node.id}>
+                    <GithubRepoCard repository={repository} />
+                  </Item>
                 );
-              }
-              return (
-                <Item key={repository.node.id}>
-                  <GithubRepoCard repository={repository} />
-                </Item>
-              );
-            })}
-          </StyledMasonry>
-        </Fade>
-      </div>
-    </Suspense>
-  );
+              })}
+            </StyledMasonry>
+          </Fade>
+        </div>
+      </Suspense>
+    );
+  }
+  return <FailedLoading />;
 };
 
 export default Projects;

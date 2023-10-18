@@ -186,6 +186,23 @@ const educationInfo = {
   ],
 };
 
+const gitHubData = {
+  showGitHubProfile: true, // set true or false to show GitHub user profile using GitHub, dafaults to true
+  displayProjects: true,
+};
+
+const openToWork = {
+  isHireable: true, // Set false if you are not looking for a job. Also isHireable will be display as Open for opportunities: Yes/No in the GitHub footer
+};
+
+const contactInfo = {
+  title: emoji('Contact Me ☎️'),
+  subTitle:
+    'Discuss a project or just want to day hi? My inbox is open to all.',
+  phone: '+256787656528 | +256706732405',
+  email_address: 'eddiesmag@gmail.com',
+};
+
 export {
   splashScreen,
   introduction,
@@ -194,4 +211,7 @@ export {
   techStack,
   workExperience,
   educationInfo,
+  gitHubData,
+  openToWork,
+  contactInfo,
 };

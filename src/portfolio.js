@@ -38,10 +38,10 @@ const introduction = {
 // social  media links
 
 const socialMediaLinks = {
-  github: 'github',
-  linkedIn: 'linkedin',
-  mail: 'gmail',
-  x: 'x',
+  github: 'https://github.com/eddiesmag',
+  linkedIn: 'https://www.linkedin.com/in/edward-ssemwanga-125502a8/',
+  mail: 'eddiesmag@gmail.com',
+  x: 'https://twitter.com/SmagEddie',
   display: true, // change to true to disaplay social links
 };
 
@@ -186,6 +186,23 @@ const educationInfo = {
   ],
 };
 
+const gitHubData = {
+  showGitHubProfile: true, // set true or false to show GitHub user profile using GitHub, dafaults to true
+  displayProjects: true,
+};
+
+const openToWork = {
+  isHireable: true, // Set false if you are not looking for a job. Also isHireable will be display as Open for opportunities: Yes/No in the GitHub footer
+};
+
+const contactInfo = {
+  title: emoji('Contact Me ☎️'),
+  subTitle:
+    'Discuss a project or just want to day hi? My inbox is open to all.',
+  phone: '+256 787 656 528 | +256 706 732 405',
+  email_address: 'eddiesmag@gmail.com',
+};
+
 export {
   splashScreen,
   introduction,
@@ -194,4 +211,7 @@ export {
   techStack,
   workExperience,
   educationInfo,
+  gitHubData,
+  openToWork,
+  contactInfo,
 };

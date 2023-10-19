@@ -27,38 +27,51 @@ const Skills = () => {
 
   const getTitleStyles = () => {
     if (isSmallScreen) {
-      return { fontSize: '1.7rem', lineHeight: 1 };
+      return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
+        fontSize: '1.7rem',
+        lineHeight: 1,
+      };
+    } else if (isMediumScreen) {
+      return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
+        fontSize: '2rem',
+        lineHeight: 1,
+      };
+    } else {
+      return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
+        fontSize: '3rem',
+        lineHeight: 1.1,
+      };
     }
-
-    if (isMediumScreen) {
-      return { fontSize: '2rem', lineHeight: 1 };
-    }
-
-    return { fontSize: '3rem', lineHeight: 1.1 };
   };
 
   const getSubTitleStyles = () => {
     if (isSmallScreen) {
       return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.2,
         fontSize: '0.8rem',
       };
-    } else if (isMediumScreen) {
+    }
+    if (isMediumScreen) {
       return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.5,
         fontSize: '1rem',
       };
-    } else {
-      return {
-        lineHeight: 1.6,
-        fontSize: '1.1rem',
-      };
     }
+    return {
+      color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+      lineHeight: 1.6,
+      fontSize: '1.1rem',
+    };
   };
 
   const animation = `${fadeInBck} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`;
   return (
-    <div ref={ref}>
+    <div ref={ref} id="skills">
       <Grid
         container
         direction={{ sx: 'column', sm: 'row', md: 'row' }}

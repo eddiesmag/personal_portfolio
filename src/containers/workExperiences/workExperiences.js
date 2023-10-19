@@ -62,16 +62,19 @@ const WorkExperience = () => {
   const getTitleStyles = () => {
     if (isSmallScreen) {
       return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '1.7rem',
         lineHeight: 1,
       };
     } else if (isMediumScreen) {
       return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '2rem',
         lineHeight: 1,
       };
     } else {
       return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '3rem',
         lineHeight: 1.1,
       };
@@ -81,35 +84,44 @@ const WorkExperience = () => {
   const getSubTitleStyles = () => {
     if (isSmallScreen) {
       return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.2,
         fontSize: '0.8rem',
       };
-    } else if (isMediumScreen) {
+    }
+    if (isMediumScreen) {
       return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.5,
         fontSize: '1rem',
       };
-    } else {
-      return {
-        lineHeight: 1.6,
-        fontSize: '1.1rem',
-      };
     }
+    return {
+      color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+      lineHeight: 1.6,
+      fontSize: '1.1rem',
+    };
   };
 
   const getBodyStyles = () => {
     if (isSmallScreen) {
       return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+        textAlign: 'justify',
         lineHeight: 1.1,
         fontSize: '0.7rem',
       };
     } else if (isMediumScreen) {
       return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+        textAlign: 'justify',
         lineHeight: 1.2,
         fontSize: '0.8rem',
       };
     } else {
       return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+        textAlign: 'justify',
         lineHeight: 1.5,
         fontSize: '1rem',
       };
@@ -117,7 +129,7 @@ const WorkExperience = () => {
   };
 
   return (
-    <div ref={ref}>
+    <div ref={ref} id="experience">
       <Grid
         container
         direction={{ xs: 'column', sm: 'row', md: 'row', lg: 'row' }}
@@ -177,31 +189,21 @@ const WorkExperience = () => {
                       <Typography
                         variant="subtitle2"
                         gutterBottom
-                        sx={{
-                          color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-                          ...getSubTitleStyles(),
-                        }}
+                        sx={{ ...getSubTitleStyles() }}
                       >
                         {exp.company}
                       </Typography>{' '}
                       <Typography
                         variant="subtitle1"
                         gutterBottom
-                        sx={{
-                          color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-                          ...getSubTitleStyles(),
-                        }}
+                        sx={{ ...getSubTitleStyles() }}
                       >
                         {exp.role}
                       </Typography>
                       <Typography
                         variant="body2"
                         gutterBottom
-                        sx={{
-                          color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-                          textAlign: 'justify',
-                          ...getBodyStyles(),
-                        }}
+                        sx={{ ...getBodyStyles() }}
                       >
                         {exp.roleDesc}
                       </Typography>
@@ -263,21 +265,14 @@ const WorkExperience = () => {
                       <Typography
                         variant="subtitle2"
                         gutterBottom
-                        sx={{
-                          ...getSubTitleStyles(),
-                          color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-                        }}
+                        sx={{ ...getSubTitleStyles() }}
                       >
                         {info.schoolName}
                       </Typography>{' '}
                       <Typography
                         variant="subtitle1"
                         gutterBottom
-                        sx={{
-                          ...getSubTitleStyles(),
-                          textAlign: 'justify',
-                          color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-                        }}
+                        sx={{ ...getSubTitleStyles() }}
                       >
                         {info.achievement}
                       </Typography>

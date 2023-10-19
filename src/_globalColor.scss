@@ -1,4 +1,4 @@
-// dark background colors
+// color modes
 $darkBackground: rgb(35, 39, 47);
 $lightBackground: #FFF;
 
@@ -6,7 +6,6 @@ $lightBackground: #FFF;
 $text-opacity: 1;
 
 // text colors light theme
-$text-opacity: 1;
 $titleColor: rgb(35, 39, 47, $text-opacity);
 $textColor: rgb(35, 39, 47, $text-opacity);
 $subTitle: rgb(120, 131, 155, $text-opacity);

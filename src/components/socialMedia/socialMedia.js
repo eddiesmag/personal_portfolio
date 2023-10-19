@@ -1,36 +1,16 @@
 import React from 'react';
-import { Grid, Link, useMediaQuery } from '@mui/material';
+import { Avatar, Grid, Link, useMediaQuery } from '@mui/material';
 import { socialMediaLinks } from '../../portfolio';
 import XTwitterIcon from './components/Xtwitter';
 import { fadeInLeft } from '../../containers/greeting/styles/aninations';
-import { useContext } from 'react';
 import { GitHub, Mail, LinkedIn } from '@mui/icons-material';
-import StyleContext from '../../contexts/StyleContext';
 
 import './styles/socialMedia.scss';
 
 const SocialMedia = () => {
-  const { isDark } = useContext(StyleContext);
-
   const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
   const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
 
-  const getIconStyles = () => {
-    if (isSmallScreen) {
-      return {
-        fontSize: '20px',
-      };
-    }
-    if (isMediumScreen) {
-      return {
-        fontSize: '25px',
-      };
-    }
-
-    return {
-      fontSize: '40px',
-    };
-  };
   if (!socialMediaLinks.display) {
     return null;
   }
@@ -50,36 +30,48 @@ const SocialMedia = () => {
     >
       {socialMediaLinks.github ? (
         <Grid item className="social-icon">
-          <Link href="#" underline="none" color="inherit">
-            <GitHub sx={getIconStyles()} />
+          <Link href={socialMediaLinks.github} underline="none" color="inherit">
+            <Avatar sx={{ bgcolor: '#000000' }}>
+              <GitHub />
+            </Avatar>
           </Link>
         </Grid>
       ) : null}
 
       {socialMediaLinks.linkedIn ? (
         <Grid item className="social-icon">
-          <Link href="#" underline="none" color="inherit">
-            <LinkedIn
-              sx={{ ...getIconStyles(), color: isDark ? 'inherit' : '#0072b1' }}
-            />
+          <Link
+            href={socialMediaLinks.linkedIn}
+            underline="none"
+            color="inherit"
+          >
+            <Avatar sx={{ bgcolor: '#0072b1' }}>
+              <LinkedIn />
+            </Avatar>
           </Link>
         </Grid>
       ) : null}
 
       {socialMediaLinks.mail ? (
         <Grid item className="social-icon">
-          <Link href="#" underline="none" color="inherit">
-            <Mail
-              sx={{ ...getIconStyles(), color: isDark ? 'inherit' : '#c71610' }}
-            />
+          <Link
+            href={`mailto:${socialMediaLinks.mail}`}
+            underline="none"
+            color="inherit"
+          >
+            <Avatar sx={{ bgcolor: '#c71610' }}>
+              <Mail />
+            </Avatar>
           </Link>
         </Grid>
       ) : null}
 
       {socialMediaLinks.x ? (
         <Grid item className="social-icon">
-          <Link href="#" underline="none" color="inherit">
-            <XTwitterIcon sx={getIconStyles()} />
+          <Link href={socialMediaLinks.x} underline="none" color="inherit">
+            <Avatar sx={{ bgcolor: '#14171A' }}>
+              <XTwitterIcon />
+            </Avatar>
           </Link>
         </Grid>
       ) : null}

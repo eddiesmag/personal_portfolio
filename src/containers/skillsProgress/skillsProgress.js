@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Box, Grid, Grow, Typography, useMediaQuery } from '@mui/material';
 import { techStack } from '../../portfolio';
 import { useInView } from 'react-intersection-observer';
 import StackProgressBar from '../../components/skillsProgress/stackProgressBar';
+import StyleContext from '../../contexts/StyleContext';
 
 const StackProgress = () => {
+  const { isDark } = useContext(StyleContext);
   const [ref, inView] = useInView({
     threshold: 0,
     triggerOnce: true,
@@ -22,29 +24,51 @@ const StackProgress = () => {
 
   const getTitleStyles = () => {
     if (isSmallScreen) {
-      return { fontSize: '1.7rem', lineHeight: 1 };
+      return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
+        fontSize: '1.7rem',
+        lineHeight: 1,
+      };
+    } else if (isMediumScreen) {
+      return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
+        fontSize: '2rem',
+        lineHeight: 1,
+      };
+    } else {
+      return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
+        fontSize: '3rem',
+        lineHeight: 1.1,
+      };
     }
-
-    if (isMediumScreen) {
-      return { fontSize: '2rem', lineHeight: 1 };
-    }
-
-    return { fontSize: '3rem', lineHeight: 1.1 };
   };
 
   const getSubTitleStyles = () => {
     if (isSmallScreen) {
-      return { lineHeight: 1.7, fontSize: '1rem' };
+      return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+        lineHeight: 1.2,
+        fontSize: '0.8rem',
+      };
     }
     if (isMediumScreen) {
-      return { lineHeight: 1.7, fontSize: '1.1rem' };
+      return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+        lineHeight: 1.5,
+        fontSize: '1rem',
+      };
     }
-    return { lineHeight: 2, fontSize: '1.3rem' };
+    return {
+      color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+      lineHeight: 1.6,
+      fontSize: '1.1rem',
+    };
   };
 
   if (techStack.viewSkillsBar) {
     return (
-      <div ref={ref}>
+      <Box ref={ref} mt={5}>
         <Grow
           in={isVisible}
           style={{ transformOrigin: '0 0 0' }}
@@ -55,7 +79,7 @@ const StackProgress = () => {
               Proficiency
             </Typography>
             {techStack.experience.map((exp, i) => (
-              <Box key={i} ml={5} mr={5}>
+              <Box key={i} ml={5} mr={5} mb={3}>
                 <Typography
                   variant="subtitle1"
                   gutterBottom
@@ -77,7 +101,7 @@ const StackProgress = () => {
             ))}
           </Grid>
         </Grow>
-      </div>
+      </Box>
     );
   }
   return null;

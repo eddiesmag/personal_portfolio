@@ -18,16 +18,19 @@ const Greeting = () => {
   const getTitleStyles = () => {
     if (isSmallScreen) {
       return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '1.7rem',
         lineHeight: 1,
       };
     } else if (isMediumScreen) {
       return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '2rem',
         lineHeight: 1,
       };
     } else {
       return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '3rem',
         lineHeight: 1.1,
       };
@@ -37,17 +40,20 @@ const Greeting = () => {
   const getSubTitleStyles = () => {
     if (isSmallScreen) {
       return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.2,
         fontSize: '0.8rem',
       };
     }
     if (isMediumScreen) {
       return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.5,
         fontSize: '1rem',
       };
     }
     return {
+      color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
       lineHeight: 1.6,
       fontSize: '1.1rem',
     };
@@ -97,6 +103,7 @@ const Greeting = () => {
             <Typography
               variant="h3"
               gutterBottom
+              className="title"
               sx={{
                 ...getTitleStyles(),
                 animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
@@ -105,21 +112,36 @@ const Greeting = () => {
               pt={3}
             >
               {introduction.title}{' '}
-              <span className="wave-emoji">{emoji('👋')}</span>
+              <Box className="wave-emoji" component="span">
+                {emoji('👋')}
+              </Box>
             </Typography>
+
             <Typography
               variant="subtitle1"
               gutterBottom
               sx={{
                 ...getSubTitleStyles(),
-                color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
                 animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
               }}
               ml={isSmallScreen || isMediumScreen ? 'auto' : 5}
               mt={5}
-              mb={5} /** this changes after adding social meduim buttons* */
             >
               {introduction.subTitle}
+            </Typography>
+
+            <Typography
+              variant="subtitle2"
+              gutterBottom
+              sx={{
+                ...getSubTitleStyles(),
+                animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
+              }}
+              ml={isSmallScreen || isMediumScreen ? 'auto' : 5}
+              mt={5}
+              mb={2}
+            >
+              Get in touch
             </Typography>
 
             <SocialMedia />
@@ -145,7 +167,7 @@ const Greeting = () => {
                   <ButtonComp
                     text="See my resume"
                     newTab={true}
-                    href="#"
+                    href={introduction.resumeLink}
                     btnSize="large"
                   />
                 )}

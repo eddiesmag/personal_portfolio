@@ -11,6 +11,10 @@
     transform-origin: 70% 70%;
 }
 
+.title {
+  color: 'red' !important;
+}
+
 @keyframes wave {
     0% {
       transform: rotate(0deg);

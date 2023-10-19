@@ -12,8 +12,8 @@ import { useInView } from 'react-intersection-observer';
 import { Masonry } from '@mui/lab';
 import StyleContext from '../../contexts/StyleContext';
 import Loading from '../../components/loading/loading';
-import './styles/projects.scss';
 import { gitHubData } from '../../portfolio';
+import './styles/projects.scss';
 
 const GithubRepoCard = lazy(() =>
   import('../../components/projects/githubRepoCard')
@@ -139,20 +139,44 @@ const Projects = () => {
   const getTitleStyles = () => {
     if (isSmallScreen) {
       return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '1.7rem',
         lineHeight: 1,
       };
     } else if (isMediumScreen) {
       return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '2rem',
         lineHeight: 1,
       };
     } else {
       return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '3rem',
         lineHeight: 1.1,
       };
     }
+  };
+  const getChipStyles = () => {
+    if (isSmallScreen) {
+      return {
+        color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
+        lineHeight: 1.2,
+        fontSize: '0.8rem',
+      };
+    }
+    if (isMediumScreen) {
+      return {
+        color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
+        lineHeight: 1.5,
+        fontSize: '1rem',
+      };
+    }
+    return {
+      color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
+      lineHeight: 1.6,
+      fontSize: '1.1rem',
+    };
   };
 
   if (
@@ -164,15 +188,12 @@ const Projects = () => {
   ) {
     return (
       <Suspense fallback={renderLoading()}>
-        <div ref={ref} style={{ display: 'flex', flexDirection: 'column' }}>
-          <Typography
-            variant="h3"
-            sx={{
-              ...getTitleStyles(),
-            }}
-            pl={5}
-            pt={5}
-          >
+        <div
+          id="openSource"
+          ref={ref}
+          style={{ display: 'flex', flexDirection: 'column' }}
+        >
+          <Typography variant="h3" sx={{ ...getTitleStyles() }} pl={5} pt={5}>
             Open Source Projects
           </Typography>
           <Stack
@@ -188,12 +209,7 @@ const Projects = () => {
                 key={label}
                 size={isSmallScreen ? 'small' : 'medium'}
                 label={
-                  <Typography
-                    variant="subtitle2"
-                    sx={{
-                      color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
-                    }}
-                  >
+                  <Typography variant="subtitle1" sx={{ ...getChipStyles() }}>
                     {label}
                   </Typography>
                 }

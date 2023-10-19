@@ -38,16 +38,22 @@ const GithubRepoCard = ({ repository }) => {
   const getBodyStyles = () => {
     if (isSmallScreen) {
       return {
-        lineHeight: 1.2,
-        fontSize: '0.8rem',
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+        textAlign: 'justify',
+        lineHeight: 1.1,
+        fontSize: '0.7rem',
       };
     } else if (isMediumScreen) {
       return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+        textAlign: 'justify',
         lineHeight: 1.2,
         fontSize: '0.8rem',
       };
     } else {
       return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+        textAlign: 'justify',
         lineHeight: 1.5,
         fontSize: '1rem',
       };
@@ -57,20 +63,23 @@ const GithubRepoCard = ({ repository }) => {
   const getSubTitleStyles = () => {
     if (isSmallScreen) {
       return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.2,
         fontSize: '0.8rem',
       };
-    } else if (isMediumScreen) {
+    }
+    if (isMediumScreen) {
       return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.5,
         fontSize: '1rem',
       };
-    } else {
-      return {
-        lineHeight: 1.6,
-        fontSize: '1.1rem',
-      };
     }
+    return {
+      color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+      lineHeight: 1.6,
+      fontSize: '1.1rem',
+    };
   };
 
   const openRepoInNewTab = (url, name) => {
@@ -116,24 +125,17 @@ const GithubRepoCard = ({ repository }) => {
               </SvgIcon>
             </Avatar>
           }
-          title={<Typography variant="subtitle1">{name}</Typography>}
+          title={<Typography variant="subTitle1">{name}</Typography>}
           sx={{
             ...getSubTitleStyles(),
             fontWeight: 'bold',
-            color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
           }}
         />
 
         <Divider />
 
         <CardContent>
-          <Typography
-            variant="body2"
-            sx={{
-              ...getBodyStyles(),
-              color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-            }}
-          >
+          <Typography variant="body2" sx={{ ...getBodyStyles() }}>
             {description}
           </Typography>
         </CardContent>

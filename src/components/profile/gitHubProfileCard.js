@@ -1,11 +1,26 @@
-import React, { useState } from 'react';
-import { Avatar, Box, Fade, Grid, SvgIcon, Typography } from '@mui/material';
+import React, { useContext, useState } from 'react';
+import {
+  Avatar,
+  Box,
+  Fade,
+  Grid,
+  Typography,
+  useMediaQuery,
+} from '@mui/material';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { contactInfo, openToWork } from '../../portfolio';
 import SocialMedia from '../socialMedia/socialMedia';
+import StyleContext from '../../contexts/StyleContext';
+import {
+  EmailOutlined,
+  LocationOnOutlined,
+  PhoneOutlined,
+  WorkOutline,
+} from '@mui/icons-material';
 
 const GitHubProfileCard = ({ data }) => {
+  const { isDark } = useContext(StyleContext);
   const [isInView, setIsInView] = useState(false);
 
   const { ref, inView } = useInView({
@@ -14,9 +29,10 @@ const GitHubProfileCard = ({ data }) => {
     delay: 1000,
   });
 
-  useEffect(() => {
-    console.log(data);
+  const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
+  const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
 
+  useEffect(() => {
     if (inView) {
       setIsInView(true);
     }
@@ -28,69 +44,260 @@ const GitHubProfileCard = ({ data }) => {
     data.hireable = 'No';
   }
 
+  const getTitleStyles = () => {
+    if (isSmallScreen) {
+      return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
+        fontSize: '1.7rem',
+        lineHeight: 1,
+      };
+    } else if (isMediumScreen) {
+      return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
+        fontSize: '2rem',
+        lineHeight: 1,
+      };
+    } else {
+      return {
+        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
+        fontSize: '3rem',
+        lineHeight: 1.1,
+      };
+    }
+  };
+
+  const getSubTitleStyles = () => {
+    if (isSmallScreen) {
+      return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+        lineHeight: 1.2,
+        fontSize: '0.8rem',
+      };
+    }
+    if (isMediumScreen) {
+      return {
+        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+        lineHeight: 1.5,
+        fontSize: '1rem',
+      };
+    }
+    return {
+      color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+      lineHeight: 1.6,
+      fontSize: '1.1rem',
+    };
+  };
+
   return (
-    <Box ref={ref} component="div" mt={5} pl={5} pr={5}>
-      <Typography variant="h3" gutterBottom>
+    <Box
+      ref={ref}
+      component="div"
+      id="contact"
+      mt={5}
+      pl={5}
+      pr={5}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+      }}
+    >
+      <Typography variant="h3" gutterBottom sx={{ ...getTitleStyles() }}>
         Reachout to me!
       </Typography>
       <Fade in={isInView} timeout={1000}>
         <Grid
           container
-          direction="row"
+          direction={'row'}
           spacing={2}
           sx={{
             justifyContent: 'flex-start',
-            alignItems: 'flex-start',
+            alignItems: 'center',
           }}
         >
-          <Grid item lg={8} md={8} xs={8}>
-            <Typography variant="subtitle1" gutterBottom>
+          <Grid item lg={8} md={8} xs={12}>
+            <Typography
+              variant="subtitle1"
+              sx={{
+                ...getSubTitleStyles(),
+                fontWeight: 'light',
+              }}
+              gutterBottom
+            >
               {contactInfo.subTitle}
             </Typography>
-            <Typography variant="subtitle1" gutterBottom>
+            <Typography
+              variant="subtitle1"
+              sx={{ ...getSubTitleStyles(), mb: 2 }}
+              gutterBottom
+            >
               {data.bio}
             </Typography>
             {data.location && (
-              <Box>
-                <SvgIcon>
-                  <svg
-                    viewBox="-0.5 -2 20 19"
-                    version="1.1"
-                    width="22"
-                    height="16"
-                    aria-hidden="true"
-                    stroke="currentColor"
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'flex-start',
+                  alignItems: 'center',
+                  mb: 2,
+                }}
+              >
+                <Avatar sx={{ bgcolor: 'rgb(64, 123, 254)', mr: 3 }}>
+                  <LocationOnOutlined />
+                </Avatar>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'flex-start',
+                  }}
+                >
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ ...getSubTitleStyles() }}
                   >
-                    <path
-                      fillRule="evenodd"
-                      d="M6 0C2.69 0 0 2.5 0 5.5 0 10.02 6 16 6 16s6-5.98 6-10.5C12 2.5 9.31 0 6 0zm0 14.55C4.14 12.52 1 8.44 1 5.5 1 3.02 3.25 1 6 1c1.34 0 2.61.48 3.56 1.36.92.86 1.44 1.97 1.44 3.14 0 2.94-3.14 7.02-5 9.05zM8 5.5c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"
-                    ></path>
-                  </svg>
-                </SvgIcon>
-                <Typography variant="subtitle1" gutterBottom component="span">
-                  {data.location}
-                </Typography>
+                    Location
+                  </Typography>
+                  <Typography
+                    variant="subtitle2"
+                    sx={{ ...getSubTitleStyles(), fontWeight: 'light' }}
+                  >
+                    Kampala, {data.location}
+                  </Typography>
+                </Box>
               </Box>
             )}
-            <Typography variant="subtitle1" gutterBottom component="span">
-              Open for opportinuties:
-            </Typography>
-            <Typography variant="subtitle1" gutterBottom component="span">
-              {data.hireable}
-            </Typography>
-            <Box p={5}>
-              <SocialMedia />
+
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+                mb: 2,
+              }}
+            >
+              <Avatar sx={{ bgcolor: 'rgb(64, 123, 254)', mr: 3 }}>
+                <EmailOutlined />
+              </Avatar>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'flex-start',
+                }}
+              >
+                <Typography variant="subtitle1" sx={{ ...getSubTitleStyles() }}>
+                  Email
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ ...getSubTitleStyles(), fontWeight: 'light' }}
+                >
+                  {contactInfo.email_address}
+                </Typography>
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+                mb: 2,
+              }}
+            >
+              <Avatar sx={{ bgcolor: 'rgb(64, 123, 254)', mr: 3 }}>
+                <PhoneOutlined />
+              </Avatar>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'flex-start',
+                }}
+              >
+                <Typography variant="subtitle1" sx={{ ...getSubTitleStyles() }}>
+                  Phone
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ ...getSubTitleStyles(), fontWeight: 'light' }}
+                >
+                  {contactInfo.phone}
+                </Typography>
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+                mb: 2,
+              }}
+            >
+              <Avatar sx={{ bgcolor: 'rgb(64, 123, 254)', mr: 3 }}>
+                <WorkOutline />
+              </Avatar>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'flex-start',
+                }}
+              >
+                <Typography variant="subtitle1" sx={{ ...getSubTitleStyles() }}>
+                  Work
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ ...getSubTitleStyles(), fontWeight: 'light' }}
+                >
+                  Open for opportinuties: {data.hireable}
+                </Typography>
+              </Box>
             </Box>
           </Grid>
-          <Grid item lg={4} md={4} xs={4}>
+          <Grid
+            item
+            lg={4}
+            md={4}
+            xs={12}
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
             <Avatar
               alt={data.name}
               src={data.avatarUrl}
-              sx={{ width: '100%', height: 'auto' }}
+              sx={{
+                width: isMediumScreen || isSmallScreen ? '30%' : '100%',
+                height: 'auto',
+              }}
             />
           </Grid>
         </Grid>
       </Fade>
+      <Box
+        sx={{
+          alignSelf: isMediumScreen ? 'center' : 'flex-start',
+          pl: 3,
+          pt: 3,
+        }}
+      >
+        <SocialMedia />
+      </Box>
     </Box>
   );
 };

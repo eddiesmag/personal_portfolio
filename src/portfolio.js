@@ -38,10 +38,10 @@ const introduction = {
 // social  media links
 
 const socialMediaLinks = {
-  github: 'github',
-  linkedIn: 'linkedin',
-  mail: 'gmail',
-  x: 'x',
+  github: 'https://github.com/eddiesmag',
+  linkedIn: 'https://www.linkedin.com/in/edward-ssemwanga-125502a8/',
+  mail: 'eddiesmag@gmail.com',
+  x: 'https://twitter.com/SmagEddie',
   display: true, // change to true to disaplay social links
 };
 
@@ -199,7 +199,7 @@ const contactInfo = {
   title: emoji('Contact Me ☎️'),
   subTitle:
     'Discuss a project or just want to day hi? My inbox is open to all.',
-  phone: '+256787656528 | +256706732405',
+  phone: '+256 787 656 528 | +256 706 732 405',
   email_address: 'eddiesmag@gmail.com',
 };
 

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Close } from '@mui/icons-material';
-import { Drawer, Tab, useMediaQuery } from '@mui/material';
+import { Box, Drawer, Tab, useMediaQuery } from '@mui/material';
 import StyleContext from '../../contexts/StyleContext';
 import './styles/Header.scss';
 
@@ -44,14 +44,14 @@ const MobileHeader = ({ menu, open, toggleDrawer }) => {
         },
       }}
     >
-      <div className="mobile_menu_wrapper">
+      <Box className="mobile_menu_wrapper">
         <Tab
           icon={<Close />}
           aria-label="icon"
           color="inherit"
           onClick={toggleDrawer}
         />
-        <div className="mobile_menu_list">
+        <Box className="mobile_menu_list">
           <ul className="ls-none">
             {menu.map((menu, i) => (
               <li key={i}>
@@ -69,13 +69,14 @@ const MobileHeader = ({ menu, open, toggleDrawer }) => {
                     justifyContent: 'flex-start',
                     alignContent: 'center',
                     minWidth: '100%',
+                    color: selectedTab === i ? 'rgb(64, 123, 254)' : 'inherit',
                   }}
                 />
               </li>
             ))}
           </ul>
-        </div>
-      </div>
+        </Box>
+      </Box>
     </Drawer>
   );
 };

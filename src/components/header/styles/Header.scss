@@ -1,6 +1,7 @@
 @import "../../../globalColor";
 .menu {
   background-color: $lightBackground !important;
+  max-height: auto;
   color: $textColor !important;
 }
 
@@ -8,20 +9,6 @@
   background-color: $darkBackground !important;
   color: $textColorDark !important;
 }
-
-/*React-headroom*/
-.headroom-wrapper {
-    max-height: 100px;
-  }
-
-  .grey-color{
-    color:#868e96;
-  }
-
-  // margin
-  .mx{
-    margin: 0 0.5rem
-  }
 
   .ls-none{
     list-style: none;

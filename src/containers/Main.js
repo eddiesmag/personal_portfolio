@@ -12,6 +12,7 @@ import Projects from './projects/projects';
 import Profile from './profile/profile';
 import ScrollTopButton from './ScrollTop/scrollTop';
 import './Main.scss';
+import Footer from './footer/footer';
 
 const Main = () => {
   /**
@@ -55,6 +56,7 @@ const Main = () => {
             <Projects />
             <Profile />
             <ScrollTopButton />
+            <Footer />
           </>
         )}
       </StyleProvider>

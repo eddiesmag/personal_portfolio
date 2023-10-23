@@ -10,7 +10,6 @@ const ButtonComp = ({ text, href, newTab, btnSize }) => {
       href={href}
       target={newTab && '_blank'}
       size={btnSize}
-      sx={{ bgcolor: 'rgb(64, 123, 254)' }}
     >
       {text}
     </Button>

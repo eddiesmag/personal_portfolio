@@ -1,4 +1,3 @@
-import { Typography } from '@mui/material';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import Loading from '../../components/loading/loading';
 import { gitHubData } from '../../portfolio';

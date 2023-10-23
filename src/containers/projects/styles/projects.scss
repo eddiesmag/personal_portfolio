@@ -1,8 +1,10 @@
 @import '../../../globalColor';
 
 .MuiChip-filled:hover {
-    background-color: $repoIconBgColor !important;
+    transition: 0.3s;
+    background-color: $btnHoverColor !important;
 }
 .MuiChip-outlined:hover {
-    background-color: $repoIconBgColor !important;
+    transition: 0.3s;
+    background-color: $btnHoverColor !important;
 }

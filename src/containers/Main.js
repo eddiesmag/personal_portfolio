@@ -10,6 +10,7 @@ import StackProgress from './skillsProgress/skillsProgress';
 import WorkExperience from './workExperiences/workExperiences';
 import Projects from './projects/projects';
 import Profile from './profile/profile';
+import ScrollTopButton from './ScrollTop/scrollTop';
 import './Main.scss';
 
 const Main = () => {
@@ -53,6 +54,7 @@ const Main = () => {
             <WorkExperience />
             <Projects />
             <Profile />
+            <ScrollTopButton />
           </>
         )}
       </StyleProvider>

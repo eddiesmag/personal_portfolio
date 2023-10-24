@@ -182,6 +182,10 @@ const Greeting = () => {
           xs={12}
           sx={{
             animation: `${fadeInRight} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
           <Box component="div" className="introduction-image">

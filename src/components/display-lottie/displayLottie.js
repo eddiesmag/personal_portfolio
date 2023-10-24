@@ -1,7 +1,9 @@
 import React, { Suspense } from 'react';
-import Lottie from 'lottie-react';
+import { Player } from '@lottiefiles/react-lottie-player';
+import { useMediaQuery } from '@mui/material';
 
 const DisplayLottie = ({ animationData }) => {
+  const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
   const options = {
     loop: true,
     autoplay: true,
@@ -9,10 +11,11 @@ const DisplayLottie = ({ animationData }) => {
   };
   return (
     <Suspense>
-      <Lottie
-        animationData={options.animationData}
-        loop={options.loop}
-        autoPlay={options.autoplay}
+      <Player
+        autoplay
+        loop
+        src={options.animationData}
+        style={{ height: '100%', maxWidth: isSmallScreen ? '100%' : '50vw' }}
       />
     </Suspense>
   );

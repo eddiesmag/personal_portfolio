@@ -5,7 +5,6 @@ import {
   Card,
   CardContent,
   CardHeader,
-  Chip,
   Divider,
   Fade,
   Grid,
@@ -112,29 +111,32 @@ const GitHubProfileCard = ({ data }) => {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-      border: '1px solid rgb(64, 123, 254)',
+      border: isDark ? '1px solid #FFF' : '1px solid #0077B5',
       padding: '0.2rem 1rem',
       marginTop: 2,
+      '&:hover': {
+        bgcolor: 'inherit',
+        cursor: 'pointer',
+        boxShadow: 3,
+        transition: 'ease-in 0.2s',
+      },
     };
   };
 
   const getChipStyles = () => {
     if (isSmallScreen) {
       return {
-        color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
         lineHeight: 1.2,
         fontSize: '0.8rem',
       };
     }
     if (isMediumScreen) {
       return {
-        color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
         lineHeight: 1.5,
         fontSize: '1rem',
       };
     }
     return {
-      color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
       lineHeight: 1.6,
       fontSize: '1.1rem',
     };
@@ -346,22 +348,31 @@ const GitHubProfileCard = ({ data }) => {
                       alignItems: 'center',
                     }}
                   >
-                    <Typography variant="h6" component="h2">
-                      LinkedIn
+                    <Typography
+                      variant="h6"
+                      component="h2"
+                      sx={{ color: isDark ? 'inherit' : '#0077B5' }}
+                    >
+                      Linked
                     </Typography>
-                    <LinkedIn sx={{ fontSize: 30 }} />
+                    <LinkedIn
+                      sx={{
+                        fontSize: 30,
+                        color: isDark ? 'inherit' : '#0077B5',
+                      }}
+                    />
                   </Box>
                 }
-                sx={{ bgcolor: 'red' }}
+                sx={{ bgcolor: isDark ? '#313335' : '#CACCCE' }}
               />
 
               <Divider />
 
-              <CardContent>
+              <CardContent sx={{ bgcolor: isDark ? '#000000' : '#FFFFFF' }}>
                 <Avatar
                   src={data.avatarUrl}
                   alt="LinkedIn profile picture"
-                  sx={{ mb: 2, mt: 1 }}
+                  sx={{ mb: 2, mt: 1, width: '150px', height: 'auto' }}
                 />
                 <Typography variant="body1" component="p" gutterBottom>
                   {data.name}
@@ -372,10 +383,6 @@ const GitHubProfileCard = ({ data }) => {
                 <Box
                   sx={{
                     ...getProfileBtnStyles(),
-                    '&:hover': {
-                      bgcolor: 'rgb(64, 123, 254)',
-                      transition: 'ease-in-out 0.3s',
-                    },
                   }}
                   onClick={openLinkedInProfile}
                 >
@@ -383,7 +390,10 @@ const GitHubProfileCard = ({ data }) => {
                     className=""
                     variant="body2"
                     component="p"
-                    sx={{ ...getChipStyles() }}
+                    sx={{
+                      ...getChipStyles(),
+                      color: isDark ? 'inherit' : '#0077B5',
+                    }}
                   >
                     View Profile
                   </Typography>

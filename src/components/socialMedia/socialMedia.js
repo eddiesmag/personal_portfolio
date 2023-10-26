@@ -45,7 +45,7 @@ const SocialMedia = () => {
             underline="none"
             color="inherit"
           >
-            <Avatar sx={{ bgcolor: '#0072b1' }}>
+            <Avatar sx={{ bgcolor: '#0077B5' }}>
               <LinkedIn />
             </Avatar>
           </Link>

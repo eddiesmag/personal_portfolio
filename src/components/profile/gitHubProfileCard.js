@@ -2,6 +2,11 @@ import React, { useContext, useState } from 'react';
 import {
   Avatar,
   Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Chip,
+  Divider,
   Fade,
   Grid,
   Typography,
@@ -9,11 +14,12 @@ import {
 } from '@mui/material';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { contactInfo, openToWork } from '../../portfolio';
+import { contactInfo, openToWork, socialMediaLinks } from '../../portfolio';
 import SocialMedia from '../socialMedia/socialMedia';
 import StyleContext from '../../contexts/StyleContext';
 import {
   EmailOutlined,
+  LinkedIn,
   LocationOnOutlined,
   PhoneOutlined,
   WorkOutline,
@@ -22,6 +28,8 @@ import {
 const GitHubProfileCard = ({ data }) => {
   const { isDark } = useContext(StyleContext);
   const [isInView, setIsInView] = useState(false);
+
+  const [linkedInProfileUrl] = useState(socialMediaLinks.linkedIn);
 
   const { ref, inView } = useInView({
     threshold: 0,
@@ -43,6 +51,10 @@ const GitHubProfileCard = ({ data }) => {
   } else {
     data.hireable = 'No';
   }
+
+  const openLinkedInProfile = () => {
+    window.open(linkedInProfileUrl, '_blank');
+  };
 
   const getTitleStyles = () => {
     if (isSmallScreen) {
@@ -83,6 +95,46 @@ const GitHubProfileCard = ({ data }) => {
     }
     return {
       color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+      lineHeight: 1.6,
+      fontSize: '1.1rem',
+    };
+  };
+  const getProfileBtnStyles = () => {
+    return {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: '2rem',
+      maxWidth: '50%',
+      height: 'auto',
+      backgroundColor: 'inherit',
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      border: '1px solid rgb(64, 123, 254)',
+      padding: '0.2rem 1rem',
+      marginTop: 2,
+    };
+  };
+
+  const getChipStyles = () => {
+    if (isSmallScreen) {
+      return {
+        color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
+        lineHeight: 1.2,
+        fontSize: '0.8rem',
+      };
+    }
+    if (isMediumScreen) {
+      return {
+        color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
+        lineHeight: 1.5,
+        fontSize: '1rem',
+      };
+    }
+    return {
+      color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
       lineHeight: 1.6,
       fontSize: '1.1rem',
     };
@@ -278,21 +330,73 @@ const GitHubProfileCard = ({ data }) => {
               alignItems: 'center',
             }}
           >
-            <Avatar
-              alt={data.name}
-              src={data.avatarUrl}
+            <Card
               sx={{
-                width: isMediumScreen || isSmallScreen ? '30%' : '100%',
-                height: 'auto',
+                color: isDark ? '#fff' : 'rgb(35, 39, 47)',
+                minWidth: !(isMediumScreen || isSmallScreen) ? 300 : 100,
+                bgcolor: isDark ? 'inherit' : '#fff',
               }}
-            />
+            >
+              <CardHeader
+                title={
+                  <Box
+                    component="div"
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Typography variant="h6" component="h2">
+                      LinkedIn
+                    </Typography>
+                    <LinkedIn sx={{ fontSize: 30 }} />
+                  </Box>
+                }
+                sx={{ bgcolor: 'red' }}
+              />
+
+              <Divider />
+
+              <CardContent>
+                <Avatar
+                  src={data.avatarUrl}
+                  alt="LinkedIn profile picture"
+                  sx={{ mb: 2, mt: 1 }}
+                />
+                <Typography variant="body1" component="p" gutterBottom>
+                  {data.name}
+                </Typography>
+                <Typography variant="body2" component="p" gutterBottom>
+                  {data.bio}
+                </Typography>
+                <Box
+                  sx={{
+                    ...getProfileBtnStyles(),
+                    '&:hover': {
+                      bgcolor: 'rgb(64, 123, 254)',
+                      transition: 'ease-in-out 0.3s',
+                    },
+                  }}
+                  onClick={openLinkedInProfile}
+                >
+                  <Typography
+                    className=""
+                    variant="body2"
+                    component="p"
+                    sx={{ ...getChipStyles() }}
+                  >
+                    View Profile
+                  </Typography>
+                </Box>
+              </CardContent>
+            </Card>
           </Grid>
         </Grid>
       </Fade>
       <Box
         sx={{
           alignSelf: isMediumScreen ? 'center' : 'flex-start',
-          pl: 3,
+          pl: isMediumScreen || isSmallScreen ? 0 : 3,
           pt: 3,
         }}
       >

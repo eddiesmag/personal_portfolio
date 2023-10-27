@@ -31,7 +31,7 @@ const introduction = {
   ),
   animation: manWaving,
   resumeLink:
-    'https://drive.google.com/file/d/1ofFdKF_mqscH8WvXkSObnVvC9kK7Ldlu/view?usp=sharing', // Set to empty to hide the button
+    'https://drive.google.com/file/d/15wswDumYIRBdCKV4GLGSeqRT-CZIrPs6/view?usp=sharing', // Set to empty to hide the button
   displayIntroduction: true,
 };
 

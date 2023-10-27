@@ -2,8 +2,8 @@ import React, { lazy, Suspense, useEffect, useState } from 'react';
 import Loading from '../../components/loading/loading';
 import { gitHubData } from '../../portfolio';
 
-const GitHubProfileCard = lazy(() =>
-  import('../../components/profile/gitHubProfileCard')
+const UserProfileCard = lazy(() =>
+  import('../../components/profile/userProfileCard')
 );
 
 const FailedLoading = () => null;
@@ -42,7 +42,7 @@ const Profile = () => {
   ) {
     return (
       <Suspense fallback={renderLoading()}>
-        <GitHubProfileCard data={userProfile} />
+        <UserProfileCard data={userProfile} />
       </Suspense>
     );
   }

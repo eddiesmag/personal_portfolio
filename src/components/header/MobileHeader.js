@@ -40,17 +40,11 @@ const MobileHeader = ({ menu, open, toggleDrawer }) => {
         '& .MuiPaper-root': {
           width: '100%',
           backgroundColor: isDark ? 'rgb(35, 39, 47)' : '#FFF',
-          color: isDark ? '#FFF' : 'rgb(35, 39, 47)',
-        },
-      }}
-    >
+          color: isDark ? '#FFF' : 'rgb(35, 39, 47)'
+        }
+      }}>
       <Box className="mobile_menu_wrapper">
-        <Tab
-          icon={<Close />}
-          aria-label="icon"
-          color="inherit"
-          onClick={toggleDrawer}
-        />
+        <Tab icon={<Close />} aria-label="icon" color="inherit" onClick={toggleDrawer} />
         <Box className="mobile_menu_list">
           <ul className="ls-none">
             {menu.map((menu, i) => (
@@ -69,7 +63,7 @@ const MobileHeader = ({ menu, open, toggleDrawer }) => {
                     justifyContent: 'flex-start',
                     alignContent: 'center',
                     minWidth: '100%',
-                    color: selectedTab === i ? 'rgb(64, 123, 254)' : 'inherit',
+                    color: selectedTab === i ? 'rgb(64, 123, 254)' : 'inherit'
                   }}
                 />
               </li>

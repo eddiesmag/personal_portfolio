@@ -1,16 +1,15 @@
+/* eslint-disable prettier/prettier */
 const fs = require('fs');
 const https = require('https');
 const process = require('process');
 require('dotenv').config();
 
-const { GITHUB_TOKEN, GITHUB_USERNAME, USE_GITHUB_DATA, GITHUB_API_BASE_URL } =
-  process.env;
+const { GITHUB_TOKEN, GITHUB_USERNAME, USE_GITHUB_DATA, GITHUB_API_BASE_URL } = process.env;
 
 const ERROR = {
-  noUserName:
-    'Github Username was not defined. Please set all relavant environment variables.',
+  noUserName: 'Github Username was not defined. Please set all relavant environment variables.',
   requestFailed:
-    "The request to Github didn't suceed. Check if Github token in your .env file is correct.",
+    "The request to Github didn't suceed. Check if Github token in your .env file is correct."
 };
 
 if (USE_GITHUB_DATA === 'true') {
@@ -51,7 +50,7 @@ if (USE_GITHUB_DATA === 'true') {
       }
     }
 }
-`,
+`
   });
 
   const default_options = {
@@ -61,8 +60,8 @@ if (USE_GITHUB_DATA === 'true') {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${GITHUB_TOKEN}`,
-      'User-Agent': 'Node',
-    },
+      'User-Agent': 'Node'
+    }
   };
 
   const req = https.request(default_options, (res) => {

@@ -14,7 +14,7 @@ const UserProfileCard = ({ data }) => {
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
-    delay: 1000,
+    delay: 1000
   });
 
   const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
@@ -37,19 +37,19 @@ const UserProfileCard = ({ data }) => {
       return {
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '1.7rem',
-        lineHeight: 1,
+        lineHeight: 1
       };
     } else if (isMediumScreen) {
       return {
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '2rem',
-        lineHeight: 1,
+        lineHeight: 1
       };
     } else {
       return {
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '3rem',
-        lineHeight: 1.1,
+        lineHeight: 1.1
       };
     }
   };
@@ -66,9 +66,8 @@ const UserProfileCard = ({ data }) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'flex-start',
-      }}
-    >
+        alignItems: 'flex-start'
+      }}>
       <Typography variant="h3" gutterBottom sx={{ ...getTitleStyles() }}>
         Reachout to me!
       </Typography>
@@ -79,9 +78,8 @@ const UserProfileCard = ({ data }) => {
           spacing={2}
           sx={{
             justifyContent: 'flex-start',
-            alignItems: 'center',
-          }}
-        >
+            alignItems: 'center'
+          }}>
           <Grid item lg={8} md={8} xs={12}>
             <GitHubContactCard data={data} />
           </Grid>
@@ -93,9 +91,8 @@ const UserProfileCard = ({ data }) => {
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
+              alignItems: 'center'
+            }}>
             <LinkedInProfileCard data={data} />
           </Grid>
         </Grid>
@@ -104,9 +101,8 @@ const UserProfileCard = ({ data }) => {
         sx={{
           alignSelf: isMediumScreen ? 'center' : 'flex-start',
           pl: isMediumScreen || isSmallScreen ? 0 : 3,
-          pt: 3,
-        }}
-      >
+          pt: 3
+        }}>
         <SocialMedia />
       </Box>
     </Box>

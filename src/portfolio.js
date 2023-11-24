@@ -10,7 +10,7 @@ import {
   faDocker,
   faAws,
   faCss3,
-  faSass,
+  faSass
 } from '@fortawesome/free-brands-svg-icons';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,7 +18,7 @@ import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 const splashScreen = {
   anabled: true,
   animation: splashAnimation,
-  duration: 2000,
+  duration: 2000
 };
 
 // summary and Greeting section
@@ -30,9 +30,8 @@ const introduction = {
     'A passionate Full Stack Software Developer 🚀 having an experience of building Web and Mobile applications with JavaScript / Reactjs / Nodejs / React Native and some other cool libraries and frameworks.'
   ),
   animation: manWaving,
-  resumeLink:
-    'https://drive.google.com/file/d/15wswDumYIRBdCKV4GLGSeqRT-CZIrPs6/view?usp=sharing', // Set to empty to hide the button
-  displayIntroduction: true,
+  resumeLink: 'https://drive.google.com/file/d/15wswDumYIRBdCKV4GLGSeqRT-CZIrPs6/view?usp=sharing', // Set to empty to hide the button
+  displayIntroduction: true
 };
 
 // social  media links
@@ -42,7 +41,7 @@ const socialMediaLinks = {
   linkedIn: 'https://www.linkedin.com/in/edward-ssemwanga-125502a8/',
   mail: 'eddiesmag@gmail.com',
   x: 'https://twitter.com/SmagEddie',
-  display: true, // change to true to disaplay social links
+  display: true // change to true to disaplay social links
 };
 
 // skills section
@@ -58,59 +57,59 @@ const skillsSection = {
     emoji(
       '⚡️ Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam saepe ea facilis. Tempora sint velit et veritatis tenetur quibusdam quae magni ipsa consectetur itaque qui ad sed autem, provident necessitatibus?'
     ),
-    emoji('⚡️ skill 3'),
+    emoji('⚡️ skill 3')
   ],
   skillSet: [
     {
       skillsName: 'html-5',
-      fontAwesomeClassName: faHtml5,
+      fontAwesomeClassName: faHtml5
     },
     {
       skillsName: 'sass',
-      fontAwesomeClassName: faSass,
+      fontAwesomeClassName: faSass
     },
     {
       skillsName: 'css3',
-      fontAwesomeClassName: faCss3,
+      fontAwesomeClassName: faCss3
     },
     {
       skillsName: 'Javascript',
-      fontAwesomeClassName: faJs,
+      fontAwesomeClassName: faJs
     },
     {
       skillsName: 'Reactjs',
-      fontAwesomeClassName: faReact,
+      fontAwesomeClassName: faReact
     },
     {
       skillsName: 'Nodejs',
-      fontAwesomeClassName: faNode,
+      fontAwesomeClassName: faNode
     },
     {
       skillsName: 'React Native',
-      fontAwesomeClassName: faReact,
+      fontAwesomeClassName: faReact
     },
     {
       skillsName: 'aws',
-      fontAwesomeClassName: faAws,
+      fontAwesomeClassName: faAws
     },
     {
       skillsName: 'PostgreSQL',
-      fontAwesomeClassName: faDatabase,
+      fontAwesomeClassName: faDatabase
     },
     {
       skillsName: 'MongoDB',
-      fontAwesomeClassName: faDatabase,
+      fontAwesomeClassName: faDatabase
     },
     {
       skillsName: 'Prisma',
-      fontAwesomeClassName: faDatabase,
+      fontAwesomeClassName: faDatabase
     },
     {
       skillsName: 'docker',
-      fontAwesomeClassName: faDocker,
-    },
+      fontAwesomeClassName: faDocker
+    }
   ],
-  display: true,
+  display: true
 };
 
 // stack progress
@@ -120,17 +119,17 @@ const techStack = {
   experience: [
     {
       stack: 'Server-side (Backend)',
-      progressPercentage: 90,
+      progressPercentage: 90
     },
     {
       stack: 'Database',
-      progressPercentage: 80,
+      progressPercentage: 80
     },
     {
       stack: 'Client-side (Frontend/Design)',
-      progressPercentage: 70,
-    },
-  ],
+      progressPercentage: 70
+    }
+  ]
 };
 
 // Professional Experience
@@ -143,30 +142,30 @@ const workExperience = {
       company: 'Company',
       duration: 'May 2004 - present',
       roleDesc:
-        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!',
+        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!'
     },
     {
       role: 'Job Title',
       company: 'Company',
       duration: 'May 2004 - present',
       roleDesc:
-        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!',
+        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!'
     },
     {
       role: 'Job Title',
       company: 'Company',
       duration: 'May 2004 - present',
       roleDesc:
-        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!',
+        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!'
     },
     {
       role: 'Job Title',
       company: 'Company',
       duration: 'May 2004 - present',
       roleDesc:
-        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!',
-    },
-  ],
+        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!'
+    }
+  ]
 };
 
 const educationInfo = {
@@ -175,32 +174,30 @@ const educationInfo = {
     {
       schoolName: 'Makerere University',
       duration: '2014 - 2019',
-      achievement: 'Bachelor of Science in Software Engineering',
+      achievement: 'Bachelor of Science in Software Engineering'
     },
     {
       schoolName: 'Seeta High School',
       duration: '2012 - 2013',
-      achievement:
-        'Uganda Advanced Certificate of Education. Physics, Mathematics, Economics',
-    },
-  ],
+      achievement: 'Uganda Advanced Certificate of Education. Physics, Mathematics, Economics'
+    }
+  ]
 };
 
 const gitHubData = {
   showGitHubProfile: true, // set true or false to show GitHub user profile using GitHub, dafaults to true
-  displayProjects: true,
+  displayProjects: true
 };
 
 const openToWork = {
-  isHireable: true, // Set false if you are not looking for a job. Also isHireable will be display as Open for opportunities: Yes/No in the GitHub footer
+  isHireable: true // Set false if you are not looking for a job. Also isHireable will be display as Open for opportunities: Yes/No in the GitHub footer
 };
 
 const contactInfo = {
   title: emoji('Contact Me ☎️'),
-  subTitle:
-    'Discuss a project or just want to day hi? My inbox is open to all.',
+  subTitle: 'Discuss a project or just want to day hi? My inbox is open to all.',
   phone: '+256 787 656 528 | +256 706 732 405',
-  email_address: 'eddiesmag@gmail.com',
+  email_address: 'eddiesmag@gmail.com'
 };
 
 export {
@@ -213,5 +210,5 @@ export {
   educationInfo,
   gitHubData,
   openToWork,
-  contactInfo,
+  contactInfo
 };

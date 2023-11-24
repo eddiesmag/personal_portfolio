@@ -12,9 +12,9 @@ const useStyles = makeStyles({
     backgroundColor: 'inherit',
     '&:hover, .Mui-focusVisible': {
       color: 'rgb(168, 202, 255)',
-      backgroundColor: 'inherit',
-    },
-  },
+      backgroundColor: 'inherit'
+    }
+  }
 });
 
 const ToggleSwitch = () => {
@@ -30,8 +30,7 @@ const ToggleSwitch = () => {
       onClick={() => {
         changeTheme();
         setThemeMode(!themeMode);
-      }}
-    >
+      }}>
       {themeMode ? <LightModeOutlined /> : <DarkModeOutlined />}
     </Fab>
   );

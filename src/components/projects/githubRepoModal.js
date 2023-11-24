@@ -1,14 +1,5 @@
 import React, { useContext } from 'react';
-import {
-  Backdrop,
-  Box,
-  Button,
-  Fade,
-  Grid,
-  Modal,
-  Typography,
-  useMediaQuery,
-} from '@mui/material';
+import { Backdrop, Box, Button, Fade, Grid, Modal, Typography, useMediaQuery } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-regular-svg-icons';
 import StyleContext from '../../contexts/StyleContext';
@@ -22,7 +13,7 @@ const modalStyles = {
   width: '100%',
   height: '100%',
   overflow: 'scroll',
-  bgcolor: 'background.paper',
+  bgcolor: 'background.paper'
 };
 
 const closeBtnStyles = {
@@ -33,7 +24,7 @@ const closeBtnStyles = {
   display: 'block',
   color: 'grey',
   borderRadius: '100%',
-  cursor: 'pointer',
+  cursor: 'pointer'
 };
 
 const GithubRepoModal = ({ repository, open, close, openProject }) => {
@@ -49,17 +40,17 @@ const GithubRepoModal = ({ repository, open, close, openProject }) => {
     if (isSmallScreen) {
       return {
         lineHeight: 1.2,
-        fontSize: '0.8rem',
+        fontSize: '0.8rem'
       };
     } else if (isMediumScreen) {
       return {
         lineHeight: 1.5,
-        fontSize: '1rem',
+        fontSize: '1rem'
       };
     } else {
       return {
         lineHeight: 1.6,
-        fontSize: '1.1rem',
+        fontSize: '1.1rem'
       };
     }
   };
@@ -80,17 +71,17 @@ const GithubRepoModal = ({ repository, open, close, openProject }) => {
     if (isSmallScreen) {
       return {
         lineHeight: 1.2,
-        fontSize: '0.8rem',
+        fontSize: '0.8rem'
       };
     } else if (isMediumScreen) {
       return {
         lineHeight: 1.2,
-        fontSize: '0.8rem',
+        fontSize: '0.8rem'
       };
     } else {
       return {
         lineHeight: 1.5,
-        fontSize: '1rem',
+        fontSize: '1rem'
       };
     }
   };
@@ -103,25 +94,23 @@ const GithubRepoModal = ({ repository, open, close, openProject }) => {
       slots={{ backdrop: Backdrop }}
       slotProps={{
         backdrop: {
-          timeout: 1000,
-        },
+          timeout: 1000
+        }
       }}
-      sx={{ color: 'inherit' }}
-    >
+      sx={{ color: 'inherit' }}>
       <Fade in={open}>
         <Box
           sx={{
             ...modalStyles,
             color: isDark ? '#FFF' : 'rgb(35, 39, 47)',
-            bgcolor: isDark ? 'rgb(35, 39, 47)' : '#FFF',
-          }}
-        >
+            bgcolor: isDark ? 'rgb(35, 39, 47)' : '#FFF'
+          }}>
           <Box sx={closeBtnStyles}>
             <FontAwesomeIcon
               icon={faCircleXmark}
               size="3x"
               style={{
-                color: isDark ? 'rgb(209, 214, 225)' : 'rgb(35, 39, 47)',
+                color: isDark ? 'rgb(209, 214, 225)' : 'rgb(35, 39, 47)'
               }}
               onClick={close}
             />
@@ -136,9 +125,8 @@ const GithubRepoModal = ({ repository, open, close, openProject }) => {
             pr={5}
             sx={{
               justifyContent: 'flex-end',
-              alignItems: 'flex-start',
-            }}
-          >
+              alignItems: 'flex-start'
+            }}>
             <Grid item lg={6} md={6} xs={12}>
               <Typography variant="h6">{Project}</Typography>
             </Grid>
@@ -146,8 +134,7 @@ const GithubRepoModal = ({ repository, open, close, openProject }) => {
               <Typography
                 variant="h3"
                 gutterBottom
-                sx={{ ...getTitleStyles(), textTransform: 'capitalize' }}
-              >
+                sx={{ ...getTitleStyles(), textTransform: 'capitalize' }}>
                 {Project}
               </Typography>
               {primaryLanguage !== null && (
@@ -156,33 +143,22 @@ const GithubRepoModal = ({ repository, open, close, openProject }) => {
                     variant="body1"
                     component="span"
                     gutterBottom
-                    sx={{ ...getSubTitleStyles() }}
-                  >
+                    sx={{ ...getSubTitleStyles() }}>
                     {`Language: `}
                   </Typography>
                   <Typography
                     variant="body1"
                     component="span"
                     gutterBottom
-                    sx={{ ...getSubTitleStyles() }}
-                  >
+                    sx={{ ...getSubTitleStyles() }}>
                     {primaryLanguage.name}
                   </Typography>
                 </Box>
               )}
-              <Typography
-                variant="body2"
-                gutterBottom
-                sx={{ ...getBodyStyles }}
-              >
+              <Typography variant="body2" gutterBottom sx={{ ...getBodyStyles }}>
                 {description}
               </Typography>
-              <Button
-                variant="contained"
-                size="large"
-                onClick={openProject}
-                sx={{ mt: 5 }}
-              >
+              <Button variant="contained" size="large" onClick={openProject} sx={{ mt: 5 }}>
                 View in GitHub
               </Button>
             </Grid>

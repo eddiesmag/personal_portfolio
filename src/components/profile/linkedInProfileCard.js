@@ -7,7 +7,7 @@ import {
   CardHeader,
   Divider,
   Typography,
-  useMediaQuery,
+  useMediaQuery
 } from '@mui/material';
 import React, { useContext, useState } from 'react';
 import StyleContext from '../../contexts/StyleContext';
@@ -45,8 +45,8 @@ const LinkedInProfileCard = ({ data }) => {
         bgcolor: 'inherit',
         cursor: 'pointer',
         boxShadow: 3,
-        transition: 'ease-in 0.2s',
-      },
+        transition: 'ease-in 0.2s'
+      }
     };
   };
 
@@ -54,18 +54,18 @@ const LinkedInProfileCard = ({ data }) => {
     if (isSmallScreen) {
       return {
         lineHeight: 1.2,
-        fontSize: '0.8rem',
+        fontSize: '0.8rem'
       };
     }
     if (isMediumScreen) {
       return {
         lineHeight: 1.5,
-        fontSize: '1rem',
+        fontSize: '1rem'
       };
     }
     return {
       lineHeight: 1.6,
-      fontSize: '1.1rem',
+      fontSize: '1.1rem'
     };
   };
   return (
@@ -73,29 +73,23 @@ const LinkedInProfileCard = ({ data }) => {
       sx={{
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         minWidth: !(isMediumScreen || isSmallScreen) ? 300 : 100,
-        bgcolor: isDark ? 'inherit' : '#fff',
-      }}
-    >
+        bgcolor: isDark ? 'inherit' : '#fff'
+      }}>
       <CardHeader
         title={
           <Box
             component="div"
             sx={{
               display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            <Typography
-              variant="h6"
-              component="h2"
-              sx={{ color: isDark ? 'inherit' : '#0077B5' }}
-            >
+              alignItems: 'center'
+            }}>
+            <Typography variant="h6" component="h2" sx={{ color: isDark ? 'inherit' : '#0077B5' }}>
               Linked
             </Typography>
             <LinkedIn
               sx={{
                 fontSize: 30,
-                color: isDark ? 'inherit' : '#0077B5',
+                color: isDark ? 'inherit' : '#0077B5'
               }}
             />
           </Box>
@@ -119,19 +113,17 @@ const LinkedInProfileCard = ({ data }) => {
         </Typography>
         <Box
           sx={{
-            ...getLinkedInProfileBtnStyles(),
+            ...getLinkedInProfileBtnStyles()
           }}
-          onClick={openLinkedInProfile}
-        >
+          onClick={openLinkedInProfile}>
           <Typography
             className=""
             variant="body2"
             component="p"
             sx={{
               ...getLinkedInBtnTextStyles(),
-              color: isDark ? 'inherit' : '#0077B5',
-            }}
-          >
+              color: isDark ? 'inherit' : '#0077B5'
+            }}>
             View Profile
           </Typography>
         </Box>

@@ -18,11 +18,7 @@ const SplashScreen = () => {
               <Skeleton sx={{ bgcolor: isDark ? 'grey.600' : 'grey.100' }} />
             </Typography>
           ))}
-          <Typography
-            component="div"
-            variant="button"
-            className="splash-titles-container"
-          >
+          <Typography component="div" variant="button" className="splash-titles-container">
             <Skeleton variant="text" className="splash-title">
               &lt; {introduction.username} / &gt;
             </Skeleton>

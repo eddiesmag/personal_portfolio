@@ -9,7 +9,7 @@ const StackProgress = () => {
   const { isDark } = useContext(StyleContext);
   const [ref, inView] = useInView({
     threshold: 0,
-    triggerOnce: true,
+    triggerOnce: true
   });
   const [isVisible, setIsVisible] = useState(false);
 
@@ -27,19 +27,19 @@ const StackProgress = () => {
       return {
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '1.7rem',
-        lineHeight: 1,
+        lineHeight: 1
       };
     } else if (isMediumScreen) {
       return {
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '2rem',
-        lineHeight: 1,
+        lineHeight: 1
       };
     } else {
       return {
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '3rem',
-        lineHeight: 1.1,
+        lineHeight: 1.1
       };
     }
   };
@@ -49,20 +49,20 @@ const StackProgress = () => {
       return {
         color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.2,
-        fontSize: '0.8rem',
+        fontSize: '0.8rem'
       };
     }
     if (isMediumScreen) {
       return {
         color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.5,
-        fontSize: '1rem',
+        fontSize: '1rem'
       };
     }
     return {
       color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
       lineHeight: 1.6,
-      fontSize: '1.1rem',
+      fontSize: '1.1rem'
     };
   };
 
@@ -72,19 +72,14 @@ const StackProgress = () => {
         <Grow
           in={isVisible}
           style={{ transformOrigin: '0 0 0' }}
-          {...(isVisible ? { timeout: 1000 } : {})}
-        >
+          {...(isVisible ? { timeout: 1000 } : {})}>
           <Grid container direction="column" pt={5}>
             <Typography variant="h3" gutterBottom pl={5} sx={getTitleStyles()}>
               Proficiency
             </Typography>
             {techStack.experience.map((exp, i) => (
               <Box key={i} ml={5} mr={5} mb={3}>
-                <Typography
-                  variant="subtitle1"
-                  gutterBottom
-                  sx={getSubTitleStyles()}
-                >
+                <Typography variant="subtitle1" gutterBottom sx={getSubTitleStyles()}>
                   {exp.stack}
                 </Typography>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -92,9 +87,7 @@ const StackProgress = () => {
                     <StackProgressBar value={exp.progressPercentage} />
                   </Box>
                   <Box sx={{ minWidth: 35 }}>
-                    <Typography variant="caption">
-                      {`${exp.progressPercentage} %`}
-                    </Typography>
+                    <Typography variant="caption">{`${exp.progressPercentage} %`}</Typography>
                   </Box>
                 </Box>
               </Box>

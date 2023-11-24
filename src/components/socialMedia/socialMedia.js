@@ -22,12 +22,10 @@ const SocialMedia = () => {
       pl={isSmallScreen || isMediumScreen ? 0 : 5}
       pb={isSmallScreen || isMediumScreen ? 5 : 10}
       sx={{
-        justifyContent:
-          isMediumScreen || isSmallScreen ? 'center' : 'flex-start',
+        justifyContent: isMediumScreen || isSmallScreen ? 'center' : 'flex-start',
         alignItems: 'center',
-        animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
-      }}
-    >
+        animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`
+      }}>
       {socialMediaLinks.github ? (
         <Grid item className="social-icon">
           <Link href={socialMediaLinks.github} underline="none" color="inherit">
@@ -40,11 +38,7 @@ const SocialMedia = () => {
 
       {socialMediaLinks.linkedIn ? (
         <Grid item className="social-icon">
-          <Link
-            href={socialMediaLinks.linkedIn}
-            underline="none"
-            color="inherit"
-          >
+          <Link href={socialMediaLinks.linkedIn} underline="none" color="inherit">
             <Avatar sx={{ bgcolor: '#0077B5' }}>
               <LinkedIn />
             </Avatar>
@@ -54,11 +48,7 @@ const SocialMedia = () => {
 
       {socialMediaLinks.mail ? (
         <Grid item className="social-icon">
-          <Link
-            href={`mailto:${socialMediaLinks.mail}`}
-            underline="none"
-            color="inherit"
-          >
+          <Link href={`mailto:${socialMediaLinks.mail}`} underline="none" color="inherit">
             <Avatar sx={{ bgcolor: '#c71610' }}>
               <Mail />
             </Avatar>

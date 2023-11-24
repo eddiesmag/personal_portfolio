@@ -40,32 +40,32 @@ const Header = () => {
   const menu = [
     {
       name: 'Skills',
-      path: '#skills',
+      path: '#skills'
     },
     {
       name: 'Work Experiences',
-      path: '#experience',
+      path: '#experience'
     },
     {
       name: 'Open Source',
-      path: '#openSource',
+      path: '#openSource'
     },
     {
       name: 'Achievements',
-      path: '#achievements',
+      path: '#achievements'
     },
     {
       name: 'Blogs',
-      path: '#blogs',
+      path: '#blogs'
     },
     {
       name: 'Talks',
-      path: '#talks',
+      path: '#talks'
     },
     {
       name: 'Contact Me',
-      path: '#contact',
-    },
+      path: '#contact'
+    }
   ];
 
   const handleChange = (event, newValue) => {
@@ -85,21 +85,21 @@ const Header = () => {
         color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         textAlign: 'justify',
         lineHeight: 1.1,
-        fontSize: '0.7rem',
+        fontSize: '0.7rem'
       };
     } else if (isMediumScreen) {
       return {
         color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         textAlign: 'justify',
         lineHeight: 1.2,
-        fontSize: '0.8rem',
+        fontSize: '0.8rem'
       };
     } else {
       return {
         color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         textAlign: 'justify',
         lineHeight: 1.5,
-        fontSize: '1rem',
+        fontSize: '1rem'
       };
     }
   };
@@ -115,20 +115,18 @@ const Header = () => {
             display: 'flex',
             flexDirection: 'row',
             flexWrap: 'wrap',
-            justifyContent:
-              isMediumScreen || isSmallScreen ? 'flex-start' : 'center',
+            justifyContent: isMediumScreen || isSmallScreen ? 'flex-start' : 'center',
             alignItems: 'center',
-            padding: '0.5rem',
+            padding: '0.5rem'
           },
           '& .MuiTabs-indicator': {
             display: isMediumScreen || isSmallScreen ? 'none' : 'block',
-            bgcolor: 'rgb(64, 123, 254)',
-          },
+            bgcolor: 'rgb(64, 123, 254)'
+          }
         }}
         centered={false}
         textColor="inherit"
-        variant={isMediumScreen || isSmallScreen ? 'standard' : 'fullWidth'}
-      >
+        variant={isMediumScreen || isSmallScreen ? 'standard' : 'fullWidth'}>
         <Tab
           href="/"
           label={profile.name}
@@ -140,7 +138,7 @@ const Header = () => {
                 src={profile.avatarUrl}
                 sx={{
                   width: '40px',
-                  height: '40px',
+                  height: '40px'
                 }}
               />
             )
@@ -150,7 +148,7 @@ const Header = () => {
             flexDirection: 'row',
             justifyContent: 'flex-start',
             alignItems: 'center',
-            mr: isSmallScreen || isMediumScreen ? 'auto' : 0,
+            mr: isSmallScreen || isMediumScreen ? 'auto' : 0
           }}
         />
         {menu.map((menu, i) => (
@@ -161,7 +159,7 @@ const Header = () => {
             sx={{
               ...getTabStyles(),
               display: isSmallScreen || isMediumScreen ? 'none' : 'block',
-              color: tabValue === ++i ? 'rgb(64, 123, 254)' : 'inherit',
+              color: tabValue === ++i ? 'rgb(64, 123, 254)' : 'inherit'
             }}
           />
         ))}
@@ -175,15 +173,14 @@ const Header = () => {
               sx={{
                 boxShadow: 6,
                 color: 'rgb(64, 123, 254)',
-                bgcolor: 'inherit',
-              }}
-            >
+                bgcolor: 'inherit'
+              }}>
               <MenuOutlined />
             </Avatar>
           }
           onClick={toggleDrawer}
           sx={{
-            display: isMediumScreen || isSmallScreen ? 'block' : 'none',
+            display: isMediumScreen || isSmallScreen ? 'block' : 'none'
           }}
           aria-label="icon"
           color="inherit"
@@ -196,14 +193,9 @@ const Header = () => {
           timeout={{
             appear: 1000,
             enter: 300,
-            exit: 1000,
-          }}
-        >
-          <MobileHeader
-            open={showMobileHeader}
-            menu={menu}
-            toggleDrawer={toggleDrawer}
-          />
+            exit: 1000
+          }}>
+          <MobileHeader open={showMobileHeader} menu={menu} toggleDrawer={toggleDrawer} />
         </Transition>
       </Tabs>
     </Headroom>

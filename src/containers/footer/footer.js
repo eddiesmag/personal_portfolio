@@ -15,7 +15,7 @@ const Footer = () => {
 
   const { ref, inView } = useInView({
     threshold: 0,
-    triggerOnce: false,
+    triggerOnce: false
   });
 
   useEffect(() => {
@@ -29,20 +29,20 @@ const Footer = () => {
       return {
         color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.2,
-        fontSize: '0.8rem',
+        fontSize: '0.8rem'
       };
     }
     if (isMediumScreen) {
       return {
         color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.5,
-        fontSize: '1rem',
+        fontSize: '1rem'
       };
     }
     return {
       color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
       lineHeight: 1.6,
-      fontSize: '1.1rem',
+      fontSize: '1.1rem'
     };
   };
   return (
@@ -53,18 +53,16 @@ const Footer = () => {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        pb: 3,
-      }}
-    >
+        pb: 3
+      }}>
       <Collapse in={isInView} timeout={1000}>
         <Typography
           variant="subTitle1"
           sx={{
             ...getSubTitleStyles(),
             fontWeight: 'light',
-            textTransform: 'capitalize',
-          }}
-        >
+            textTransform: 'capitalize'
+          }}>
           all rights reserved
         </Typography>
       </Collapse>

@@ -5,12 +5,7 @@ import './button.scss';
 
 const ButtonComp = ({ text, href, newTab, btnSize }) => {
   return (
-    <Button
-      variant="contained"
-      href={href}
-      target={newTab && '_blank'}
-      size={btnSize}
-    >
+    <Button variant="contained" href={href} target={newTab && '_blank'} size={btnSize}>
       {text}
     </Button>
   );

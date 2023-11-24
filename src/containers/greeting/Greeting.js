@@ -20,19 +20,19 @@ const Greeting = () => {
       return {
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '1.7rem',
-        lineHeight: 1,
+        lineHeight: 1
       };
     } else if (isMediumScreen) {
       return {
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '2rem',
-        lineHeight: 1,
+        lineHeight: 1
       };
     } else {
       return {
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '3rem',
-        lineHeight: 1.1,
+        lineHeight: 1.1
       };
     }
   };
@@ -42,20 +42,20 @@ const Greeting = () => {
       return {
         color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.2,
-        fontSize: '0.8rem',
+        fontSize: '0.8rem'
       };
     }
     if (isMediumScreen) {
       return {
         color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.5,
-        fontSize: '1rem',
+        fontSize: '1rem'
       };
     }
     return {
       color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
       lineHeight: 1.6,
-      fontSize: '1.1rem',
+      fontSize: '1.1rem'
     };
   };
 
@@ -63,12 +63,12 @@ const Greeting = () => {
     if (isSmallScreen || isMediumScreen) {
       return {
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
       };
     }
     return {
       justifyContent: 'flex-start',
-      alignItems: 'center',
+      alignItems: 'center'
     };
   };
 
@@ -87,18 +87,16 @@ const Greeting = () => {
         p={2}
         sx={{
           justifyContent: 'center',
-          alignItems: 'flex-start',
-        }}
-      >
+          alignItems: 'flex-start'
+        }}>
         <Grid
           item
           lg={6}
           md={6}
           xs={12}
           sx={{
-            textAlign: isSmallScreen || isMediumScreen ? 'center' : 'justify',
-          }}
-        >
+            textAlign: isSmallScreen || isMediumScreen ? 'center' : 'justify'
+          }}>
           <div id="introduction">
             <Typography
               variant="h3"
@@ -106,11 +104,10 @@ const Greeting = () => {
               className="title"
               sx={{
                 ...getTitleStyles(),
-                animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
+                animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`
               }}
               ml={isSmallScreen || isMediumScreen ? 'auto' : 5}
-              pt={3}
-            >
+              pt={3}>
               {introduction.title}{' '}
               <Box className="wave-emoji" component="span">
                 {emoji('👋')}
@@ -122,11 +119,10 @@ const Greeting = () => {
               gutterBottom
               sx={{
                 ...getSubTitleStyles(),
-                animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
+                animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`
               }}
               ml={isSmallScreen || isMediumScreen ? 'auto' : 5}
-              mt={5}
-            >
+              mt={5}>
               {introduction.subTitle}
             </Typography>
 
@@ -135,12 +131,11 @@ const Greeting = () => {
               gutterBottom
               sx={{
                 ...getSubTitleStyles(),
-                animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
+                animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`
               }}
               ml={isSmallScreen || isMediumScreen ? 'auto' : 5}
               mt={5}
-              mb={2}
-            >
+              mb={2}>
               Get in touch
             </Typography>
 
@@ -156,9 +151,8 @@ const Greeting = () => {
               item
               sx={{
                 ...getButtonStyles(),
-                animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`,
-              }}
-            >
+                animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`
+              }}>
               <Grid item lg={6} md={6} xs={6} mt={2}>
                 <ButtonComp text="Contact Me" href="#contact" btnSize="large" />
               </Grid>
@@ -185,9 +179,8 @@ const Greeting = () => {
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
+            alignItems: 'center'
+          }}>
           <Box component="div" className="introduction-image">
             <DisplayLottie animationData={introduction.animation} />
           </Box>

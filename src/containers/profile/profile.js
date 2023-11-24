@@ -2,9 +2,7 @@ import React, { lazy, Suspense, useEffect, useState } from 'react';
 import Loading from '../../components/loading/loading';
 import { gitHubData } from '../../portfolio';
 
-const UserProfileCard = lazy(() =>
-  import('../../components/profile/userProfileCard')
-);
+const UserProfileCard = lazy(() => import('../../components/profile/userProfileCard'));
 
 const FailedLoading = () => null;
 const renderLoading = () => <Loading />;

@@ -13,9 +13,9 @@ const useStyles = makeStyles({
     color: '#fff',
     '&:hover, &.Mui-focusVisible': {
       transition: '0.3s',
-      backgroundColor: 'rgb(0, 75, 196 )',
-    },
-  },
+      backgroundColor: 'rgb(0, 75, 196 )'
+    }
+  }
 });
 const ScrollTop = () => {
   const [show, setShow] = useState(false);

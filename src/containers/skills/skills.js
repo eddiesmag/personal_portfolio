@@ -14,7 +14,7 @@ const Skills = () => {
 
   const [ref, inView] = useInView({
     threshold: 0,
-    triggerOnce: true,
+    triggerOnce: true
   });
 
   const [isVisible, setIsVisible] = useState(false);
@@ -30,19 +30,19 @@ const Skills = () => {
       return {
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '1.7rem',
-        lineHeight: 1,
+        lineHeight: 1
       };
     } else if (isMediumScreen) {
       return {
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '2rem',
-        lineHeight: 1,
+        lineHeight: 1
       };
     } else {
       return {
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '3rem',
-        lineHeight: 1.1,
+        lineHeight: 1.1
       };
     }
   };
@@ -52,20 +52,20 @@ const Skills = () => {
       return {
         color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.2,
-        fontSize: '0.8rem',
+        fontSize: '0.8rem'
       };
     }
     if (isMediumScreen) {
       return {
         color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
         lineHeight: 1.5,
-        fontSize: '1rem',
+        fontSize: '1rem'
       };
     }
     return {
       color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
       lineHeight: 1.6,
-      fontSize: '1.1rem',
+      fontSize: '1.1rem'
     };
   };
 
@@ -83,40 +83,35 @@ const Skills = () => {
         m={0}
         sx={{
           justifyContent: 'center',
-          alignItems: 'flex-start',
-        }}
-      >
+          alignItems: 'flex-start'
+        }}>
         <Fade
           in={isVisible}
           timeout={isVisible ? 1000 : 0}
-          style={{ transitionDelay: isVisible ? '200ms' : '500ms', animation }}
-        >
+          style={{ transitionDelay: isVisible ? '200ms' : '500ms', animation }}>
           <Grid
             item
             lg={6}
             md={6}
             xs={12}
             sx={{
-              order: isSmallScreen || isMediumScreen ? 2 : null,
-            }}
-          >
+              order: isSmallScreen || isMediumScreen ? 2 : null
+            }}>
             <DisplayLottie animationData={skillsSection.animation} />
           </Grid>
         </Fade>
         <Fade
           in={isVisible}
           timeout={isVisible ? 1000 : 0}
-          style={{ transitionDelay: isVisible ? '200ms' : '500ms', animation }}
-        >
+          style={{ transitionDelay: isVisible ? '200ms' : '500ms', animation }}>
           <Grid
             item
             lg={6}
             md={6}
             xs={12}
             sx={{
-              textAlign: 'justify',
-            }}
-          >
+              textAlign: 'justify'
+            }}>
             <Typography variant="h3" gutterBottom sx={{ ...getTitleStyles() }}>
               {skillsSection.title}
             </Typography>
@@ -126,11 +121,10 @@ const Skills = () => {
               gutterBottom
               sx={{
                 ...getSubTitleStyles(),
-                color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+                color: isDark ? 'inherit' : 'rgb(120, 131, 155)'
               }}
               mt={5}
-              mb={5}
-            >
+              mb={5}>
               {skillsSection.subTitle}
             </Typography>
 
@@ -143,10 +137,9 @@ const Skills = () => {
                 sx={{
                   ...getSubTitleStyles(),
                   color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-                  display: 'block',
+                  display: 'block'
                 }}
-                key={i}
-              >
+                key={i}>
                 {skill}
               </Typography>
             ))}

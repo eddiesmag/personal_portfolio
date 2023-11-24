@@ -24,16 +24,14 @@ const SoftwareSkills = () => {
       direction="row"
       spacing={5}
       sx={{ justifyContent: 'center', alignItems: 'center' }}
-      mb={5}
-    >
+      mb={5}>
       {skillsSection.skillSet.map((skill, i) => (
         <Grid
           item
           key={i}
           sx={{
-            textAlign: 'center',
-          }}
-        >
+            textAlign: 'center'
+          }}>
           <FontAwesomeIcon
             icon={skill.fontAwesomeClassName}
             size={getIconStyles()}
@@ -43,8 +41,7 @@ const SoftwareSkills = () => {
             variant="caption"
             gutterBottom
             sx={{ display: 'block' }}
-            className="skill-caption"
-          >
+            className="skill-caption">
             {skill.skillsName}
           </Typography>
         </Grid>

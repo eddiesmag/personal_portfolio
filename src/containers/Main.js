@@ -20,13 +20,9 @@ const Main = () => {
    * useMediaQuery('(prefers-color-scheme: dark)')
    */
   const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
-  const [isDark, setIsDark] = useLocalStorage(
-    'isDark',
-    prefersDarkMode.matches
-  );
+  const [isDark, setIsDark] = useLocalStorage('isDark', prefersDarkMode.matches);
 
-  const [isShowingSplashAnimation, setIsShowingSplashAnimation] =
-    useState(true);
+  const [isShowingSplashAnimation, setIsShowingSplashAnimation] = useState(true);
 
   useEffect(() => {
     if (splashScreen.anabled) {

@@ -1,13 +1,5 @@
 import React, { lazy, Suspense, useEffect, useState, useContext } from 'react';
-import {
-  Chip,
-  Fade,
-  Paper,
-  Stack,
-  styled,
-  Typography,
-  useMediaQuery,
-} from '@mui/material';
+import { Chip, Fade, Paper, Stack, styled, Typography, useMediaQuery } from '@mui/material';
 import { useInView } from 'react-intersection-observer';
 import { Masonry } from '@mui/lab';
 import StyleContext from '../../contexts/StyleContext';
@@ -15,19 +7,17 @@ import Loading from '../../components/loading/loading';
 import { gitHubData } from '../../portfolio';
 import './styles/projects.scss';
 
-const GithubRepoCard = lazy(() =>
-  import('../../components/projects/githubRepoCard')
-);
+const GithubRepoCard = lazy(() => import('../../components/projects/githubRepoCard'));
 
 const Item = styled(Paper)(() => ({
   color: 'inherit',
-  backgroundColor: 'inherit',
+  backgroundColor: 'inherit'
 }));
 
 const StyledMasonry = styled(Masonry)(() => ({
   color: 'inherit',
   paddingLeft: '3rem',
-  paddingRight: '1.8rem',
+  paddingRight: '1.8rem'
 }));
 
 // eslint-disable-next-line no-unused-vars
@@ -38,8 +28,8 @@ const StyledChip = styled(Chip)(({ theme }) => ({
   '&.MuiChip-outlined': {
     backgroundColor: 'inherit',
     color: 'inherit',
-    borderColor: 'rgb(64, 123, 254)',
-  },
+    borderColor: 'rgb(64, 123, 254)'
+  }
 }));
 
 const FailedLoading = () => null;
@@ -62,7 +52,7 @@ const Projects = () => {
   const [ref, inView] = useInView({
     threshold: 0,
     delay: 1000,
-    triggerOnce: true,
+    triggerOnce: true
   });
   useEffect(() => {
     const fetchGithubPinnedRepos = () => {
@@ -123,17 +113,13 @@ const Projects = () => {
       setRepoData(oldGitHubProjects);
     }
     if (index === 1) {
-      setRepoData(
-        oldGitHubProjects.filter((repo) => repo.stack === 'full stack')
-      );
+      setRepoData(oldGitHubProjects.filter((repo) => repo.stack === 'full stack'));
     }
     if (index === 2) {
       setRepoData(oldGitHubProjects.filter((repo) => repo.stack === 'backend'));
     }
     if (index === 3) {
-      setRepoData(
-        oldGitHubProjects.filter((repo) => repo.stack === 'frontend')
-      );
+      setRepoData(oldGitHubProjects.filter((repo) => repo.stack === 'frontend'));
     }
   };
 
@@ -142,19 +128,19 @@ const Projects = () => {
       return {
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '1.7rem',
-        lineHeight: 1,
+        lineHeight: 1
       };
     } else if (isMediumScreen) {
       return {
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '2rem',
-        lineHeight: 1,
+        lineHeight: 1
       };
     } else {
       return {
         color: isDark ? '#fff' : 'rgb(35, 39, 47)',
         fontSize: '3rem',
-        lineHeight: 1.1,
+        lineHeight: 1.1
       };
     }
   };
@@ -163,20 +149,20 @@ const Projects = () => {
       return {
         color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
         lineHeight: 1.2,
-        fontSize: '0.8rem',
+        fontSize: '0.8rem'
       };
     }
     if (isMediumScreen) {
       return {
         color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
         lineHeight: 1.5,
-        fontSize: '1rem',
+        fontSize: '1rem'
       };
     }
     return {
       color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
       lineHeight: 1.6,
-      fontSize: '1.1rem',
+      fontSize: '1.1rem'
     };
   };
 
@@ -189,11 +175,7 @@ const Projects = () => {
   ) {
     return (
       <Suspense fallback={renderLoading()}>
-        <div
-          id="openSource"
-          ref={ref}
-          style={{ display: 'flex', flexDirection: 'column' }}
-        >
+        <div id="openSource" ref={ref} style={{ display: 'flex', flexDirection: 'column' }}>
           <Typography variant="h3" sx={{ ...getTitleStyles() }} pl={5} pt={5}>
             Open Source Projects
           </Typography>
@@ -203,8 +185,7 @@ const Projects = () => {
             justifyContent="center"
             alignItems="center"
             pb={5}
-            pt={5}
-          >
+            pt={5}>
             {chipLabels.map((label, i) => (
               <StyledChip
                 key={label}
@@ -222,15 +203,10 @@ const Projects = () => {
           </Stack>
 
           <Fade in={isInView} timeout={1000}>
-            <StyledMasonry
-              columns={{ xs: 1, sm: 2, md: 3 }}
-              spacing={{ xs: 1, sm: 2, md: 3 }}
-            >
+            <StyledMasonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={{ xs: 1, sm: 2, md: 3 }}>
               {gitHubProjects.map((repository, i) => {
                 if (!repository) {
-                  console.error(
-                    `Github object for repository number: ${i} is undefined`
-                  );
+                  console.error(`Github object for repository number: ${i} is undefined`);
                 }
                 return (
                   <Item key={repository.node.id}>

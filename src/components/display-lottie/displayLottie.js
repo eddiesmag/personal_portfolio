@@ -7,7 +7,7 @@ const DisplayLottie = ({ animationData }) => {
   const options = {
     loop: true,
     autoplay: true,
-    animationData,
+    animationData
   };
   return (
     <Suspense>

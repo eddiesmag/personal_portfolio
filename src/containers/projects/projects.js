@@ -30,6 +30,7 @@ const StyledMasonry = styled(Masonry)(() => ({
   paddingRight: '1.8rem',
 }));
 
+// eslint-disable-next-line no-unused-vars
 const StyledChip = styled(Chip)(({ theme }) => ({
   color: 'inherit',
   backgroundColor: 'rgb(64, 123, 254)',

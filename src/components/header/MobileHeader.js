@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Close } from '@mui/icons-material';
-import { Box, Drawer, Tab, useMediaQuery } from '@mui/material';
+import { Avatar, Box, Drawer, Tab, useMediaQuery } from '@mui/material';
 import StyleContext from '../../contexts/StyleContext';
 import './styles/Header.scss';
 
@@ -30,7 +30,6 @@ const MobileHeader = ({ menu, open, toggleDrawer }) => {
     setSelectedTab(index);
     toggleDrawer();
   };
-
   return (
     <Drawer
       anchor={drawer}
@@ -39,12 +38,32 @@ const MobileHeader = ({ menu, open, toggleDrawer }) => {
       sx={{
         '& .MuiPaper-root': {
           width: '100%',
-          backgroundColor: isDark ? 'rgb(35, 39, 47)' : '#FFF',
-          color: isDark ? '#FFF' : 'rgb(35, 39, 47)'
+          backgroundColor: isDark ? 'secondary.main' : 'common.white',
+          color: isDark ? 'secondary.contrastText' : 'secondary.main'
         }
       }}>
       <Box className="mobile_menu_wrapper">
-        <Tab icon={<Close />} aria-label="icon" color="inherit" onClick={toggleDrawer} />
+        <Tab
+          icon={
+            <Avatar
+              variant="circular"
+              sx={{
+                boxShadow: 3,
+                color: 'primary.main',
+                bgcolor: 'inherit',
+                '&:hover': {
+                  boxShadow: 5,
+                  color: 'primary.light',
+                  bgcolor: isDark ? 'secondary.light' : 'common.white'
+                }
+              }}>
+              <Close />
+            </Avatar>
+          }
+          aria-label="icon"
+          color="inherit"
+          onClick={toggleDrawer}
+        />
         <Box className="mobile_menu_list">
           <ul className="ls-none">
             {menu.map((menu, i) => (
@@ -63,7 +82,7 @@ const MobileHeader = ({ menu, open, toggleDrawer }) => {
                     justifyContent: 'flex-start',
                     alignContent: 'center',
                     minWidth: '100%',
-                    color: selectedTab === i ? 'rgb(64, 123, 254)' : 'inherit'
+                    color: selectedTab === i ? 'primary.main' : 'inherit'
                   }}
                 />
               </li>

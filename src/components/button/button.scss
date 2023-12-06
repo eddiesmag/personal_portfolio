@@ -1,9 +1,0 @@
-@import '../../globalColor';
-.MuiButton-root {
-    background-color: $btnColor !important;
-}
-
-.MuiButton-root:hover {
-    transition: 0.3s;
-    background-color:$btnHoverColor !important;
-}

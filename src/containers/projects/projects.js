@@ -20,23 +20,11 @@ const StyledMasonry = styled(Masonry)(() => ({
   paddingRight: '1.8rem'
 }));
 
-// eslint-disable-next-line no-unused-vars
-const StyledChip = styled(Chip)(({ theme }) => ({
-  color: 'inherit',
-  backgroundColor: 'rgb(64, 123, 254)',
-  textTransform: 'uppercase',
-  '&.MuiChip-outlined': {
-    backgroundColor: 'inherit',
-    color: 'inherit',
-    borderColor: 'rgb(64, 123, 254)'
-  }
-}));
-
 const FailedLoading = () => null;
 const renderLoading = () => <Loading />;
 
 const Projects = () => {
-  const { isDark, theme } = useContext(StyleContext);
+  const { isDark } = useContext(StyleContext);
 
   const [gitHubProjects, setGitHubProjects] = useState([]);
   const [oldGitHubProjects, setOldGitHubProjects] = useState([]);
@@ -160,7 +148,7 @@ const Projects = () => {
       };
     }
     return {
-      color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
+      color: isDark ? 'inherit' : 'secondary.light',
       lineHeight: 1.6,
       fontSize: '1.1rem'
     };
@@ -187,17 +175,35 @@ const Projects = () => {
             pb={5}
             pt={5}>
             {chipLabels.map((label, i) => (
-              <StyledChip
+              <Chip
                 key={label}
                 size={isSmallScreen ? 'small' : 'medium'}
                 label={
-                  <Typography variant="subtitle1" sx={{ ...getChipStyles() }}>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{
+                      ...getChipStyles(),
+                      textTransform: 'uppercase',
+                      color: 'inherit'
+                    }}>
                     {label}
                   </Typography>
                 }
                 onClick={() => handleOnClick(i)}
                 variant={chipSelected === i ? 'outlined' : 'filled'}
-                theme={theme}
+                sx={{
+                  color: 'secondary.contrastText',
+                  bgcolor: 'primary.main',
+                  '&.MuiChip-outlined': {
+                    bgcolor: 'inherit',
+                    color: isDark ? 'secondary.contrastText' : 'secondary.main',
+                    borderColor: isDark ? 'secondary.contrastText' : 'secondary.main',
+                    '&:hover': {
+                      color: 'secondary.contrastText',
+                      borderColor: 'primary.dark'
+                    }
+                  }
+                }}
               />
             ))}
           </Stack>

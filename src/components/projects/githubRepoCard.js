@@ -92,7 +92,7 @@ const GithubRepoCard = ({ repository }) => {
       sx={{
         maxWidh: 345,
         backgroundColor: 'inherit',
-        color: isDark ? '#FFF' : 'inherit'
+        color: isDark ? 'secondary.contrastText' : 'secondary.main'
       }}
       variant="elevation">
       <CardActionArea id={id} onClick={() => openModal()}>

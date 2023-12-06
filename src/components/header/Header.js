@@ -96,7 +96,7 @@ const Header = () => {
       };
     } else {
       return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+        color: 'inherit',
         textAlign: 'justify',
         lineHeight: 1.5,
         fontSize: '1rem'
@@ -121,7 +121,7 @@ const Header = () => {
           },
           '& .MuiTabs-indicator': {
             display: isMediumScreen || isSmallScreen ? 'none' : 'block',
-            bgcolor: 'rgb(64, 123, 254)'
+            bgcolor: 'primary.main'
           }
         }}
         centered={false}
@@ -159,7 +159,7 @@ const Header = () => {
             sx={{
               ...getTabStyles(),
               display: isSmallScreen || isMediumScreen ? 'none' : 'block',
-              color: tabValue === ++i ? 'rgb(64, 123, 254)' : 'inherit'
+              color: tabValue === ++i ? 'primary.main' : 'inherit'
             }}
           />
         ))}
@@ -171,9 +171,14 @@ const Header = () => {
             <Avatar
               variant="circular"
               sx={{
-                boxShadow: 6,
-                color: 'rgb(64, 123, 254)',
-                bgcolor: 'inherit'
+                boxShadow: 3,
+                color: 'primary.main',
+                bgcolor: 'inherit',
+                '&:hover': {
+                  boxShadow: 5,
+                  color: 'primary.light',
+                  bgcolor: isDark ? 'secondary.light' : 'common.white'
+                }
               }}>
               <MenuOutlined />
             </Avatar>

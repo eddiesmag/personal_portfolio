@@ -54,7 +54,7 @@ const GitHubContactCard = ({ data }) => {
             alignItems: 'center',
             mb: 2
           }}>
-          <Avatar sx={{ bgcolor: 'rgb(64, 123, 254)', mr: 3 }}>
+          <Avatar sx={{ bgcolor: 'primary.main', mr: 3 }}>
             <LocationOnOutlined />
           </Avatar>
           <Box
@@ -82,7 +82,7 @@ const GitHubContactCard = ({ data }) => {
           alignItems: 'center',
           mb: 2
         }}>
-        <Avatar sx={{ bgcolor: 'rgb(64, 123, 254)', mr: 3 }}>
+        <Avatar sx={{ bgcolor: 'primary.main', mr: 3 }}>
           <EmailOutlined />
         </Avatar>
         <Box
@@ -109,7 +109,7 @@ const GitHubContactCard = ({ data }) => {
           alignItems: 'center',
           mb: 2
         }}>
-        <Avatar sx={{ bgcolor: 'rgb(64, 123, 254)', mr: 3 }}>
+        <Avatar sx={{ bgcolor: 'primary.main', mr: 3 }}>
           <PhoneOutlined />
         </Avatar>
         <Box
@@ -136,7 +136,7 @@ const GitHubContactCard = ({ data }) => {
           alignItems: 'center',
           mb: 2
         }}>
-        <Avatar sx={{ bgcolor: 'rgb(64, 123, 254)', mr: 3 }}>
+        <Avatar sx={{ bgcolor: 'primary.main', mr: 3 }}>
           <WorkOutline />
         </Avatar>
         <Box

@@ -9,11 +9,11 @@ const useStyles = makeStyles({
     position: 'fixed',
     right: '3%',
     bottom: '2vh',
-    backgroundColor: 'rgb(64, 123, 254)',
+    backgroundColor: '#0066FF',
     color: '#fff',
     '&:hover, &.Mui-focusVisible': {
       transition: '0.3s',
-      backgroundColor: 'rgb(0, 75, 196 )'
+      backgroundColor: '#0047b2'
     }
   }
 });

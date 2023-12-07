@@ -1,6 +1,6 @@
-import React from 'react';
-import { Box, CircularProgress } from '@mui/material';
 import styled from '@emotion/styled';
+import { Box, CircularProgress } from '@mui/material';
+import React from 'react';
 
 const StyledCircularProgress = styled(CircularProgress)(() => ({}));
 const Loading = () => {

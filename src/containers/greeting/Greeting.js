@@ -1,76 +1,24 @@
-import React, { useContext } from 'react';
 import { Box, Fade, Grid, Typography, useMediaQuery } from '@mui/material';
-import StyleContext from '../../contexts/StyleContext';
-import { introduction } from '../../portfolio';
+import React from 'react';
 import emoji from 'react-easy-emoji';
-import SocialMedia from '../../components/socialMedia/socialMedia';
+
+import { fadeInLeft, fadeInRight } from './styles/aninations';
 import ButtonComp from '../../components/button/Button';
 import DisplayLottie from '../../components/display-lottie/displayLottie';
-import { fadeInLeft, fadeInRight } from './styles/aninations';
+import SocialMedia from '../../components/socialMedia/socialMedia';
+import { useResponsiveStyles } from '../../hooks/useResponsiveStyles';
+import { introduction } from '../../portfolio';
 import './styles/greeting.scss';
 
 const Greeting = () => {
-  const { isDark } = useContext(StyleContext);
-
   const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
   const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
 
-  const getTitleStyles = () => {
-    if (isSmallScreen) {
-      return {
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
-        fontSize: '1.7rem',
-        lineHeight: 1
-      };
-    } else if (isMediumScreen) {
-      return {
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
-        fontSize: '2rem',
-        lineHeight: 1
-      };
-    } else {
-      return {
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
-        fontSize: '3rem',
-        lineHeight: 1.1
-      };
-    }
-  };
+  const { getTitleStyles, getSubTitleStyles, getButtonStyles } = useResponsiveStyles();
 
-  const getSubTitleStyles = () => {
-    if (isSmallScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        lineHeight: 1.2,
-        fontSize: '0.8rem'
-      };
-    }
-    if (isMediumScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        lineHeight: 1.5,
-        fontSize: '1rem'
-      };
-    }
-    return {
-      color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-      lineHeight: 1.6,
-      fontSize: '1.1rem'
-    };
-  };
-
-  const getButtonStyles = () => {
-    if (isSmallScreen || isMediumScreen) {
-      return {
-        justifyContent: 'center',
-        alignItems: 'center'
-      };
-    }
-    return {
-      justifyContent: 'flex-start',
-      alignItems: 'center'
-    };
-  };
+  const titleStyles = getTitleStyles();
+  const subTitleStyles = getSubTitleStyles();
+  const buttonStyles = getButtonStyles();
 
   if (!introduction.displayIntroduction) {
     return null;
@@ -103,7 +51,7 @@ const Greeting = () => {
               gutterBottom
               className="title"
               sx={{
-                ...getTitleStyles(),
+                ...titleStyles,
                 animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`
               }}
               ml={isSmallScreen || isMediumScreen ? 'auto' : 5}
@@ -118,7 +66,7 @@ const Greeting = () => {
               variant="subtitle1"
               gutterBottom
               sx={{
-                ...getSubTitleStyles(),
+                ...subTitleStyles,
                 animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`
               }}
               ml={isSmallScreen || isMediumScreen ? 'auto' : 5}
@@ -150,7 +98,7 @@ const Greeting = () => {
               lg={12}
               item
               sx={{
-                ...getButtonStyles(),
+                ...buttonStyles,
                 animation: `${fadeInLeft} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`
               }}>
               <Grid item lg={6} md={6} xs={6} mt={2}>

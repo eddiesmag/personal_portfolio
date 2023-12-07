@@ -1,6 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react';
 import { Close } from '@mui/icons-material';
 import { Avatar, Box, Drawer, Tab, useMediaQuery } from '@mui/material';
+import React, { useState, useContext, useEffect } from 'react';
+
 import StyleContext from '../../contexts/StyleContext';
 import './styles/Header.scss';
 

@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
+
+import ScrollTopButton from './ScrollTop/scrollTop';
+import Footer from './footer/footer';
+import Greeting from './greeting/Greeting';
+import Profile from './profile/profile';
+import Projects from './projects/projects';
+import Skills from './skills/skills';
+import StackProgress from './skillsProgress/skillsProgress';
+import SplashScreen from './splash-screen/splashScreen';
+import WorkExperience from './workExperiences/workExperiences';
+import Header from '../components/header/Header';
 import { StyleProvider } from '../contexts/StyleContext';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { splashScreen } from '../portfolio';
-import SplashScreen from './splash-screen/splashScreen';
-import Header from '../components/header/Header';
-import Greeting from './greeting/Greeting';
-import Skills from './skills/skills';
-import StackProgress from './skillsProgress/skillsProgress';
-import WorkExperience from './workExperiences/workExperiences';
-import Projects from './projects/projects';
-import Profile from './profile/profile';
-import ScrollTopButton from './ScrollTop/scrollTop';
-import Footer from './footer/footer';
 import './Main.scss';
 
 const Main = () => {

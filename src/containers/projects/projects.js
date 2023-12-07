@@ -1,9 +1,11 @@
-import React, { lazy, Suspense, useEffect, useState, useContext } from 'react';
-import { Chip, Fade, Paper, Stack, styled, Typography, useMediaQuery } from '@mui/material';
-import { useInView } from 'react-intersection-observer';
 import { Masonry } from '@mui/lab';
-import StyleContext from '../../contexts/StyleContext';
+import { Chip, Fade, Paper, Stack, styled, Typography, useMediaQuery } from '@mui/material';
+import React, { lazy, Suspense, useEffect, useState, useContext } from 'react';
+import { useInView } from 'react-intersection-observer';
+
 import Loading from '../../components/loading/loading';
+import StyleContext from '../../contexts/StyleContext';
+import { useResponsiveStyles } from '../../hooks/useResponsiveStyles';
 import { gitHubData } from '../../portfolio';
 import './styles/projects.scss';
 
@@ -35,7 +37,6 @@ const Projects = () => {
   const chipLabels = ['all', 'fullstack', 'backend', 'frontend'];
 
   const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
-  const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
 
   const [ref, inView] = useInView({
     threshold: 0,
@@ -111,48 +112,10 @@ const Projects = () => {
     }
   };
 
-  const getTitleStyles = () => {
-    if (isSmallScreen) {
-      return {
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
-        fontSize: '1.7rem',
-        lineHeight: 1
-      };
-    } else if (isMediumScreen) {
-      return {
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
-        fontSize: '2rem',
-        lineHeight: 1
-      };
-    } else {
-      return {
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
-        fontSize: '3rem',
-        lineHeight: 1.1
-      };
-    }
-  };
-  const getChipStyles = () => {
-    if (isSmallScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
-        lineHeight: 1.2,
-        fontSize: '0.8rem'
-      };
-    }
-    if (isMediumScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(35, 39, 47)',
-        lineHeight: 1.5,
-        fontSize: '1rem'
-      };
-    }
-    return {
-      color: isDark ? 'inherit' : 'secondary.light',
-      lineHeight: 1.6,
-      fontSize: '1.1rem'
-    };
-  };
+  const { getTitleStyles, getChipStyles } = useResponsiveStyles();
+
+  const titleStyles = getTitleStyles();
+  const chipStyles = getChipStyles();
 
   if (
     !(
@@ -164,7 +127,7 @@ const Projects = () => {
     return (
       <Suspense fallback={renderLoading()}>
         <div id="openSource" ref={ref} style={{ display: 'flex', flexDirection: 'column' }}>
-          <Typography variant="h3" sx={{ ...getTitleStyles() }} pl={5} pt={5}>
+          <Typography variant="h3" sx={{ ...titleStyles }} pl={5} pt={5}>
             Open Source Projects
           </Typography>
           <Stack
@@ -182,7 +145,7 @@ const Projects = () => {
                   <Typography
                     variant="subtitle1"
                     sx={{
-                      ...getChipStyles(),
+                      ...chipStyles,
                       textTransform: 'uppercase',
                       color: 'inherit'
                     }}>

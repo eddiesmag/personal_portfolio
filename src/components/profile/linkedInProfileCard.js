@@ -10,6 +10,7 @@ import {
   useMediaQuery
 } from '@mui/material';
 import React, { useContext, useState } from 'react';
+
 import StyleContext from '../../contexts/StyleContext';
 import { socialMediaLinks } from '../../portfolio';
 
@@ -71,7 +72,7 @@ const LinkedInProfileCard = ({ data }) => {
   return (
     <Card
       sx={{
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
+        color: isDark ? '#fff' : '#23272f',
         minWidth: !(isMediumScreen || isSmallScreen) ? 300 : 100,
         bgcolor: isDark ? 'inherit' : '#fff'
       }}>

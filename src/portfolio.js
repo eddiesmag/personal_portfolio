@@ -1,7 +1,3 @@
-import emoji from 'react-easy-emoji';
-import splashAnimation from './assets/lottie/splashAnimation.json';
-import manWaving from './assets/lottie/manWaving.json';
-import manWorking from './assets/lottie/manWorking.json';
 import {
   faJs,
   faReact,
@@ -13,6 +9,11 @@ import {
   faSass
 } from '@fortawesome/free-brands-svg-icons';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
+import emoji from 'react-easy-emoji';
+
+import manWaving from './assets/lottie/manWaving.json';
+import manWorking from './assets/lottie/manWorking.json';
+import splashAnimation from './assets/lottie/splashAnimation.json';
 
 // splash screen
 const splashScreen = {
@@ -123,11 +124,11 @@ const techStack = {
     },
     {
       stack: 'Database',
-      progressPercentage: 80
+      progressPercentage: 85
     },
     {
       stack: 'Client-side (Frontend/Design)',
-      progressPercentage: 70
+      progressPercentage: 80
     }
   ]
 };

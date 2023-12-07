@@ -1,14 +1,14 @@
-import React, { useContext, useState, useEffect } from 'react';
 import { Box, Fade, Grid, Typography, useMediaQuery } from '@mui/material';
+import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import StyleContext from '../../contexts/StyleContext';
+
 import GitHubContactCard from './gitHubContactCard';
 import LinkedInProfileCard from './linkedInProfileCard';
-import SocialMedia from '../socialMedia/socialMedia';
+import { useResponsiveStyles } from '../../hooks/useResponsiveStyles';
 import { openToWork } from '../../portfolio';
+import SocialMedia from '../socialMedia/socialMedia';
 
 const UserProfileCard = ({ data }) => {
-  const { isDark } = useContext(StyleContext);
   const [isInView, setIsInView] = useState(false);
 
   const { ref, inView } = useInView({
@@ -19,6 +19,9 @@ const UserProfileCard = ({ data }) => {
 
   const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
   const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
+
+  const { getTitleStyles } = useResponsiveStyles();
+  const titleStyles = getTitleStyles();
 
   useEffect(() => {
     if (inView) {
@@ -31,28 +34,6 @@ const UserProfileCard = ({ data }) => {
   } else {
     data.hireable = 'No';
   }
-
-  const getTitleStyles = () => {
-    if (isSmallScreen) {
-      return {
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
-        fontSize: '1.7rem',
-        lineHeight: 1
-      };
-    } else if (isMediumScreen) {
-      return {
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
-        fontSize: '2rem',
-        lineHeight: 1
-      };
-    } else {
-      return {
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
-        fontSize: '3rem',
-        lineHeight: 1.1
-      };
-    }
-  };
 
   return (
     <Box
@@ -68,7 +49,7 @@ const UserProfileCard = ({ data }) => {
         justifyContent: 'center',
         alignItems: 'flex-start'
       }}>
-      <Typography variant="h3" gutterBottom sx={{ ...getTitleStyles() }}>
+      <Typography variant="h3" gutterBottom sx={{ ...titleStyles }}>
         Reachout to me!
       </Typography>
       <Fade in={isInView} timeout={1000}>

@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
 import { Button } from '@mui/material';
+import React, { useContext } from 'react';
+
 import StyleContext from '../../contexts/StyleContext';
 
 const ButtonComp = ({ text, href, newTab, btnSize }) => {

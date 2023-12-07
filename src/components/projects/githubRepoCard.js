@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import {
   Avatar,
   Box,
@@ -9,70 +8,32 @@ import {
   CardHeader,
   Divider,
   SvgIcon,
-  Typography,
-  useMediaQuery
+  Typography
 } from '@mui/material';
-import { useContext } from 'react';
-import StyleContext from '../../contexts/StyleContext';
-import formatFileSizeDisplay from '../../utils/utils';
+import React, { useState, useContext } from 'react';
+
 import GithubRepoModal from './githubRepoModal';
+import StyleContext from '../../contexts/StyleContext';
+import { useResponsiveStyles } from '../../hooks/useResponsiveStyles';
+import formatFileSizeDisplay from '../../utils/utils';
+
 import './styles/githubRepoCard.scss';
 
 const GithubRepoCard = ({ repository }) => {
   const { isDark } = useContext(StyleContext);
 
-  const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
-  const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
+  const { getBodyStyles, getSubTitleStyles } = useResponsiveStyles();
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const bodyStyles = getBodyStyles();
+  const subTitleStyles = getSubTitleStyles();
 
   const { name, id, url, description, diskUsage, forkCount, primaryLanguage, stargazers } =
     repository.node;
 
-  const getBodyStyles = () => {
-    if (isSmallScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        textAlign: 'justify',
-        lineHeight: 1.1,
-        fontSize: '0.7rem'
-      };
-    } else if (isMediumScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        textAlign: 'justify',
-        lineHeight: 1.2,
-        fontSize: '0.8rem'
-      };
-    } else {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        textAlign: 'justify',
-        lineHeight: 1.5,
-        fontSize: '1rem'
-      };
-    }
-  };
-
-  const getSubTitleStyles = () => {
-    if (isSmallScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        lineHeight: 1.2,
-        fontSize: '0.8rem'
-      };
-    }
-    if (isMediumScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        lineHeight: 1.5,
-        fontSize: '1rem'
-      };
-    }
-    return {
-      color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-      lineHeight: 1.6,
-      fontSize: '1.1rem'
-    };
-  };
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
 
   const openRepoInNewTab = (url, name) => {
     if (!url) {
@@ -83,9 +44,6 @@ const GithubRepoCard = ({ repository }) => {
     const tab = window.open(url, '_blank');
     tab.focus();
   };
-  const [modalOpen, setModalOpen] = useState(false);
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
 
   return (
     <Card
@@ -116,7 +74,7 @@ const GithubRepoCard = ({ repository }) => {
           }
           title={<Typography variant="subTitle1">{name}</Typography>}
           sx={{
-            ...getSubTitleStyles(),
+            ...subTitleStyles,
             fontWeight: 'bold'
           }}
         />
@@ -124,7 +82,7 @@ const GithubRepoCard = ({ repository }) => {
         <Divider />
 
         <CardContent>
-          <Typography variant="body2" sx={{ ...getBodyStyles() }}>
+          <Typography variant="body2" sx={{ ...bodyStyles }}>
             {description}
           </Typography>
         </CardContent>
@@ -133,9 +91,7 @@ const GithubRepoCard = ({ repository }) => {
             {primaryLanguage !== null && (
               <Box component="span">
                 <Box className="language-color" sx={{ backgroundColor: primaryLanguage.color }} />
-                <Typography
-                  variant="caption"
-                  sx={{ color: isDark ? 'inherit' : 'rgb(120, 131, 155)' }}>
+                <Typography variant="caption" sx={{ color: isDark ? 'inherit' : '#4f5258' }}>
                   {primaryLanguage.name}
                 </Typography>
               </Box>
@@ -154,9 +110,7 @@ const GithubRepoCard = ({ repository }) => {
                   fillRule="evenodd"
                   d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path>
               </svg>
-              <Typography
-                variant="caption"
-                sx={{ color: isDark ? 'inherit' : 'rgb(120, 131, 155)' }}>
+              <Typography variant="caption" sx={{ color: isDark ? 'inherit' : '#4f5258' }}>
                 {forkCount}
               </Typography>
             </Box>
@@ -174,15 +128,13 @@ const GithubRepoCard = ({ repository }) => {
                   fillRule="evenodd"
                   d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"></path>
               </svg>
-              <Typography
-                variant="caption"
-                sx={{ color: isDark ? 'inherit' : 'rgb(120, 131, 155)' }}>
+              <Typography variant="caption" sx={{ color: isDark ? 'inherit' : '#4f5258' }}>
                 {stargazers.totalCount}
               </Typography>
             </Box>
           </Box>
           <Box className="repo-right-stat">
-            <Typography variant="caption" sx={{ color: isDark ? 'inherit' : 'rgb(120, 131, 155)' }}>
+            <Typography variant="caption" sx={{ color: isDark ? 'inherit' : '#4f5258' }}>
               {formatFileSizeDisplay(diskUsage)}
             </Typography>
           </Box>

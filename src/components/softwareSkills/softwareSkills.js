@@ -1,23 +1,14 @@
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Grid, Typography, useMediaQuery } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
+import React from 'react';
+
+import { useResponsiveStyles } from '../../hooks/useResponsiveStyles';
 import { skillsSection } from '../../portfolio';
 import './styles/softwareSkills.scss';
 
 const SoftwareSkills = () => {
-  const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
-  const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
-
-  const getIconStyles = () => {
-    if (isSmallScreen) {
-      return '1x';
-    }
-    if (isMediumScreen) {
-      return '2x';
-    }
-
-    return '3x';
-  };
+  const { getIconStyles } = useResponsiveStyles();
+  const iconStyles = getIconStyles();
   return (
     <Grid
       container
@@ -34,7 +25,7 @@ const SoftwareSkills = () => {
           }}>
           <FontAwesomeIcon
             icon={skill.fontAwesomeClassName}
-            size={getIconStyles()}
+            size={iconStyles}
             className="skill-icon"
           />
           <Typography

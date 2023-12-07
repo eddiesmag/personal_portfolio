@@ -1,9 +1,10 @@
-import React from 'react';
+import { GitHub, Mail, LinkedIn } from '@mui/icons-material';
 import { Avatar, Grid, Link, useMediaQuery } from '@mui/material';
-import { socialMediaLinks } from '../../portfolio';
+import React from 'react';
+
 import XTwitterIcon from './components/Xtwitter';
 import { fadeInLeft } from '../../containers/greeting/styles/aninations';
-import { GitHub, Mail, LinkedIn } from '@mui/icons-material';
+import { socialMediaLinks } from '../../portfolio';
 
 import './styles/socialMedia.scss';
 

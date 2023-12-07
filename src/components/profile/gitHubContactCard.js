@@ -1,48 +1,26 @@
-import React, { useContext } from 'react';
 import { EmailOutlined, LocationOnOutlined, PhoneOutlined, WorkOutline } from '@mui/icons-material';
-import { Box, Typography, Avatar, useMediaQuery } from '@mui/material';
-import StyleContext from '../../contexts/StyleContext';
+import { Box, Typography, Avatar } from '@mui/material';
+import React from 'react';
+
+import { useResponsiveStyles } from '../../hooks/useResponsiveStyles';
 import { contactInfo } from '../../portfolio';
 
 const GitHubContactCard = ({ data }) => {
-  const { isDark } = useContext(StyleContext);
+  const { getSubTitleStyles } = useResponsiveStyles();
+  const subTitleStyles = getSubTitleStyles();
 
-  const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
-  const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
-
-  const getSubTitleStyles = () => {
-    if (isSmallScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        lineHeight: 1.2,
-        fontSize: '0.8rem'
-      };
-    }
-    if (isMediumScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        lineHeight: 1.5,
-        fontSize: '1rem'
-      };
-    }
-    return {
-      color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-      lineHeight: 1.6,
-      fontSize: '1.1rem'
-    };
-  };
   return (
     <Box component="div">
       <Typography
         variant="subtitle1"
         sx={{
-          ...getSubTitleStyles(),
+          ...subTitleStyles,
           fontWeight: 'light'
         }}
         gutterBottom>
         {contactInfo.subTitle}
       </Typography>
-      <Typography variant="subtitle1" sx={{ ...getSubTitleStyles(), mb: 2 }} gutterBottom>
+      <Typography variant="subtitle1" sx={{ ...subTitleStyles, mb: 2 }} gutterBottom>
         {data.bio}
       </Typography>
       {data.location && (
@@ -64,10 +42,10 @@ const GitHubContactCard = ({ data }) => {
               justifyContent: 'center',
               alignItems: 'flex-start'
             }}>
-            <Typography variant="subtitle1" sx={{ ...getSubTitleStyles() }}>
+            <Typography variant="subtitle1" sx={{ ...subTitleStyles }}>
               Location
             </Typography>
-            <Typography variant="subtitle2" sx={{ ...getSubTitleStyles(), fontWeight: 'light' }}>
+            <Typography variant="subtitle2" sx={{ ...subTitleStyles, fontWeight: 'light' }}>
               Kampala, {data.location}
             </Typography>
           </Box>
@@ -92,10 +70,10 @@ const GitHubContactCard = ({ data }) => {
             justifyContent: 'center',
             alignItems: 'flex-start'
           }}>
-          <Typography variant="subtitle1" sx={{ ...getSubTitleStyles() }}>
+          <Typography variant="subtitle1" sx={{ ...subTitleStyles }}>
             Email
           </Typography>
-          <Typography variant="subtitle2" sx={{ ...getSubTitleStyles(), fontWeight: 'light' }}>
+          <Typography variant="subtitle2" sx={{ ...subTitleStyles, fontWeight: 'light' }}>
             {contactInfo.email_address}
           </Typography>
         </Box>
@@ -119,10 +97,10 @@ const GitHubContactCard = ({ data }) => {
             justifyContent: 'center',
             alignItems: 'flex-start'
           }}>
-          <Typography variant="subtitle1" sx={{ ...getSubTitleStyles() }}>
+          <Typography variant="subtitle1" sx={{ ...subTitleStyles }}>
             Phone
           </Typography>
-          <Typography variant="subtitle2" sx={{ ...getSubTitleStyles(), fontWeight: 'light' }}>
+          <Typography variant="subtitle2" sx={{ ...subTitleStyles, fontWeight: 'light' }}>
             {contactInfo.phone}
           </Typography>
         </Box>
@@ -146,10 +124,10 @@ const GitHubContactCard = ({ data }) => {
             justifyContent: 'center',
             alignItems: 'flex-start'
           }}>
-          <Typography variant="subtitle1" sx={{ ...getSubTitleStyles() }}>
+          <Typography variant="subtitle1" sx={{ ...subTitleStyles }}>
             Work
           </Typography>
-          <Typography variant="subtitle2" sx={{ ...getSubTitleStyles(), fontWeight: 'light' }}>
+          <Typography variant="subtitle2" sx={{ ...subTitleStyles, fontWeight: 'light' }}>
             Open for opportinuties: {data.hireable}
           </Typography>
         </Box>

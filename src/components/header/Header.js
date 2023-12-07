@@ -1,14 +1,20 @@
-import React, { useState, useContext, useRef, useEffect } from 'react';
-import { Avatar, Tab, Tabs, useMediaQuery } from '@mui/material';
 import { MenuOutlined } from '@mui/icons-material';
-import { Transition } from 'react-transition-group';
-import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
-import StyleContext from '../../contexts/StyleContext';
-import MobileHeader from './MobileHeader';
+import { Avatar, Tab, Tabs, useMediaQuery } from '@mui/material';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import Headroom from 'react-headroom';
+import { Transition } from 'react-transition-group';
+
+import MobileHeader from './MobileHeader';
+import StyleContext from '../../contexts/StyleContext';
+import { useResponsiveStyles } from '../../hooks/useResponsiveStyles';
+import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import './styles/Header.scss';
 
 const Header = () => {
+  const { isDark } = useContext(StyleContext);
+
+  const nodeRef = useRef(null);
+
   const [tabValue, setTabValue] = useState(0);
 
   const [showMobileHeader, setShowMobileHeader] = useState(false);
@@ -16,8 +22,11 @@ const Header = () => {
 
   const [profile, setProfile] = useState({});
 
-  const nodeRef = useRef(null);
-  const { isDark } = useContext(StyleContext);
+  const { getTabStyles } = useResponsiveStyles();
+  const tabStyles = getTabStyles();
+
+  const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
+  const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
 
   useEffect(() => {
     const getProfile = () => {
@@ -36,6 +45,15 @@ const Header = () => {
 
     getProfile();
   }, []);
+
+  const handleChange = (event, newValue) => {
+    setTabValue(newValue);
+  };
+
+  const toggleDrawer = () => {
+    setOpenDrawer(true);
+    setShowMobileHeader(!showMobileHeader);
+  };
 
   const menu = [
     {
@@ -67,43 +85,6 @@ const Header = () => {
       path: '#contact'
     }
   ];
-
-  const handleChange = (event, newValue) => {
-    setTabValue(newValue);
-  };
-
-  const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
-  const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
-
-  const toggleDrawer = () => {
-    setOpenDrawer(true);
-    setShowMobileHeader(!showMobileHeader);
-  };
-  const getTabStyles = () => {
-    if (isSmallScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        textAlign: 'justify',
-        lineHeight: 1.1,
-        fontSize: '0.7rem'
-      };
-    } else if (isMediumScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        textAlign: 'justify',
-        lineHeight: 1.2,
-        fontSize: '0.8rem'
-      };
-    } else {
-      return {
-        color: 'inherit',
-        textAlign: 'justify',
-        lineHeight: 1.5,
-        fontSize: '1rem'
-      };
-    }
-  };
-
   return (
     <Headroom>
       <Tabs
@@ -157,7 +138,7 @@ const Header = () => {
             label={menu.name}
             href={menu.path}
             sx={{
-              ...getTabStyles(),
+              ...tabStyles,
               display: isSmallScreen || isMediumScreen ? 'none' : 'block',
               color: tabValue === ++i ? 'primary.main' : 'inherit'
             }}

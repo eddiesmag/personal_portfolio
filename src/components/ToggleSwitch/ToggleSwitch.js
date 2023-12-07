@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react';
-import { Fab } from '@mui/material';
 import { LightModeOutlined, DarkModeOutlined } from '@mui/icons-material';
+import { Fab } from '@mui/material';
+import React, { useContext, useState } from 'react';
+
 import StyleContext from '../../contexts/StyleContext';
 
 import './styles/ToggleSwitch.scss';

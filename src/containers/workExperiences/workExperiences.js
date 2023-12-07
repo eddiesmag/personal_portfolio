@@ -1,4 +1,3 @@
-import React, { useContext } from 'react';
 import { faCalendarDays } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -10,24 +9,20 @@ import {
   timelineItemClasses,
   TimelineSeparator
 } from '@mui/lab';
-import { Grid, Grow, Typography, useMediaQuery } from '@mui/material';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { Grid, Grow, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+
+import { useResponsiveStyles } from '../../hooks/useResponsiveStyles';
 import { educationInfo, workExperience } from '../../portfolio';
-import StyleContext from '../../contexts/StyleContext';
 
 import './styles/workExperiences.scss';
 
 const WorkExperience = () => {
-  const { isDark } = useContext(StyleContext);
   const [isInView, setIsInView] = useState(false);
 
   const [displayExperience, setDisplayExperience] = useState(workExperience.displayExperiences);
   const [displayEducation, setDisplayEducation] = useState(educationInfo.displaySchools);
-
-  const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
-  const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
 
   const [ref, inView] = useInView({
     threshold: 0,
@@ -55,74 +50,11 @@ const WorkExperience = () => {
     getExperience();
   }, [displayEducation, displayExperience]);
 
-  const getTitleStyles = () => {
-    if (isSmallScreen) {
-      return {
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
-        fontSize: '1.7rem',
-        lineHeight: 1
-      };
-    } else if (isMediumScreen) {
-      return {
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
-        fontSize: '2rem',
-        lineHeight: 1
-      };
-    } else {
-      return {
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
-        fontSize: '3rem',
-        lineHeight: 1.1
-      };
-    }
-  };
+  const { getTitleStyles, getSubTitleStyles, getBodyStyles } = useResponsiveStyles();
 
-  const getSubTitleStyles = () => {
-    if (isSmallScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        lineHeight: 1.2,
-        fontSize: '0.8rem'
-      };
-    }
-    if (isMediumScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        lineHeight: 1.5,
-        fontSize: '1rem'
-      };
-    }
-    return {
-      color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-      lineHeight: 1.6,
-      fontSize: '1.1rem'
-    };
-  };
-
-  const getBodyStyles = () => {
-    if (isSmallScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        textAlign: 'justify',
-        lineHeight: 1.1,
-        fontSize: '0.7rem'
-      };
-    } else if (isMediumScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        textAlign: 'justify',
-        lineHeight: 1.2,
-        fontSize: '0.8rem'
-      };
-    } else {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        textAlign: 'justify',
-        lineHeight: 1.5,
-        fontSize: '1rem'
-      };
-    }
-  };
+  const titleStyles = getTitleStyles();
+  const subTitleStyles = getSubTitleStyles();
+  const bodyStyles = getBodyStyles();
 
   return (
     <div ref={ref} id="experience">
@@ -145,7 +77,7 @@ const WorkExperience = () => {
                     padding: 2
                   }
                 }}>
-                <Typography variant="h3" gutterBottom pl={3} sx={{ ...getTitleStyles() }}>
+                <Typography variant="h3" gutterBottom pl={3} sx={{ ...titleStyles }}>
                   Experiences
                 </Typography>
 
@@ -165,13 +97,13 @@ const WorkExperience = () => {
                         sx={{ display: 'inline-block' }}>
                         {exp.duration}
                       </Typography>
-                      <Typography variant="subtitle2" gutterBottom sx={{ ...getSubTitleStyles() }}>
+                      <Typography variant="subtitle2" gutterBottom sx={{ ...subTitleStyles }}>
                         {exp.company}
                       </Typography>{' '}
-                      <Typography variant="subtitle1" gutterBottom sx={{ ...getSubTitleStyles() }}>
+                      <Typography variant="subtitle1" gutterBottom sx={{ ...subTitleStyles }}>
                         {exp.role}
                       </Typography>
-                      <Typography variant="body2" gutterBottom sx={{ ...getBodyStyles() }}>
+                      <Typography variant="body2" gutterBottom sx={{ ...bodyStyles }}>
                         {exp.roleDesc}
                       </Typography>
                     </TimelineContent>
@@ -195,7 +127,7 @@ const WorkExperience = () => {
                     padding: 2
                   }
                 }}>
-                <Typography variant="h3" gutterBottom pl={3} sx={{ ...getTitleStyles() }}>
+                <Typography variant="h3" gutterBottom pl={3} sx={{ ...titleStyles }}>
                   Education
                 </Typography>
                 {educationInfo.schools.map((info, i) => (
@@ -213,10 +145,10 @@ const WorkExperience = () => {
                         sx={{ display: 'inline-block' }}>
                         {info.duration}
                       </Typography>
-                      <Typography variant="subtitle2" gutterBottom sx={{ ...getSubTitleStyles() }}>
+                      <Typography variant="subtitle2" gutterBottom sx={{ ...subTitleStyles }}>
                         {info.schoolName}
                       </Typography>{' '}
-                      <Typography variant="subtitle1" gutterBottom sx={{ ...getSubTitleStyles() }}>
+                      <Typography variant="subtitle1" gutterBottom sx={{ ...subTitleStyles }}>
                         {info.achievement}
                       </Typography>
                     </TimelineContent>

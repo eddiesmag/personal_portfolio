@@ -8,6 +8,7 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:prettier/recommended",
+        "plugin:import/recommended",
         "plugin:react-hooks/recommended",
         "plugin:jsx-a11y/recommended"
     ],
@@ -21,6 +22,26 @@
     "rules": {
         "react/react-in-jsx-scope": 2,
         "react/prop-types": "off",
-        "no-unused-vars":"warn"
+        "no-unused-vars":"warn",
+        "import/order": [
+            "error",
+            {
+              "groups": [
+                "builtin",
+                "external",
+                "internal",
+                ["parent", "sibling", "index"]
+              ],
+              "newlines-between": "always",
+              "alphabetize": {
+                "order": "asc",
+                "caseInsensitive": false
+              }
+            }
+          ],
+          "import/no-duplicates": "error",
+          "import/no-named-as-default": "error",
+          "import/no-named-as-default-member": "error",
+          "import/no-unresolved": "error"
     }
 }

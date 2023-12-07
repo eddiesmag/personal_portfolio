@@ -1,7 +1,17 @@
+import { Close } from '@mui/icons-material';
+import {
+  Avatar,
+  Backdrop,
+  Box,
+  Button,
+  Fade,
+  Grid,
+  Modal,
+  Typography,
+  useMediaQuery
+} from '@mui/material';
 import React, { useContext } from 'react';
-import { Backdrop, Box, Button, Fade, Grid, Modal, Typography, useMediaQuery } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark } from '@fortawesome/free-regular-svg-icons';
+
 import StyleContext from '../../contexts/StyleContext';
 
 const modalStyles = {
@@ -102,18 +112,25 @@ const GithubRepoModal = ({ repository, open, close, openProject }) => {
         <Box
           sx={{
             ...modalStyles,
-            color: isDark ? '#FFF' : 'rgb(35, 39, 47)',
-            bgcolor: isDark ? 'rgb(35, 39, 47)' : '#FFF'
+            color: isDark ? '#FFF' : '#23272f',
+            bgcolor: isDark ? '#23272f' : '#FFF'
           }}>
           <Box sx={closeBtnStyles}>
-            <FontAwesomeIcon
-              icon={faCircleXmark}
-              size="3x"
-              style={{
-                color: isDark ? 'rgb(209, 214, 225)' : 'rgb(35, 39, 47)'
-              }}
+            <Avatar
+              variant="circular"
               onClick={close}
-            />
+              sx={{
+                boxShadow: 3,
+                color: 'primary.main',
+                bgcolor: 'inherit',
+                '&:hover': {
+                  boxShadow: 5,
+                  color: 'primary.light',
+                  bgcolor: isDark ? 'secondary.light' : 'common.white'
+                }
+              }}>
+              <Close />
+            </Avatar>
           </Box>
 
           <Grid

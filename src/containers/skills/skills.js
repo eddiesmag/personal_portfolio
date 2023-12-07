@@ -1,14 +1,17 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { skillsSection } from '../../portfolio';
-import { fadeInBck } from './styles/animations';
-import StyleContext from '../../contexts/StyleContext';
-import { useInView } from 'react-intersection-observer';
 import { Fade, Grid, Typography, useMediaQuery } from '@mui/material';
+import React, { useContext, useState, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
+
+import { fadeInBck } from './styles/animations';
 import DisplayLottie from '../../components/display-lottie/displayLottie';
 import SoftwareSkills from '../../components/softwareSkills/softwareSkills';
+import StyleContext from '../../contexts/StyleContext';
+import { useResponsiveStyles } from '../../hooks/useResponsiveStyles';
+import { skillsSection } from '../../portfolio';
 
 const Skills = () => {
   const { isDark } = useContext(StyleContext);
+
   const isSmallScreen = useMediaQuery('(max-width: 767.98px)');
   const isMediumScreen = useMediaQuery('(max-width: 991.98px)');
 
@@ -25,49 +28,10 @@ const Skills = () => {
     }
   }, [inView]);
 
-  const getTitleStyles = () => {
-    if (isSmallScreen) {
-      return {
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
-        fontSize: '1.7rem',
-        lineHeight: 1
-      };
-    } else if (isMediumScreen) {
-      return {
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
-        fontSize: '2rem',
-        lineHeight: 1
-      };
-    } else {
-      return {
-        color: isDark ? '#fff' : 'rgb(35, 39, 47)',
-        fontSize: '3rem',
-        lineHeight: 1.1
-      };
-    }
-  };
+  const { getTitleStyles, getSubTitleStyles } = useResponsiveStyles();
 
-  const getSubTitleStyles = () => {
-    if (isSmallScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        lineHeight: 1.2,
-        fontSize: '0.8rem'
-      };
-    }
-    if (isMediumScreen) {
-      return {
-        color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-        lineHeight: 1.5,
-        fontSize: '1rem'
-      };
-    }
-    return {
-      color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
-      lineHeight: 1.6,
-      fontSize: '1.1rem'
-    };
-  };
+  const titleStyles = getTitleStyles();
+  const subTitleStyles = getSubTitleStyles();
 
   const animation = `${fadeInBck} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`;
   return (
@@ -112,7 +76,7 @@ const Skills = () => {
             sx={{
               textAlign: 'justify'
             }}>
-            <Typography variant="h3" gutterBottom sx={{ ...getTitleStyles() }}>
+            <Typography variant="h3" gutterBottom sx={{ ...titleStyles }}>
               {skillsSection.title}
             </Typography>
 
@@ -120,8 +84,8 @@ const Skills = () => {
               variant="subtitle1"
               gutterBottom
               sx={{
-                ...getSubTitleStyles(),
-                color: isDark ? 'inherit' : 'rgb(120, 131, 155)'
+                ...subTitleStyles,
+                color: isDark ? 'inherit' : '#4f5258'
               }}
               mt={5}
               mb={5}>
@@ -135,8 +99,8 @@ const Skills = () => {
                 variant="subTitle1"
                 gutterBottom
                 sx={{
-                  ...getSubTitleStyles(),
-                  color: isDark ? 'inherit' : 'rgb(120, 131, 155)',
+                  ...subTitleStyles,
+                  color: isDark ? 'inherit' : '#4f5258',
                   display: 'block'
                 }}
                 key={i}>

@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
-import { introduction } from '../../portfolio';
-import StyleContext from '../../contexts/StyleContext';
 import { Grid, Skeleton, Typography, useMediaQuery } from '@mui/material';
+import React, { useContext } from 'react';
+
+import StyleContext from '../../contexts/StyleContext';
+import { introduction } from '../../portfolio';
 import './splashScreen.scss';
 const SplashScreen = () => {
   const { isDark } = useContext(StyleContext);

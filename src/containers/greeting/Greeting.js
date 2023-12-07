@@ -32,7 +32,7 @@ const Greeting = () => {
         spacing={0}
         m={0}
         mt="4rem"
-        p={2}
+        p={[2, 2, 0, 2]}
         sx={{
           justifyContent: 'center',
           alignItems: 'flex-start'

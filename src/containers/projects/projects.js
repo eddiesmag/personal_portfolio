@@ -54,17 +54,12 @@ const Projects = () => {
         })
         .then((response) => {
           const items = response.data.user.pinnedItems.edges;
-
           const data = items.map((item) => {
             let stack;
             if (item.node.name === 'webpack-starter') {
               stack = 'backend';
-            } else if (item.node.name === 'musuem_of_candy') {
-              stack = 'frontend';
-            } else if (item.node.name === 'pricing_panel') {
+            } else if (item.node.name === 'library-ejs') {
               stack = 'full stack';
-            } else if (item.node.name === 'simple_photo_blog') {
-              stack = 'backend';
             } else {
               stack = 'frontend';
             }

@@ -119,7 +119,8 @@ const Header = () => {
                 src={profile.avatarUrl}
                 sx={{
                   width: '40px',
-                  height: '40px'
+                  height: '40px',
+                  mr: 1
                 }}
               />
             )

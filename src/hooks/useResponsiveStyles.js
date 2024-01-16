@@ -30,7 +30,7 @@ export const useResponsiveStyles = () => {
     } else {
       return {
         color: isDark ? 'inherit' : '#181b20',
-        textAlign: 'justify',
+        // textAlign: 'justify',
         lineHeight: 1.5,
         fontSize: '1rem'
       };
@@ -102,7 +102,7 @@ export const useResponsiveStyles = () => {
     } else {
       return {
         color: isDark ? 'inherit' : '#4f5258',
-        textAlign: 'justify',
+        // textAlign: 'justify',
         lineHeight: 1.5,
         fontSize: '1rem'
       };

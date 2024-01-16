@@ -68,18 +68,18 @@ const Header = () => {
       name: 'Open Source',
       path: '#openSource'
     },
-    {
-      name: 'Achievements',
-      path: '#achievements'
-    },
-    {
-      name: 'Blogs',
-      path: '#blogs'
-    },
-    {
-      name: 'Talks',
-      path: '#talks'
-    },
+    // {
+    //   name: 'Achievements',
+    //   path: '#achievements'
+    // },
+    // {
+    //   name: 'Blogs',
+    //   path: '#blogs'
+    // },
+    // {
+    //   name: 'Talks',
+    //   path: '#talks'
+    // },
     {
       name: 'Contact Me',
       path: '#contact'

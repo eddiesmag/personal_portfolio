@@ -28,10 +28,10 @@ const introduction = {
   username: 'Edward Ssemwanga',
   title: "Hi all, I'm Edward",
   subTitle: emoji(
-    'A passionate Full Stack Software Developer 🚀 having an experience of building Web and Mobile applications with JavaScript / Reactjs / Nodejs / React Native and some other cool libraries and frameworks.'
+    'A passionate Full Stack Software Developer 🚀 with experience of building Web and Mobile applications using Node.js / TypeScript / React.js / React Native and some other cool libraries and frameworks. Team player with a strong ability to perform and adapt effectively. Always willing to learn 👍.'
   ),
   animation: manWaving,
-  resumeLink: 'https://drive.google.com/file/d/15wswDumYIRBdCKV4GLGSeqRT-CZIrPs6/view?usp=sharing', // Set to empty to hide the button
+  resumeLink: 'https://drive.google.com/file/d/1tOa0tZxK24jwevYofCDHQyUThfWDBhz2/view?usp=sharing', // Set to empty to hide the button
   displayIntroduction: true
 };
 
@@ -48,17 +48,14 @@ const socialMediaLinks = {
 // skills section
 const skillsSection = {
   title: 'What I do',
-  subTitle:
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas placeat eaque ipsam omnis, deleniti perferendis, labore, itaque quo delectus voluptas beatae aliquam consectetur sed neque dolores nam doloribus distinctio veritatis.',
+  subTitle: emoji(
+    '⚡️ Crafting full-stack web and mobile applications with Node.js, TypeScript, React.js and React Native.'
+  ),
   animation: manWorking,
   skills: [
-    emoji(
-      '⚡️ Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas placeat eaque ipsam omnis, deleniti perferendis, labore, itaque quo delectus voluptas beatae aliquam consectetur sed neque dolores nam doloribus distinctio veritatis.'
-    ),
-    emoji(
-      '⚡️ Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam saepe ea facilis. Tempora sint velit et veritatis tenetur quibusdam quae magni ipsa consectetur itaque qui ad sed autem, provident necessitatibus?'
-    ),
-    emoji('⚡️ skill 3')
+    emoji('⚡️ Expert in utilizing industry-standard libraries for seamless, scalable solutions.'),
+    emoji('⚡️ Proficient in MongoDB, PostgreSQL, and GraphQL for optimal data management.'),
+    emoji('⚡️ Stay updated on tech trends for innovative software solutions.')
   ],
   skillSet: [
     {
@@ -128,7 +125,7 @@ const techStack = {
     },
     {
       stack: 'Client-side (Frontend/Design)',
-      progressPercentage: 80
+      progressPercentage: 85
     }
   ]
 };
@@ -139,32 +136,32 @@ const workExperience = {
   displayExperiences: true,
   experience: [
     {
-      role: 'Job Title',
-      company: 'Company',
-      duration: 'May 2004 - present',
+      role: 'Full-stack Javascript  developer',
+      company: 'Freelance',
+      duration: 'September 2019–Present',
       roleDesc:
-        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!'
+        'Developing full-stack web Apps with Node.js, TypeScript and React.js. Working with MongoDB, PostgreSQL, and GrapQL'
     },
     {
-      role: 'Job Title',
-      company: 'Company',
-      duration: 'May 2004 - present',
+      role: 'Full-stack Javascript  developer',
+      company: 'Freelyformd',
+      duration: 'June 2018–October 2019',
       roleDesc:
-        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!'
+        'I contributed to and developed full-stack React Native Apps. I gained great experience with Nodejs, Typescript, Reactjs and React Native. Worked with MongoDB and PostgreSQL'
     },
     {
-      role: 'Job Title',
-      company: 'Company',
-      duration: 'May 2004 - present',
+      role: 'Software Developer, Intern',
+      company: 'Afrosoft IT Solutions Ltd, Bombo Road – Kampala',
+      duration: 'June 2017–August 2017',
       roleDesc:
-        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!'
+        'Developed a full-stack Android mobile Application in JAVA and PHP. Developed RESTFUL APIs. Developed an embedded system Application. Developed a full web system, using WordPress content management system.'
     },
     {
-      role: 'Job Title',
-      company: 'Company',
-      duration: 'May 2004 - present',
+      role: 'Software Engineer',
+      company: 'National Agricultural Research Laboratories, NARL (Kawanda)',
+      duration: 'July 2016–July 2017',
       roleDesc:
-        ' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius et nesciunt minima praesentium exercitationem mollitia, velit vero expedita sed distinctio quibusdam similique in necessitatibus veniam hic alias placeat aliquam laudantium!'
+        'Software system developer JavaScript and PHP. System Analyst.Maintained database with MSSQL. IT consultant.'
     }
   ]
 };
